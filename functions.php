@@ -430,17 +430,56 @@ function yapb_get_exif_filter($exif)
 add_filter('yapb_get_exif', 'yapb_get_exif_filter');
 */
 
-// $args = array(
-//  'name'          => sprintf(__('Footer %d'), $i ),
-//  'id'            => 'sidebar-$i',
-//  'description'   => '',
-//  'before_widget' => '<li id="%1$s" class="widget %2$s">',
-//  'after_widget'  => '</li>',
-//  'before_title'  => '<h2 class="widgettitle">',
-//  'after_title'   => '</h2>' );
+// register_sidebar();
 
-// register_sidebar( $args );
+function reflection_widgets_init() {
 
-register_sidebar();
+	// Area 1, located in the footer. Empty by default.
+	register_sidebar( array(
+		'name' => __( 'First Footer Widget Area', 'reflection' ),
+		'id' => 'first-footer-widget-area',
+		'description' => __( 'The first footer widget area', 'reflection' ),
+		'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
+		'after_widget' => '</li>',
+		'before_title' => '<h3 class="widget-title">',
+		'after_title' => '</h3>',
+	) );
+
+	// Area 2, located in the footer. Empty by default.
+	register_sidebar( array(
+		'name' => __( 'Second Footer Widget Area', 'reflection' ),
+		'id' => 'second-footer-widget-area',
+		'description' => __( 'The second footer widget area', 'reflection' ),
+		'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
+		'after_widget' => '</li>',
+		'before_title' => '<h3 class="widget-title">',
+		'after_title' => '</h3>',
+	) );
+
+	// Area 3, located in the footer. Empty by default.
+	register_sidebar( array(
+		'name' => __( 'Third Footer Widget Area', 'reflection' ),
+		'id' => 'third-footer-widget-area',
+		'description' => __( 'The third footer widget area', 'reflection' ),
+		'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
+		'after_widget' => '</li>',
+		'before_title' => '<h3 class="widget-title">',
+		'after_title' => '</h3>',
+	) );
+
+	// Area 4, located in the footer. Empty by default.
+	register_sidebar( array(
+		'name' => __( 'Fourth Footer Widget Area', 'reflection' ),
+		'id' => 'fourth-footer-widget-area',
+		'description' => __( 'The fourth footer widget area', 'reflection' ),
+		'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
+		'after_widget' => '</li>',
+		'before_title' => '<h3 class="widget-title">',
+		'after_title' => '</h3>',
+	) );
+}
+
+/** Register sidebars by running reflection_widgets_init() on the widgets_init hook. */
+add_action( 'widgets_init', 'reflection_widgets_init' );
 
 ?>
