@@ -1,20 +1,10 @@
 <?php
-/*
- * Template Name: Archives
- * Description: Allows users to browse through your archived posts by tag and date.
+/**
+ * The template for displaying generic archives.
+ *
  */
 
-$headinclude = '<script type="text/javascript" src="'.get_bloginfo('template_directory').'/js/browser.js"></script>
-
-<script type="text/javascript">
-  Browse.templateDir = \''.get_bloginfo('template_directory').'\';
-  window.addEvent(\'load\', Browse.init.bind(Browse));
-</script>';
-
-// Get header.
-get_header();
-
-?>
+get_header(); ?>
 
   <?php
   	/* Queue the first post, that way we know

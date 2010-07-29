@@ -38,9 +38,13 @@ if ($allid)
 <div id="pagecontent">
 	<table cellpadding="5" cellspacing="0" id="taxonomyTable">
 		<?php if ($disptype): ?>
-		<tr><th>By year</th><th style="text-align:right"><?=$disptype == 1 ? 'By tag' : 'By category'?></th></tr>
+		<tr>
+		  <th>By year</th><th style="text-align:right"><?=$disptype == 1 ? 'By tag' : 'By category'?></th>
+		</tr>
 		<?php else: ?>
-		<tr><th style="width:100%">By year</th></tr>
+		<tr>
+		  <th style="width:100%">By year</th>
+		</tr>
 		<?php endif; ?>
 		<tr>
 			<td id="yearCloud">
@@ -85,11 +89,6 @@ if ($allid)
 
 // Grab all posts from the database in correct order.
 $orderby = get_opt_or_default('mosaicdesc') ? 'DESC' : 'ASC';
-
-if ($all) 
-	query_posts('showposts=-1&orderby=date&order='.$orderby);
-else
-	query_posts($query_string.'&orderby=date&order='.$orderby.'&showposts=-1');
 
 // Begin The Loop.
 if (have_posts()) : while (have_posts()) : the_post();
