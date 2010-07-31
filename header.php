@@ -60,7 +60,7 @@ if (is_home()) {
   <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 
   <?php wp_head(); ?>
-  <?= $headinclude ?>
+
 </head>
 <body>
 
