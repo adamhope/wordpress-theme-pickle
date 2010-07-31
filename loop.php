@@ -36,7 +36,6 @@ if (have_posts()) : while (have_posts()) : the_post();
 
   <?php if (is_home() || is_single()):?>
     <script type="text/javascript">
-      alert("is home or single");
       Site.nextPostID = <?=$next_post?>;
       Site.prevPostID = <?=$prev_post?>;
     </script>
