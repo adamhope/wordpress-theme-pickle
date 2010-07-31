@@ -482,4 +482,9 @@ function reflection_widgets_init() {
 /** Register sidebars by running reflection_widgets_init() on the widgets_init hook. */
 add_action( 'widgets_init', 'reflection_widgets_init' );
 
+function is_home_uri() {
+  if ($_SERVER[’REQUEST_URI’] == ‘/’ || $_SERVER[’REQUEST_URI’] == ‘/index.php’) { return true; }
+  else { return false; }
+}
+
 ?>

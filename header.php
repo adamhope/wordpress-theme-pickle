@@ -13,7 +13,7 @@ if (is_home()) {
       'paged' => $paged,
       'category_name' => 'Photos'
     );
-    query_posts($args);    
+    query_posts($args);
 }
 
 ?>
@@ -46,8 +46,8 @@ if (is_home()) {
   
   <script type="text/javascript" src="<?php bloginfo('template_directory');?>/js/mootools-1.2.1-core.js"></script>
   <script type="text/javascript" src="<?php bloginfo('template_directory');?>/js/mootools-1.2-more.js"></script>  
-  
-  <?if (is_home() || is_single()):?>
+
+  <?if (is_home_uri() || is_single()):?>
     <script type="text/javascript" src="<?php bloginfo('template_directory');?>/js/blog.js"></script>  
     <script type="text/javascript">
       Site.templateDir = '<?php bloginfo('template_directory');?>';

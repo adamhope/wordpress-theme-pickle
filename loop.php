@@ -1,13 +1,5 @@
 <div id="content">
 
-<?php /* Display navigation to next/previous pages when applicable */ ?>
-<?php if ( $wp_query->max_num_pages > 1 ) : ?>
-	<div id="nav-above" class="navigation">
-		<div class="nav-previous"><?php next_posts_link( __( '<span class="meta-nav">&larr;</span> Older posts', 'twentyten' ) ); ?></div>
-		<div class="nav-next"><?php previous_posts_link( __( 'Newer posts <span class="meta-nav">&rarr;</span>', 'twentyten' ) ); ?></div>
-	</div><!-- #nav-above -->
-<?php endif; ?>
-
 <?php /* If there are no posts to display, such as an empty archive page */ ?>
 <?php if ( ! have_posts() ) : ?>
 	<div id="post-0" class="post error404 not-found">
@@ -34,7 +26,7 @@ if (have_posts()) : while (have_posts()) : the_post();
   $prev_post_perm = get_permalink($prev_post);
   ?>
 
-  <?php if (is_home() || is_single()):?>
+  <?php if (is_home_uri() || is_single()):?>
     <script type="text/javascript">
       Site.nextPostID = <?=$next_post?>;
       Site.prevPostID = <?=$prev_post?>;
@@ -45,7 +37,7 @@ if (have_posts()) : while (have_posts()) : the_post();
     <div id="title">
       <div id="titlebits">
         <ul>
-          <?php if (is_home() || is_single()):?>
+          <?php if (is_home_uri() || is_single()):?>
             <li>
               <a id="prevPostLink" href="<?=$prev_post ? $prev_post_perm.'">&laquo;' : '">';?></a> |
               <a id="nextPostLink" href="<?=$next_post ? $next_post_perm.'">&raquo;' : '">';?></a>
@@ -58,7 +50,7 @@ if (have_posts()) : while (have_posts()) : the_post();
             <a class="panel" id="exif" href=""><?_e('exif',TD);?></a>
           </li>
           <li>
-            <a <?=is_home() ? 'class="panel" ' : ''?>id="info" href="<?the_permalink();?>#notes"><?_e('info',TD);?></a>
+            <a <?=is_home_uri ? 'class="panel" ' : ''?>id="info" href="<?the_permalink();?>#notes"><?_e('info',TD);?></a>
           </li>
         </ul>
       </div>
@@ -71,7 +63,7 @@ if (have_posts()) : while (have_posts()) : the_post();
       <div id="panel_exif" class="overlay" style="right:0;top:0;">
         <?echo get_exif();?>
       </div>
-      <?php if (is_home() || is_single()): // Only enable overlays for homepage navigation. ?>
+      <?php if (is_home_uri() || is_single()): // Only enable overlays for homepage navigation. ?>
         <div id="panel_info" class="overlay bottomPanel" style="bottom:0;left:0;right:0;z-index:6">
           <?php the_content(__('Read more...')); ?>
         </div>
@@ -87,7 +79,7 @@ if (have_posts()) : while (have_posts()) : the_post();
   </div>
   <div id="reflectionholder"></div>
 
-  <?php if (is_single() && !is_home()): ?>
+  <?php if (is_single() && !is_home_uri()): ?>
     <div id="content">
       <a name="info" id="notes"></a>
       <?php the_content(); ?>
