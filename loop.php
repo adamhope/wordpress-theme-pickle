@@ -1,3 +1,5 @@
+<div id="content">
+
 <?php /* Display navigation to next/previous pages when applicable */ ?>
 <?php if ( $wp_query->max_num_pages > 1 ) : ?>
 	<div id="nav-above" class="navigation">
@@ -34,6 +36,7 @@ if (have_posts()) : while (have_posts()) : the_post();
 
   <?php if (is_home() || is_single()):?>
     <script type="text/javascript">
+      alert("is home or single");
       Site.nextPostID = <?=$next_post?>;
       Site.prevPostID = <?=$prev_post?>;
     </script>
@@ -43,7 +46,7 @@ if (have_posts()) : while (have_posts()) : the_post();
     <div id="title">
       <div id="titlebits">
         <ul>
-          <?php if (is_home()):?>
+          <?php if (is_home() || is_single()):?>
             <li>
               <a id="prevPostLink" href="<?=$prev_post ? $prev_post_perm.'">&laquo;' : '">';?></a> |
               <a id="nextPostLink" href="<?=$next_post ? $next_post_perm.'">&raquo;' : '">';?></a>
@@ -69,7 +72,7 @@ if (have_posts()) : while (have_posts()) : the_post();
       <div id="panel_exif" class="overlay" style="right:0;top:0;">
         <?echo get_exif();?>
       </div>
-      <?php if (is_home()): // Only enable overlays for homepage navigation. ?>
+      <?php if (is_home() || is_single()): // Only enable overlays for homepage navigation. ?>
         <div id="panel_info" class="overlay bottomPanel" style="bottom:0;left:0;right:0;z-index:6">
           <?php the_content(__('Read more...')); ?>
         </div>
@@ -140,3 +143,5 @@ if (have_posts()) : while (have_posts()) : the_post();
 <?php endif; // This was the if statement that broke the loop into three parts based on categories. ?>
 
 <?php break; endwhile; endif;?>
+
+</div>

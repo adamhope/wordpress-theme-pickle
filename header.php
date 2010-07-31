@@ -39,19 +39,22 @@ if (is_home()) {
 
   	// Add a page number if necessary:
   	if ( $paged >= 2 || $page >= 2 )
-  		echo ' | ' . sprintf( __( 'Page %s', 'twentyten' ), max( $paged, $page ) );
+  		echo ' | ' . sprintf( __( 'Page %s', 'reflection' ), max( $paged, $page ) );
 
   	?></title>
   <meta http-equiv="Content-Type" content="<?php bloginfo('html_type'); ?>; charset=<?php bloginfo('charset'); ?>" />
   
   <script type="text/javascript" src="<?php bloginfo('template_directory');?>/js/mootools-1.2.1-core.js"></script>
-  <script type="text/javascript" src="<?php bloginfo('template_directory');?>/js/mootools-1.2-more.js"></script>
-  <?if (is_home() || is_single()):?><script type="text/javascript" src="<?php bloginfo('template_directory');?>/js/blog.js"></script>
-  <script type="text/javascript">
-    Site.templateDir = '<?php bloginfo('template_directory');?>';
-    window.addEvent('load', Site.init.bind(Site));
-  </script>
+  <script type="text/javascript" src="<?php bloginfo('template_directory');?>/js/mootools-1.2-more.js"></script>  
+  
+  <?if (is_home() || is_single()):?>
+    <script type="text/javascript" src="<?php bloginfo('template_directory');?>/js/blog.js"></script>  
+    <script type="text/javascript">
+      Site.templateDir = '<?php bloginfo('template_directory');?>';
+      window.addEvent('load', Site.init.bind(Site));
+    </script>
   <?php endif;?>
+
   <link rel="profile" href="http://gmpg.org/xfn/11" />
   <link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>" />
   <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
