@@ -15,8 +15,8 @@ query_posts('p='.$id);
 while(have_posts()) {
 	the_post();
 	
-	$next_post = get_next_post();
-	$prev_post = get_previous_post();
+	$next_post = get_next_post(true);
+	$prev_post = get_previous_post(true);
 	
 	// Grab post information.
 	ob_start();
