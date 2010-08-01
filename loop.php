@@ -94,7 +94,7 @@ if (have_posts()) : while (have_posts()) : the_post();
 		<h2 class="entry-title"><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'twentyten' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
 
 		<div class="entry-meta">
-			<p>php twentyten_posted_on();</p>
+			<?php twentyten_posted_on(); ?>
 		</div><!-- .entry-meta -->
 
 <?php if ( is_archive() || is_search() ) : // Only display excerpts for archives and search. ?>
