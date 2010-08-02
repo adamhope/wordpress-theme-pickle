@@ -15,7 +15,7 @@
         <?php do_action( 'reflection_credits' ); ?>
         <a href="<?php echo esc_url( __('http://wordpress.org/', 'reflection') ); ?>"
         title="<?php esc_attr_e('Semantic Personal Publishing Platform', 'reflection'); ?>" rel="generator">
-          <?php printf( __('Proudly powered by %s.', 'twentyten'), 'WordPress' ); ?>
+          <?php printf( __('Proudly powered by %s.', 'reflection'), 'WordPress' ); ?>
         </a>
       </div><!-- #site-generator -->
 
