@@ -43,21 +43,16 @@ if (is_home()) {
 
   	?></title>
   <meta http-equiv="Content-Type" content="<?php bloginfo('html_type'); ?>; charset=<?php bloginfo('charset'); ?>" />
-  
-  <script type="text/javascript" src="<?php bloginfo('template_directory');?>/js/mootools-1.2.1-core.js"></script>
-  <script type="text/javascript" src="<?php bloginfo('template_directory');?>/js/mootools-1.2-more.js"></script>  
-
-  <?if (is_home_uri() || is_single()):?>
-    <script type="text/javascript" src="<?php bloginfo('template_directory');?>/js/blog.js"></script>  
-    <script type="text/javascript">
-      Site.templateDir = '<?php bloginfo('template_directory');?>';
-      window.addEvent('load', Site.init.bind(Site));
-    </script>
-  <?php endif;?>
 
   <link rel="profile" href="http://gmpg.org/xfn/11" />
   <link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>" />
   <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
+
+  <?php if (is_home_uri() || is_single()):?>
+    <script type="text/javascript">
+      var Site = {};
+    </script>
+  <?php endif;?>
 
   <?php wp_head(); ?>
 
@@ -67,7 +62,9 @@ if (is_home()) {
 <div id="frame">
   <div id="header">
     <h1 id="site-title">
-		<a href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
+  		<a href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
+  		  <?php bloginfo( 'name' ); ?>
+  		</a>
 		</h1>
 		
 		<div id="site-description"><?php bloginfo( 'description' ); ?></div>

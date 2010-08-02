@@ -22,6 +22,17 @@
     </div><!-- #colophon -->
   </div><!-- #footer -->
 
+  <script type="text/javascript" src="<?php bloginfo('template_directory');?>/js/mootools-1.2.1-core.js"></script>
+  <script type="text/javascript" src="<?php bloginfo('template_directory');?>/js/mootools-1.2-more.js"></script>  
+  <script type="text/javascript" src="<?php bloginfo('template_directory');?>/js/blog.js"></script>  
+
+  <?if (is_home_uri() || is_single()):?>
+    <script type="text/javascript">
+      Site.templateDir = '<?php bloginfo('template_directory');?>';
+      window.addEvent('load', Site.init.bind(Site));
+    </script>
+  <?php endif;?>
+
 </body>
 
 </html>

@@ -4,8 +4,7 @@
 // Christophe Beyls' reflection.js for mootools script:
 //   http://www.digitalia.be/software/reflectionjs-for-mootools
 
-var Site = {
-	init: function(options) {
+Site.init = function(options) {
 		this.options = $extend({
 			panelDuration: 600,
 			panelTransition: Fx.Transitions.Cubic.easeInOut,
@@ -90,21 +89,21 @@ var Site = {
 				this.panelClick(i);
 			}.bind(this));
 		}.bind(this));
-	},
+	};
 	
-	nextPost: function(e) {
+Site.nextPost = function(e) {
 		e = new Event(e);
 		e.stop();
 		this.ajaxRequest(1);
-	},
+	};
 	
-	prevPost: function(e) {
+	Site.prevPost = function(e) {
 		e = new Event(e);
 		e.stop();
 		this.ajaxRequest(0);
-	},
+	};
 	
-	ajaxRequest: function(dir) {
+	Site.ajaxRequest = function(dir) {
 		this.postID = dir ? this.nextPostID : this.prevPostID;
 		
 		if (this.postID == 0 || this.loadingImage > 0)
@@ -117,9 +116,9 @@ var Site = {
 	
 		this.loadingImage = 1;
 		this.fadeOut();
-	},
+	};
 	
-	fadeOut: function() {
+	Site.fadeOut = function() {
 		$('panel_overlay').setStyles({width:this.mainImage.width, height:this.mainImage.height, opacity:0, display:'block'});
 	
 		this.imageFader.start({
@@ -127,18 +126,18 @@ var Site = {
 			1: {'opacity': [1,0]},
 			4: {'opacity': [1,0]}
 		});
-	},
+	};
 	
-	fadeIn: function() {
+	Site.fadeIn = function() {
 		this.doReflection();
 		this.imageFader.start({
 			0: {'opacity': [1,0]},
 			1: {'opacity': [0,1]},
 			4: {'opacity': [0,1]}
 		});
-	},
+	};
 	
-	ajaxRefresh: function(req) {
+	Site.ajaxRefresh = function(req) {
 		this.imageinfo      = req;
 		this.preload        = new Image();
 		this.preload.onload = this.loadComplete.bind(this);
@@ -166,9 +165,9 @@ var Site = {
 			else
 				this.panelSlide[i].set({'opacity': 0, 'top':   -p.getSize().y+"px"});
 		}.bind(this));
-	},
+	};
 	
-	loadComplete: function() {
+	Site.loadComplete = function() {
 		this.mainImage.width  = Math.min(this.mainImage.width,  this.preload.width);
 		this.mainImage.height = Math.min(this.mainImage.height, this.preload.height);
 		this.imageFader.start({
@@ -176,9 +175,9 @@ var Site = {
 			2: {width: this.preload.width                             },
 			5: {width: this.preload.width, height: this.preload.height}
 		});
-   	 },
+ 	 };
    	 
-	resizeComplete: function() {
+	Site.resizeComplete = function() {
 		this.loadingImage++;
 		switch(this.loadingImage) {
 		case 2:
@@ -205,9 +204,9 @@ var Site = {
 			this.loadingImage = 0;
 			break;
 		}
-	},
+	};
 	
-	clickPanel: function(i) {
+	Site.clickPanel = function(i) {
 		if (this.panelDisplay==i) {
 			this.slideIn(i);
 		} else if (this.panelDisplay==-1) {
@@ -216,27 +215,27 @@ var Site = {
 			this.slideIn(this.panelDisplay);
 			this.slideOut(i);
 		}
-	},
+	};
 	
-	slideOut: function(i) {
+	Site.slideOut = function(i) {
 		var p = $("panel_"+this.panels[i].id);
 		if (p.hasClass("bottomPanel"))
 			this.panelSlide[i].start({'opacity':this.options.panelOpacity, 'bottom':"0px"});
 		else
 			this.panelSlide[i].start({'opacity':this.options.panelOpacity, 'top':   "0px"});
-	},
+	};
 	
-	slideIn: function(i) {
+	Site.slideIn = function(i) {
 		var p = $("panel_"+this.panels[i].id);
 		if (p.hasClass("bottomPanel"))
 			this.panelSlide[i].start({'opacity':0, 'bottom':-p.getSize().y+"px"});
 		else
 			this.panelSlide[i].start({'opacity':0, 'top':   -p.getSize().y+"px"});
-	},
+	};
 	
 	// doReflection: sets up reflection effect. Adaptation of Christophe Beyls' 
 	//			   reflection.js mootools script.
-	doReflection: function() {
+	Site.doReflection = function() {
 		var canvasHeight = Math.floor(this.mainImage.height * this.options.reflectionHeight);
 		
 		if (this.canvas) this.canvas.dispose();
@@ -269,5 +268,4 @@ var Site = {
 		context.fillStyle = gradient;
 		context.rect(0, 0, this.mainImage.width, canvasHeight);
 		context.fill();
-	}
-};
+	};
