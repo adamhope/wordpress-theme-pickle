@@ -504,8 +504,11 @@ function twentyten_posted_on() {
 }
 
 function is_home_uri() {
-  if ($_SERVER[’REQUEST_URI’] == ‘/’ || $_SERVER[’REQUEST_URI’] == ‘/index.php’) { return true; }
-  else { return false; }
+  if ($_SERVER[’REQUEST_URI’] == ‘/’ || $_SERVER[’REQUEST_URI’] == ‘/index.php’) {
+    return true;
+  } else {
+    return false;
+  }
 }
 
 ?>
