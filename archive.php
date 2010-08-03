@@ -43,9 +43,6 @@ get_header(); ?>
   	 get_template_part( 'loop', 'archive' );
   ?>
 
-  			</div><!-- #content -->
-  		</div><!-- #container -->
-
 <?
 
 // Get footer.
