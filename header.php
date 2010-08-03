@@ -50,7 +50,7 @@ if (is_home()) {
 
   <?php if (is_home_uri() || is_single()):?>
     <script type="text/javascript">
-      var Site = {};
+      var Site = {}, Browse = {};
     </script>
   <?php endif;?>
 

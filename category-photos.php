@@ -4,13 +4,6 @@
  * Description: Allows users to browse through your archived posts by tag and date.
  */
 
-$headinclude = '
-<script type="text/javascript" src="'.get_bloginfo('template_directory').'/js/browser.js"></script>
-<script type="text/javascript">
-  Browse.templateDir = \''.get_bloginfo('template_directory').'\';
-  window.addEvent(\'load\', Browse.init.bind(Browse));
-</script>';
-
 // Get header.
 get_header();
 
