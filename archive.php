@@ -25,7 +25,7 @@ get_header(); ?>
   <?php elseif ( is_year() ) : ?>
   				<?php printf( __( 'Yearly Archives: <span>%s</span>', 'reflection' ), get_the_date('Y') ); ?>
   <?php else : ?>
-  				<?php _e( 'Blog Archives', 'twentyten' ); ?>
+  				<?php _e( 'Blog Archives', 'reflection' ); ?>
   <?php endif; ?>
   			</h1>
 
