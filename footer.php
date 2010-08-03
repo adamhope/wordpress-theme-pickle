@@ -31,10 +31,10 @@
   <?if (is_home_uri() || is_single()):?>
     <script type="text/javascript">
       Site.templateDir = '<?php bloginfo('template_directory');?>';
-      Browse.templateDir = '<?php bloginfo('template_directory');?>';
-      // TODO - only required in photo archive
-      window.addEvent('load', Browse.init.bind(Browse));
       window.addEvent('load', Site.init.bind(Site));
+      // TODO - only required in photo archive
+      Browse.templateDir = '<?php bloginfo('template_directory');?>';
+      window.addEvent('load', Browse.init.bind(Browse));
     </script>
   <?php endif;?>
 
