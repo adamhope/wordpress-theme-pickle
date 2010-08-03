@@ -7,15 +7,6 @@
  * @package PickleTheme
  */
 
-if (is_home()) {
-    $args = array(
-      'posts_per_page' => 1,
-      'paged' => $paged,
-      'category_name' => 'Photos'
-    );
-    query_posts($args);
-}
-
 ?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en-US">
