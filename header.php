@@ -39,11 +39,9 @@
   <link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>" />
   <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 
-  <?php if (is_home_uri() || is_single()):?>
-    <script type="text/javascript">
-      var Site = {}, Browse = {};
-    </script>
-  <?php endif;?>
+  <script type="text/javascript">
+    var Site = {}, Browse = {};
+  </script>
 
   <?php wp_head(); ?>
 

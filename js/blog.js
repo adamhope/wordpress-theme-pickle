@@ -63,7 +63,7 @@ Site.init = function(options) {
 		// Now set up panels. For each panel link that is on the toolbar, we
 		// create a panel slider which fades the panel into the main display.
 		this.panels.each(function(link, i) {
-			var id = "panel_"+link.id, p = $(id);
+			var id = "panel_" + link.id, p = $(id);
 			
 			this.panelSlide[i] = new Fx.Morph(id, {
 				duration:  this.options.panelDuration,

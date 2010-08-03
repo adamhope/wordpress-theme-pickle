@@ -39,23 +39,19 @@ if (have_posts()) : while (have_posts()) : the_post();
   $prev_post_perm = get_permalink($prev_post);
   ?>
 
-  <?php if (is_home_uri() || is_single()):?>
-    <script type="text/javascript">
-      Site.nextPostID = <?=$next_post?>;
-      Site.prevPostID = <?=$prev_post?>;
-    </script>
-  <?php endif;?>
+  <script type="text/javascript">
+    Site.nextPostID = <?=$next_post?>;
+    Site.prevPostID = <?=$prev_post?>;
+  </script>
 
   <div id="topcontent" style="width:<?=im_dim()?>px;">
     <div id="title">
       <div id="titlebits">
         <ul>
-          <?php if (is_home_uri() || is_single()):?>
             <li>
               <a id="prevPostLink" href="<?=$prev_post ? $prev_post_perm.'">&laquo;' : '">';?></a> |
               <a id="nextPostLink" href="<?=$next_post ? $next_post_perm.'">&raquo;' : '">';?></a>
             </li>
-          <?php endif;?>
           <li>
             <a id="comment" href="<?php comments_link();?>"><?php comments_number(__('0 comments',TD),__('1 comment',TD),__('% comments',TD));?></a>
           </li>
@@ -63,7 +59,7 @@ if (have_posts()) : while (have_posts()) : the_post();
             <a class="panel" id="exif" href=""><?_e('exif',TD);?></a>
           </li>
           <li>
-            <a <?=is_home_uri ? 'class="panel" ' : ''?>id="info" href="<?the_permalink();?>#notes"><?_e('info',TD);?></a>
+            <a class="panel" id="info" href="<?the_permalink();?>#notes"><?_e('info',TD);?></a>
           </li>
         </ul>
       </div>
@@ -76,13 +72,11 @@ if (have_posts()) : while (have_posts()) : the_post();
       <div id="panel_exif" class="overlay" style="right:0;top:0;">
         <?echo get_exif();?>
       </div>
-      <?php if (is_home_uri() || is_single()): // Only enable overlays for homepage navigation. ?>
         <div id="panel_info" class="overlay bottomPanel" style="bottom:0;left:0;right:0;z-index:6">
           <?php the_content(__('Read more...')); ?>
         </div>
         <div id="panel_overlay" class="overlay" style="left:0;top:0;z-index:100">
         </div>
-      <?php endif; ?>
       <div id="overlaynav">
         <a href="<?=$prev_post ? $prev_post_perm.'"' : '" style="display:none"'?> id="overPrevLink"></a>
         <a href="<?=$next_post ? $next_post_perm.'"' : '" style="display:none"'?> id="overNextLink"></a>
