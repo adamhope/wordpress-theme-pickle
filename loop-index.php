@@ -40,8 +40,8 @@ if (have_posts()) : while (have_posts()) : the_post();
   ?>
 
   <script type="text/javascript">
-    Site.nextPostID = <?=$next_post?>;
-    Site.prevPostID = <?=$prev_post?>;
+    opts.nextPostID = <?=$next_post?>;
+    opts.prevPostID = <?=$prev_post?>;
   </script>
 
   <div id="topcontent" style="width:<?=im_dim()?>px;">

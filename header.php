@@ -40,7 +40,7 @@
   <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 
   <script type="text/javascript">
-    var Site = {}, Browse = {};
+    var opts = {};
   </script>
 
   <?php wp_head(); ?>

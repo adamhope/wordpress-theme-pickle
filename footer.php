@@ -21,19 +21,13 @@
 
     </div><!-- #colophon -->
   </div><!-- #footer -->
-
-  <script type="text/javascript" src="<?php bloginfo('template_directory');?>/js/mootools-1.2.1-core.js"></script>
-  <script type="text/javascript" src="<?php bloginfo('template_directory');?>/js/mootools-1.2-more.js"></script>
-  <script type="text/javascript" src="<?php bloginfo('template_directory');?>/js/blog.js"></script>
-  <!-- TODO - Only required in photo archive pages -->
-  <script type="text/javascript" src="<?php bloginfo('template_directory');?>/js/browser.js"></script>
   
+  <script type="text/javascript" src="<?php bloginfo('template_directory');?>/js/jquery-1.4.2.min.js"></script>
+  <script src="<?php bloginfo('template_directory');?>/js/pickle.js" type="text/javascript" charset="utf-8"></script>
+
   <script type="text/javascript">
-    Site.templateDir = '<?php bloginfo('template_directory');?>';
-    window.addEvent('load', Site.init.bind(Site));
-    // TODO - only required in photo archive
-    Browse.templateDir = '<?php bloginfo('template_directory');?>';
-    window.addEvent('load', Browse.init.bind(Browse));
+    opts.templateDir = '<?php bloginfo('template_directory');?>';
+    $(document).ready(Pickle.init);
   </script>
 
 </body>
