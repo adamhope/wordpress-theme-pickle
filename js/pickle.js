@@ -35,11 +35,12 @@ var Pickle = (function(user_opts){
   },
   
   loadComplete = function() {
-    var mainImage = '#mainimage';
     $('#topcontent').css({width: preloadedImg.width});
-		$(mainImage)[0].width  = preloadedImg.width;
-		$(mainImage)[0].height = preloadedImg.height;
-    $(mainImage).attr('src', preloadedImg.src);
+		$('#mainimage').attr({
+		  'width':  preloadedImg.width,
+		  'height': preloadedImg.height,
+		  'src':    preloadedImg.src
+		});
  	 };
   
   update = function (data) {
