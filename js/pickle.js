@@ -64,7 +64,6 @@ var Pickle = (function(user_opts){
     
 		$('#imageholder').css('background-image', cfg.templateDir + '/images/loading.gif');
     // update exif
-		$('#texttitle').html('<a href="' + data.permalink + '">' + data.post_title + '</a><span id="inlinedate">' + data.post_date + '</span>');
     $('#panel_exif').html(data.exif);
     $('#comment').html(data.comment_count + " comment" + (data.comment_count != 1 ? "s" : ""));
 		$('#comment').attr({'href': data.permalink + '#comments'});
