@@ -21,6 +21,10 @@ var Pickle = (function(user_opts){
       $('#panel_exif').toggle();
       e.preventDefault();
     });
+    $('#info').click(function(e){
+      $('#panel_info').toggle();
+      e.preventDefault();
+    });
   },
   
   getNewContent = function (el) {
@@ -49,7 +53,13 @@ var Pickle = (function(user_opts){
     // $('#mainimage').css({'visibility':'hidden'});
 		$('#imageholder').css('background-image', cfg.templateDir + '/images/loading.gif');
     // update exif
+		$('#texttitle').html('<a href="' + data.permalink + '">' + data.post_title + '</a><span id="inlinedate">' + data.post_date + '</span>');
     $('#panel_exif').html(data.exif);
+    $('#comment').html(data.comment_count + " comment" + (data.comment_count != 1 ? "s" : ""));
+		$('#comment').attr({'href': data.imageinfo.permalink + '#comments'});
+		$('#texttitle').html('<a href="' + this.imageinfo.permalink + '">' + data.post_title + '</a><span id="inlinedate">' + data.post_date + '</span>');
+		$('#panel_info').html(data.post_content);
+    
   };
   
   return {
