@@ -583,7 +583,8 @@ display:block;
 }
 
 .overlay{
-visibility:hidden;
+/*visibility:hidden;*/
+display: none;
 position:absolute;
 z-index:3;
 }
