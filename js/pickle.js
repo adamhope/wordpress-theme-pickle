@@ -26,14 +26,15 @@ var Pickle = (function (user_opts) {
     },
 
     loadComplete = function () {
-        $('#topContent').css({
+        $(cfg.context).css({
             width: preloadedImg.width
         });
-        $('#mainImage').attr({
+        $(cfg.mainImage).attr({
             'width': preloadedImg.width,
             'height': preloadedImg.height,
             'src': preloadedImg.src
         });
+        $('#mainImage').css({'visibility': 'visible'});
     },
 
     refresh = function (data) {
@@ -41,7 +42,6 @@ var Pickle = (function (user_opts) {
         preloadedImg.onload = loadComplete;
         preloadedImg.src = data.image_uri;
 
-        // $('#mainImage').css({'visibility': 'hidden'});
         nextPostID = data.next_post;
         prevPostID = data.prev_post;
 
@@ -78,6 +78,7 @@ var Pickle = (function (user_opts) {
             return false;
         }
         params = '?id=' + postID;
+        $('#mainImage').css({'visibility': 'hidden'});
         $.getJSON(ajaxSource + params, refresh);
     },
 
