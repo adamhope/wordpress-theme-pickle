@@ -7,13 +7,11 @@ var Pickle = (function(user_opts){
   DEFAULTS = {
     context: $('#topcontent'),
     mainImage: $('#mainimage'),
-    nextLink: $('#overNextLink'),     // TODO nextPostLink
-    previousLink: $('#overPrevLink') // TODO prevPostLink
   },
   
   setupNavigation = function () {
-    $([cfg.nextLink, cfg.previousLink]).each(function(i, el) {
-      el.click(function(e){
+    $('.previous, .next').each(function(i, el) {
+      $(el).click(function(e){
         getNewContent(el);
         e.preventDefault();        
       });
@@ -32,10 +30,10 @@ var Pickle = (function(user_opts){
 		var postID,
 		    params,
 		    url = cfg.templateDir + '/ajax_blog.php',
-		    id = $(el).attr('id');
-		  if (id == 'overPrevLink') {
+		    direction = $(el).attr('class');
+		  if (direction == 'previous') {
 		    postID = prevPostID;
-		  } else if (id == 'overNextLink') {
+		  } else if (direction == 'next') {
 		    postID = nextPostID;
 		  } else {
 		    return false;
@@ -65,8 +63,8 @@ var Pickle = (function(user_opts){
     nextPostID = data.next_post;
     prevPostID = data.prev_post;
     
-		$('#nextPostLink').html(data.prev_post == 0 ? '' : '&raquo;');
-		$('#prevPostLink').html(data.next_post == 0 ? '' : '&laquo;');
+		$('#nextPostLink').html(data.next_post == 0 ? '' : '&raquo;');
+		$('#prevPostLink').html(data.prev_post == 0 ? '' : '&laquo;');
 		
 		$('#overNextLink').css({'display': data.next_post == 0 ? 'none' : 'block'});
 		$('#overPrevLink').css({'display': data.prev_post == 0 ? 'none' : 'block'});

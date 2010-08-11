@@ -49,8 +49,8 @@ if (have_posts()) : while (have_posts()) : the_post();
       <div id="titlebits">
         <ul>
             <li>
-              <a id="prevPostLink" href="<?=$prev_post ? $prev_post_perm.'">&laquo;' : '">';?></a> |
-              <a id="nextPostLink" href="<?=$next_post ? $next_post_perm.'">&raquo;' : '">';?></a>
+              <a id="prevPostLink" class="previous" href="<?=$prev_post ? $prev_post_perm.'">&laquo;' : '">';?></a> |
+              <a id="nextPostLink" class="next" href="<?=$next_post ? $next_post_perm.'">&raquo;' : '">';?></a>
             </li>
           <li>
             <a id="comment" href="<?php comments_link();?>"><?php comments_number(__('0 comments',TD),__('1 comment',TD),__('% comments',TD));?></a>
@@ -78,8 +78,8 @@ if (have_posts()) : while (have_posts()) : the_post();
         <div id="panel_overlay" class="overlay" style="left:0;top:0;z-index:100">
         </div>
       <div id="overlaynav">
-        <a href="<?=$prev_post ? $prev_post_perm.'"' : '" style="display:none"'?> id="overPrevLink"></a>
-        <a href="<?=$next_post ? $next_post_perm.'"' : '" style="display:none"'?> id="overNextLink"></a>
+        <a href="<?=$prev_post ? $prev_post_perm.'"' : '" style="display:none"'?> id="overPrevLink" class="previous"></a>
+        <a href="<?=$next_post ? $next_post_perm.'"' : '" style="display:none"'?> id="overNextLink" class="next"></a>
       </div>
       <img id="mainimage" src="<?=get_thumbnail();?>" alt="image" />
     </div>
