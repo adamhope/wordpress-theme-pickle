@@ -1,14 +1,15 @@
 var Pickle = (function(user_opts){
   
   var cfg,
+  preloadedImg,
+  nextPostID,
+  prevPostID,
   DEFAULTS = {
     context: $('#topcontent'),
     mainImage: $('#mainimage'),
     nextLink: $('#overNextLink'),     // TODO nextPostLink
     previousLink: $('#overPrevLink') // TODO prevPostLink
   },
-  
-  preloadedImg,
   
   setupNavigation = function () {
     $([cfg.nextLink, cfg.previousLink]).each(function(i, el) {
@@ -28,10 +29,19 @@ var Pickle = (function(user_opts){
   },
   
   getNewContent = function (el) {
-		var url = cfg.templateDir + '/ajax_blog.php',
-  		postID = cfg.prevPostID,
+		var postID,
+		    params,
+		    url = cfg.templateDir + '/ajax_blog.php',
+		    id = $(el).attr('id');
+		  if (id == 'overPrevLink') {
+		    postID = prevPostID;
+		  } else if (id == 'overNextLink') {
+		    postID = nextPostID;
+		  } else {
+		    return false;
+		  }
 		  params = '?id=' + postID;
-      $.getJSON(url + params, update);
+      $.getJSON(url + params, refresh);
   },
   
   loadComplete = function() {
@@ -43,8 +53,7 @@ var Pickle = (function(user_opts){
 		});
  	 };
   
-  update = function (data) {
-    console.debug(data);
+  refresh = function (data) {
     // fade out image
     // resize image area
     // fade in new image
@@ -52,6 +61,9 @@ var Pickle = (function(user_opts){
     preloadedImg.onload = loadComplete;
     preloadedImg.src = data.image_uri;
     // $('#mainimage').css({'visibility':'hidden'});
+        
+    nextPostID = data.next_post;
+    prevPostID = data.prev_post;
     
 		$('#nextPostLink').html(data.prev_post == 0 ? '' : '&raquo;');
 		$('#prevPostLink').html(data.next_post == 0 ? '' : '&laquo;');
@@ -76,6 +88,8 @@ var Pickle = (function(user_opts){
     init: function () {
       // TODO sort out config
       cfg = $.extend({}, DEFAULTS, user_opts);
+      nextPostID = cfg.nextPostID;
+      prevPostID = cfg.prevPostID;
       setupNavigation();
     }
   }
