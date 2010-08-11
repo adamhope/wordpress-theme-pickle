@@ -21,15 +21,15 @@
 var Pickle = (function (user_opts) {
 
     var cfg, preloadedImg, nextPostID, prevPostID, ajaxSource, DEFAULTS = {
-        context: '#topcontent',
-        mainImage: '#mainimage'
+        context: '#topContent',
+        mainImage: '#mainImage'
     },
 
     loadComplete = function () {
-        $('#topcontent').css({
+        $('#topContent').css({
             width: preloadedImg.width
         });
-        $('#mainimage').attr({
+        $('#mainImage').attr({
             'width': preloadedImg.width,
             'height': preloadedImg.height,
             'src': preloadedImg.src
@@ -37,13 +37,11 @@ var Pickle = (function (user_opts) {
     },
 
     refresh = function (data) {
-        // fade out image
-        // fade in new image
         preloadedImg = new Image();
         preloadedImg.onload = loadComplete;
         preloadedImg.src = data.image_uri;
 
-        // $('#mainimage').css({'visibility': 'hidden'});
+        // $('#mainImage').css({'visibility': 'hidden'});
         nextPostID = data.next_post;
         prevPostID = data.prev_post;
 
@@ -57,8 +55,9 @@ var Pickle = (function (user_opts) {
             'display': data.prev_post === 0 ? 'none' : 'block'
         });
 
-        // this.nextPostLink.href = $('#overNextLink').href = data.next_post_perm;
-        // this.prevPostLink.href = $('#overPrevLink').href = data.prev_post_perm;
+        // this.nextPostLink.href = $('#overNextLink').attr('href', data.next_post_perm);
+        // this.prevPostLink.href = $('#overPrevLink').attr('href', data.prev_post_perm);
+
         $('#panelExif').html(data.exif);
         $('#comment').html(data.comment_count + " comment" + (data.comment_count !== 1 ? "s" : ""));
         $('#comment').attr({
@@ -101,7 +100,6 @@ var Pickle = (function (user_opts) {
 
     return {
         init: function () {
-            // TODO sort out config
             cfg = $.extend({}, DEFAULTS, user_opts);
             nextPostID = cfg.nextPostID;
             prevPostID = cfg.prevPostID;

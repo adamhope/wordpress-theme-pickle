@@ -44,7 +44,7 @@ if (have_posts()) : while (have_posts()) : the_post();
     opts.prevPostID = <?=$prev_post?>;
   </script>
 
-  <div id="topcontent" style="width:<?=im_dim()?>px;">
+  <div id="topContent" style="width:<?=im_dim()?>px;">
     <div id="title">
       <div id="titlebits">
         <ul>
@@ -79,7 +79,7 @@ if (have_posts()) : while (have_posts()) : the_post();
         <a href="<?=$prev_post ? $prev_post_perm.'"' : '" style="display:none"'?> id="overPrevLink" class="previous"></a>
         <a href="<?=$next_post ? $next_post_perm.'"' : '" style="display:none"'?> id="overNextLink" class="next"></a>
       </div>
-      <img id="mainimage" src="<?=get_thumbnail();?>" alt="image" />
+      <img id="mainImage" src="<?=get_thumbnail();?>" alt="image" />
     </div>
   </div>
   <div id="reflectionHolder"></div>
