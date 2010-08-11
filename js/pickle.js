@@ -1,3 +1,4 @@
+// http://plugins.jquery.com/project/togglefade
 (function ($) {
   $.fn.toggleFade = function (settings) {
     settings = jQuery.extend({
