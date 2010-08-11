@@ -1,12 +1,30 @@
+(function($) {
+  $.fn.toggleFade = function(settings)
+  {
+    settings = jQuery.extend(
+      {
+        speedIn: "normal",
+        speedOut: "normal"
+      }, settings
+    );
+    return this.each(function()
+    {
+      var isHidden = jQuery(this).is(":hidden");
+      jQuery(this)[ isHidden ? "fadeIn" : "fadeOut" ]( isHidden ? settings.speedIn : settings.speedOut);
+    });
+  };
+})(jQuery);
+
 var Pickle = (function(user_opts){
   
   var cfg,
   preloadedImg,
   nextPostID,
   prevPostID,
+  ajaxSource,
   DEFAULTS = {
-    context: $('#topcontent'),
-    mainImage: $('#mainimage'),
+    context: '#topcontent',
+    mainImage: '#mainimage'
   },
   
   setupNavigation = function () {
@@ -17,39 +35,23 @@ var Pickle = (function(user_opts){
       });
     });
     $('#exif').click(function(e){
-      $('#panel_exif').toggle();
+      $('#panel_exif').toggleFade();
       e.preventDefault();
     });
     $('#info').click(function(e){
-      $('#panel_info').toggle();
+      $('#panel_info').toggleFade();
       e.preventDefault();
     });
-  },
-  
-  getNewContent = function (el) {
-		var postID,
-		    params,
-		    url = cfg.templateDir + '/ajax_blog.php',
-		    direction = $(el).attr('class');
-		  if (direction == 'previous') {
-		    postID = prevPostID;
-		  } else if (direction == 'next') {
-		    postID = nextPostID;
-		  } else {
-		    return false;
-		  }
-		  params = '?id=' + postID;
-      $.getJSON(url + params, refresh);
   },
   
   loadComplete = function() {
     $('#topcontent').css({width: preloadedImg.width});
-		$('#mainimage').attr({
-		  'width':  preloadedImg.width,
-		  'height': preloadedImg.height,
-		  'src':    preloadedImg.src
-		});
- 	 };
+    $('#mainimage').attr({
+      'width':  preloadedImg.width,
+      'height': preloadedImg.height,
+      'src':    preloadedImg.src
+    });
+   },
   
   refresh = function (data) {
     // fade out image
@@ -63,33 +65,47 @@ var Pickle = (function(user_opts){
     nextPostID = data.next_post;
     prevPostID = data.prev_post;
     
-		$('#nextPostLink').html(data.next_post == 0 ? '' : '&raquo;');
-		$('#prevPostLink').html(data.prev_post == 0 ? '' : '&laquo;');
-		
-		$('#overNextLink').css({'display': data.next_post == 0 ? 'none' : 'block'});
-		$('#overPrevLink').css({'display': data.prev_post == 0 ? 'none' : 'block'});
-		
+    $('#nextPostLink').html(data.next_post == 0 ? '' : '&raquo;');
+    $('#prevPostLink').html(data.prev_post == 0 ? '' : '&laquo;');
+    
+    $('#overNextLink').css({'display': data.next_post == 0 ? 'none' : 'block'});
+    $('#overPrevLink').css({'display': data.prev_post == 0 ? 'none' : 'block'});
+    
     // this.nextPostLink.href = $('#overNextLink').href = data.next_post_perm;
     // this.prevPostLink.href = $('#overPrevLink').href = data.prev_post_perm;
     
-		$('#imageholder').css('background-image', cfg.templateDir + '/images/loading.gif');
-    // update exif
     $('#panel_exif').html(data.exif);
     $('#comment').html(data.comment_count + " comment" + (data.comment_count != 1 ? "s" : ""));
-		$('#comment').attr({'href': data.permalink + '#comments'});
-		$('#texttitle').html('<a href="' + data.permalink + '">' + data.post_title + '</a><span id="inlinedate">' + data.post_date + '</span>');
-		$('#panel_info').html(data.post_content);
+    $('#comment').attr({'href': data.permalink + '#comments'});
+    $('#texttitle').html('<a href="' + data.permalink + '">' + data.post_title + '</a><span id="inlinedate">' + data.post_date + '</span>');
+    $('#panel_info').html(data.post_content);
     
+  },
+
+  getNewContent = function (el) {
+    var postID,
+        params,
+        direction = $(el).attr('class');
+      if (direction == 'previous') {
+        postID = prevPostID;
+      } else if (direction == 'next') {
+        postID = nextPostID;
+      } else {
+        return false;
+      }
+      params = '?id=' + postID;
+      $.getJSON(ajaxSource + params, refresh);
   };
-  
+
   return {
     init: function () {
       // TODO sort out config
       cfg = $.extend({}, DEFAULTS, user_opts);
       nextPostID = cfg.nextPostID;
       prevPostID = cfg.prevPostID;
+      ajaxSource = cfg.templateDir + '/ajax_blog.php';
       setupNavigation();
     }
-  }
+  };
   
 }(opts));
