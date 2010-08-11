@@ -21,19 +21,19 @@
 var Pickle = (function (user_opts) {
 
     var cfg, preloadedImg, nextPostID, prevPostID, ajaxSource, DEFAULTS = {
-        context: '#topContent',
+        ctx: '#topContent',
         mainImage: '#mainImage'
     },
 
     loadComplete = function () {
-        $(cfg.context).css({
+        $(cfg.ctx).css({
             width: preloadedImg.width
         });
-        $('#mainImage, #imageHolder').css({
+        $('#mainImage, #imageHolder', cfg.ctx).css({
             'width': preloadedImg.width,
             'height': preloadedImg.height
         });
-        $('#mainImage').attr({'src': preloadedImg.src});
+        $('#mainImage', cfg.ctx).attr({'src': preloadedImg.src});
         $(cfg.mainImage).fadeIn();
     },
 
@@ -45,26 +45,26 @@ var Pickle = (function (user_opts) {
         nextPostID = data.next_post;
         prevPostID = data.prev_post;
 
-        $('#nextPostLink').html(data.next_post === 0 ? '' : '&raquo;');
-        $('#prevPostLink').html(data.prev_post === 0 ? '' : '&laquo;');
+        $('#nextPostLink', cfg.ctx).html(data.next_post === 0 ? '' : '&raquo;');
+        $('#prevPostLink', cfg.ctx).html(data.prev_post === 0 ? '' : '&laquo;');
 
-        $('#overNextLink').css({
+        $('#overNextLink', cfg.ctx).css({
             'display': data.next_post === 0 ? 'none' : 'block'
         });
-        $('#overPrevLink').css({
+        $('#overPrevLink', cfg.ctx).css({
             'display': data.prev_post === 0 ? 'none' : 'block'
         });
 
-        // this.nextPostLink.href = $('#overNextLink').attr('href', data.next_post_perm);
-        // this.prevPostLink.href = $('#overPrevLink').attr('href', data.prev_post_perm);
+        $('.previous').attr('href', data.next_post_perm);
+        $('.next').attr('href', data.prev_post_perm);
 
-        $('#panelExif').html(data.exif);
-        $('#comment').html(data.comment_count + " comment" + (data.comment_count !== 1 ? "s" : ""));
-        $('#comment').attr({
+        $('#panelExif', cfg.ctx).html(data.exif);
+        $('#comment', cfg.ctx).html(data.comment_count + " comment" + (data.comment_count !== 1 ? "s" : ""));
+        $('#comment', cfg.ctx).attr({
             'href': data.permalink + '#comments'
         });
-        $('#textTitle').html('<a href="' + data.permalink + '">' + data.post_title + '</a><span id="inlinedate">' + data.post_date + '</span>');
-        $('#panelInfo').html(data.post_content);
+        $('#textTitle', cfg.ctx).html('<a href="' + data.permalink + '">' + data.post_title + '</a><span id="inlinedate">' + data.post_date + '</span>');
+        $('#panelInfo', cfg.ctx).html(data.post_content);
 
     },
 
@@ -78,7 +78,7 @@ var Pickle = (function (user_opts) {
             return false;
         }
         params = '?id=' + postID;
-        $('#mainImage').fadeOut(function () {
+        $('#mainImage', cfg.ctx).fadeOut(function () {
             $.getJSON(ajaxSource + params, refresh);
         });
     },
@@ -91,11 +91,11 @@ var Pickle = (function (user_opts) {
             });
         });
         $('#exif').click(function (e) {
-            $('#panelExif').toggleFade();
+            $('#panelExif', cfg.ctx).toggleFade();
             e.preventDefault();
         });
         $('#info').click(function (e) {
-            $('#panelInfo').toggleFade();
+            $('#panelInfo', cfg.ctx).toggleFade();
             e.preventDefault();
         });
     };
@@ -106,9 +106,9 @@ var Pickle = (function (user_opts) {
             nextPostID = cfg.nextPostID;
             prevPostID = cfg.prevPostID;
             ajaxSource = cfg.templateDir + '/ajax_blog.php';
-            $('#imageHolder').css({
-                'width': $('#mainImage').css('width'),
-                'height': $('#mainImage').css('height')
+            $('#imageHolder', cfg.ctx).css({
+                'width': $('#mainImage', cfg.ctx).css('width'),
+                'height': $('#mainImage', cfg.ctx).css('height')
             });
             setupNavigation();
         }
