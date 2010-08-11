@@ -29,12 +29,12 @@ var Pickle = (function (user_opts) {
         $(cfg.context).css({
             width: preloadedImg.width
         });
-        $(cfg.mainImage).attr({
+        $('#mainImage, #imageHolder').css({
             'width': preloadedImg.width,
-            'height': preloadedImg.height,
-            'src': preloadedImg.src
+            'height': preloadedImg.height
         });
-        $('#mainImage').css({'visibility': 'visible'});
+        $('#mainImage').attr({'src': preloadedImg.src});
+        $(cfg.mainImage).fadeIn();
     },
 
     refresh = function (data) {
@@ -78,8 +78,9 @@ var Pickle = (function (user_opts) {
             return false;
         }
         params = '?id=' + postID;
-        $('#mainImage').css({'visibility': 'hidden'});
-        $.getJSON(ajaxSource + params, refresh);
+        $('#mainImage').fadeOut(function () {
+            $.getJSON(ajaxSource + params, refresh);
+        });
     },
 
     setupNavigation = function () {
@@ -105,6 +106,10 @@ var Pickle = (function (user_opts) {
             nextPostID = cfg.nextPostID;
             prevPostID = cfg.prevPostID;
             ajaxSource = cfg.templateDir + '/ajax_blog.php';
+            $('#imageHolder').css({
+                'width': $('#mainImage').css('width'),
+                'height': $('#mainImage').css('height')
+            });
             setupNavigation();
         }
     };
