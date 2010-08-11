@@ -63,28 +63,26 @@ if (have_posts()) : while (have_posts()) : the_post();
           </li>
         </ul>
       </div>
-      <h3 id="texttitle">
+      <h3 id="textTitle">
         <a href="<?php the_permalink();?>"><?php the_title();?></a>
         <span id="inlinedate"><?php the_date('jS F Y');?></span>
       </h3>
     </div>
-    <div id="imageholder">
-      <div id="panel_exif" class="overlay" style="right:0;top:0;">
+    <div id="imageHolder">
+      <div id="panelExif" class="overlay" style="right:0;top:0;">
         <?echo get_exif();?>
       </div>
-        <div id="panel_info" class="overlay bottomPanel" style="bottom:0;left:0;right:0;z-index:6">
+        <div id="panelInfo" class="overlay bottomPanel" style="bottom:0;left:0;right:0;z-index:6">
           <?php the_content(__('Read more...')); ?>
         </div>
-        <div id="panel_overlay" class="overlay" style="left:0;top:0;z-index:100">
-        </div>
-      <div id="overlaynav">
+      <div id="overlayNav">
         <a href="<?=$prev_post ? $prev_post_perm.'"' : '" style="display:none"'?> id="overPrevLink" class="previous"></a>
         <a href="<?=$next_post ? $next_post_perm.'"' : '" style="display:none"'?> id="overNextLink" class="next"></a>
       </div>
       <img id="mainimage" src="<?=get_thumbnail();?>" alt="image" />
     </div>
   </div>
-  <div id="reflectionholder"></div>
+  <div id="reflectionHolder"></div>
 
   <?php if (is_single() && !is_home_uri()): ?>
     <div id="content">

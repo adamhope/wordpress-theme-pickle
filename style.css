@@ -526,7 +526,7 @@ margin:0 auto;
 position:relative;
 }
 
-#texttitle{
+#textTitle{
 letter-spacing:-1px;
 font:bold 1.4em Arial;
 margin:0;
@@ -539,12 +539,12 @@ font-weight:normal;
 color:#2e2e2e;
 }
 
-#texttitle a{
+#textTitle a{
 color:#666;
 text-decoration:none;
 }
 
-#texttitle a:hover{
+#textTitle a:hover{
 color:#ddd;
 }
 
@@ -568,7 +568,7 @@ color:#ccc;
 padding-left:10px;
 }
 
-#imageholder{
+#imageHolder{
 border-top:2px solid #fff;
 margin:0;
 padding:0;
@@ -589,7 +589,7 @@ position:absolute;
 z-index:3;
 }
 
-#panel_exif{
+#panelExif{
 background-color:#aaa;
 width:350px;
 border:2px solid #fff;
@@ -598,19 +598,19 @@ color:black;
 font:0.8em Verdana;
 }
 
-#panel_exif ul{
+#panelExif ul{
 margin:0;
 padding:0;
 }
 
-#panel_exif li{
+#panelExif li{
 padding: 3px;
 display:block;
 padding-left: 120px;
 clear:left;
 }
 
-#panel_exif li label{
+#panelExif li label{
 margin-left: -130px;
 width:120px;
 float:left;
@@ -620,28 +620,27 @@ color:#666;
 text-transform:lowercase;
 }
 
-#panel_info{
+#panelInfo{
 background:black;
 border:2px solid #fff;
 padding:5px;
 font:0.8em Verdana;
 }
 
-#panel_info a{
+#panelInfo a{
 color:#888;
 text-decoration:none;
 }
 
-#panel_info a:hover{
+#panelInfo a:hover{
 text-decoration:underline;
 }
 
-#panel_overlay{
-background:white url(images/loading.gif) no-repeat center center;
-display:none;
+#imageHolder {
+  background: white url(images/loading.gif) no-repeat center center;
 }
 
-#overlaynav{
+#overlayNav{
 position:absolute;
 left:0;
 top:0;

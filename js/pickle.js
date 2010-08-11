@@ -16,7 +16,7 @@
 })(jQuery);
 
 var Pickle = (function(user_opts){
-  
+
   var cfg,
   preloadedImg,
   nextPostID,
@@ -26,24 +26,24 @@ var Pickle = (function(user_opts){
     context: '#topcontent',
     mainImage: '#mainimage'
   },
-  
+
   setupNavigation = function () {
     $('.previous, .next').each(function(i, el) {
       $(el).click(function(e){
         getNewContent(el);
-        e.preventDefault();        
+        e.preventDefault();
       });
     });
     $('#exif').click(function(e){
-      $('#panel_exif').toggleFade();
+      $('#panelExif').toggleFade();
       e.preventDefault();
     });
     $('#info').click(function(e){
-      $('#panel_info').toggleFade();
+      $('#panelInfo').toggleFade();
       e.preventDefault();
     });
   },
-  
+
   loadComplete = function() {
     $('#topcontent').css({width: preloadedImg.width});
     $('#mainimage').attr({
@@ -52,7 +52,7 @@ var Pickle = (function(user_opts){
       'src':    preloadedImg.src
     });
    },
-  
+
   refresh = function (data) {
     // fade out image
     // resize image area
@@ -60,26 +60,27 @@ var Pickle = (function(user_opts){
     preloadedImg = new Image();
     preloadedImg.onload = loadComplete;
     preloadedImg.src = data.image_uri;
-    // $('#mainimage').css({'visibility':'hidden'});
-        
+
+    // $('#mainimage').css({'visibility': 'hidden'});
+
     nextPostID = data.next_post;
     prevPostID = data.prev_post;
-    
+
     $('#nextPostLink').html(data.next_post == 0 ? '' : '&raquo;');
     $('#prevPostLink').html(data.prev_post == 0 ? '' : '&laquo;');
-    
+
     $('#overNextLink').css({'display': data.next_post == 0 ? 'none' : 'block'});
     $('#overPrevLink').css({'display': data.prev_post == 0 ? 'none' : 'block'});
-    
+
     // this.nextPostLink.href = $('#overNextLink').href = data.next_post_perm;
     // this.prevPostLink.href = $('#overPrevLink').href = data.prev_post_perm;
-    
-    $('#panel_exif').html(data.exif);
+
+    $('#panelExif').html(data.exif);
     $('#comment').html(data.comment_count + " comment" + (data.comment_count != 1 ? "s" : ""));
     $('#comment').attr({'href': data.permalink + '#comments'});
-    $('#texttitle').html('<a href="' + data.permalink + '">' + data.post_title + '</a><span id="inlinedate">' + data.post_date + '</span>');
-    $('#panel_info').html(data.post_content);
-    
+    $('#textTitle').html('<a href="' + data.permalink + '">' + data.post_title + '</a><span id="inlinedate">' + data.post_date + '</span>');
+    $('#panelInfo').html(data.post_content);
+
   },
 
   getNewContent = function (el) {
@@ -107,5 +108,5 @@ var Pickle = (function(user_opts){
       setupNavigation();
     }
   };
-  
+
 }(opts));
