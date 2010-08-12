@@ -120,22 +120,30 @@ var Pickle = (function (user_opts) {
 
 var Browse = (function (user_opts) {
 
-    var preload,
+    var preload = [],
+        preloaded = 1,
         initialPosts,
 
         preloadFinish = function () {
 
+            console.debug('loaded', preloaded, 'of', preload.length);
+
             var tagFlag, tmpdata, link;
+
+            if (preloaded !== preload.length) {
+                preloaded++;
+                return false;
+            }
 
             // Remove all images from container
             $('.mosaic').remove();
 
             // Create image element and insert into container.
             // TODO might not work
-            tagFlag = typeof preload[0].retrieve('imgData').comment_count != 'undefined';
+            tagFlag = typeof $(preload[0]).data('imgData').comment_count != 'undefined';
 
             for (var i = 0; i < preload.length; i++) {
-                tmpdata = preload[i].retrieve('imgData'),
+                tmpdata = $(preload[i]).data('imgData'),
                 link = $('<a href="' + tmpdata.permalink + '" />');
 
                 $(preload[i]).addClass('mosaic');
@@ -153,10 +161,14 @@ var Browse = (function (user_opts) {
 
             if (tagFlag) {
                 // TODO need tooltip alternative
-                var tipz = new Tips('.mosaic', {
-                    className: 'tipz',
-                    hideDelay: 50,
-                    showDelay: 50
+                $('.mosaic').tooltip({
+                    track: true,
+                    delay: 0,
+                    showURL: false,
+                    fade: 250 ,
+                    bodyHandler: function() { 
+                        return $(this).data('tip:title') + '<br />' + $(this).data('tip:text');
+                    }
                 });
             }
 
@@ -173,14 +185,17 @@ var Browse = (function (user_opts) {
         for (var i = 0; i < data.length; i++) {
             srcArray[i] = data[i].image_uri;
         }
-        // TODO need alternative
-        preload = new Asset.images(srcArray, {
-            onComplete: preloadFinish
-        });
+        
+        var i = srcArray.length;
+        while (i--) {
+            preload[i] = new Image();
+            preload[i].onload = preloadFinish;
+            preload[i].src = srcArray[i];
+        }
 
         // Store data associated with each image using Mootools element storage.
         for (var i = 0; i < data.length; i++) {
-            preload[i].store('imgData', data[i]);
+            $(preload[i]).data('imgData', data[i]);
         }
     },
     
@@ -196,7 +211,7 @@ var Browse = (function (user_opts) {
         } else if (type === "cat") {
             ident = /cat-item-(\d+)/.exec($(el).parent().attr('class'))[1];
         } else {
-            ident = $(l).html();
+            ident = $(el).html();
         }
 
         // Set up heights for a smooth transition.
@@ -230,14 +245,14 @@ var Browse = (function (user_opts) {
                     e.preventDefault();
                 });
             });
-
+            
             $('#catCloud a').each(function (i, el) {
                 $(el).click(function (e) {
                     tagClick(el, 'cat');
                     e.preventDefault();
                 });
             });
-
+            
             $('#yearCloud a').each(function (i, el) {
                 $(el).click(function (e) {
                     tagClick(el, 'year');
