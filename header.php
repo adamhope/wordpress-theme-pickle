@@ -41,6 +41,7 @@
 
   <script type="text/javascript">
     var opts = {};
+    var browseOpts = {};
   </script>
 
   <?php wp_head(); ?>

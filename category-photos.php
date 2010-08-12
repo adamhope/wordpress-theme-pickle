@@ -111,7 +111,7 @@ endwhile; endif;
   </div>
   <?php if (get_opt_or_default('mosaictips')): ?>
     <script type="text/javascript">
-      Browse.initialPosts = <?php echo json_encode($postinfo);?>;
+      var browseOpts = {posts: <?php echo json_encode($postinfo);?>};
     </script>
   <?php endif; ?>
 </div>

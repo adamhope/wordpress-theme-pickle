@@ -23,11 +23,15 @@
   </div><!-- #footer -->
   
   <script type="text/javascript" src="<?php bloginfo('template_directory');?>/js/jquery-1.4.2.min.js"></script>
+  <script type="text/javascript" src="<?php bloginfo('template_directory');?>/js/tooltip.js"></script>
+
   <script src="<?php bloginfo('template_directory');?>/js/pickle.js" type="text/javascript" charset="utf-8"></script>
 
   <script type="text/javascript">
+    browseOpts.templateDir = '<?php bloginfo('template_directory');?>';
     opts.templateDir = '<?php bloginfo('template_directory');?>';
     $(document).ready(Pickle.init);
+    $(document).ready(Browse.init);
   </script>
 
 </body>

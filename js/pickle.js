@@ -115,3 +115,159 @@ var Pickle = (function (user_opts) {
     };
 
 }(opts));
+
+// photo category browser
+
+var Browse = (function (user_opts) {
+
+    var preload,
+        initialPosts,
+
+        preloadFinish = function () {
+
+            var tagFlag, tmpdata, link;
+
+            // Remove all images from container
+            $('.mosaic').remove();
+
+            // Create image element and insert into container.
+            // TODO might not work
+            tagFlag = typeof preload[0].retrieve('imgData').comment_count != 'undefined';
+
+            for (var i = 0; i < preload.length; i++) {
+                tmpdata = preload[i].retrieve('imgData'),
+                link = $('<a href="' + tmpdata.permalink + '" />');
+
+                $(preload[i]).addClass('mosaic');
+
+                $(link).append(preload[i]);
+
+                if (tagFlag) {
+                    $(preload[i]).data('tip:title', tmpdata.post_title);
+                    $(preload[i]).data(
+                        'tip:text', tmpdata.post_date + "<br />" + tmpdata.comment_count + " " + (tmpdata.comment_count === 1 ? "comment" : "comments")
+                    );
+                }
+                $('#tagContainer').append(link);
+            }
+
+            if (tagFlag) {
+                // TODO need tooltip alternative
+                var tipz = new Tips('.mosaic', {
+                    className: 'tipz',
+                    hideDelay: 50,
+                    showDelay: 50
+                });
+            }
+
+            $('#tagContainer').css({
+                'height': 'auto',
+                'overflow': 'auto'
+            });
+
+        },
+
+    tagRefresh = function (data) {
+        // Create asset manager to grab all images from the server.
+        var srcArray = [];
+        for (var i = 0; i < data.length; i++) {
+            srcArray[i] = data[i].image_uri;
+        }
+        // TODO need alternative
+        preload = new Asset.images(srcArray, {
+            onComplete: preloadFinish
+        });
+
+        // Store data associated with each image using Mootools element storage.
+        for (var i = 0; i < data.length; i++) {
+            preload[i].store('imgData', data[i]);
+        }
+    },
+    
+    tagClick = function (el, type) {
+        
+        var params,
+            ident,
+            cur,
+            url = user_opts.templateDir + '/ajax_browse.php';
+
+        if (type === "tag") {
+            ident = /tag-link-(\d+)/.exec($(el).attr('class'))[1];
+        } else if (type === "cat") {
+            ident = /cat-item-(\d+)/.exec($(el).parent().attr('class'))[1];
+        } else {
+            ident = $(l).html();
+        }
+
+        // Set up heights for a smooth transition.
+        $('tagPics').css('height', $('tagPics').scrollHeight);
+
+        $('tagContainer').css({
+            'overflow': 'hidden',
+            'height': $('tagContainer').scrollHeight
+        });
+
+        // Highlight this link as the current one.
+        cur = $('a.current');
+        if (cur.length > 0) {
+            $(cur[0]).removeClass('current');
+        }
+        $(el).addClass('current');
+
+        // Send off a JSON Request to the server for the list of images associated with this tag/year.
+        params = '?' + type + '=' + ident;
+        $.getJSON(url + params, tagRefresh);
+    };
+
+    return {
+        init: function () {
+            
+            initialPosts = user_opts.posts;
+
+            $('#tagCloud a').each(function (i, el) {
+                $(el).click(function (e) {
+                    tagClick(el, 'tag');
+                    e.preventDefault();
+                });
+            });
+
+            $('#catCloud a').each(function (i, el) {
+                $(el).click(function (e) {
+                    tagClick(el, 'cat');
+                    e.preventDefault();
+                });
+            });
+
+            $('#yearCloud a').each(function (i, el) {
+                $(el).click(function (e) {
+                    tagClick(el, 'year');
+                    e.preventDefault();
+                });
+            });
+
+            if (initialPosts && typeof initialPosts[0].comment_count !== 'undefined') {
+                $('.mosaic').each(function (i, el) {
+                    $(el).data('tip:title', initialPosts[i].post_title);
+                    $(el).data('tip:text', initialPosts[i].post_date + "<br />" + initialPosts[i].comment_count + " " + (initialPosts[i].comment_count === 1 ? "comment" : "comments"));
+                }).tooltip({
+                    track: true,
+                    delay: 0,
+                    showURL: false,
+                    fade: 250 ,
+                    bodyHandler: function() { 
+                        return $(this).data('tip:title') + '<br />' + $(this).data('tip:text');
+                    }
+                });
+            }
+
+            // Make tagProgress visible but with zero opacity (allows us to calculate height).
+            $('#tagProgress').css({
+                'opacity': 0,
+                'visibility': 'visible'
+            });
+
+        }
+    };
+    
+}(browseOpts));
+
