@@ -1,4 +1,3 @@
-  </div>
 
   <footer role="contentinfo">
     <div id="colophon">
@@ -19,7 +18,9 @@
 
     </div><!-- #colophon -->
   </footer>
-  
+
+</div>
+
   <!-- Grab Google CDN's jQuery. fall back to local if necessary -->
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
   <script>!window.jQuery && document.write('<script type="text/javascript" src="<?php bloginfo('template_directory');?>/js/jquery-1.4.2.min.js"></script>')</script>

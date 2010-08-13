@@ -11,7 +11,7 @@ if (is_home()) {
 
 ?>
 
-<div id="content">
+<div id="main">
 
 <?php /* If there are no posts to display, such as an empty archive page */ ?>
 <?php if ( ! have_posts() ) : ?>
@@ -85,7 +85,7 @@ if (have_posts()) : while (have_posts()) : the_post();
   <div id="reflectionHolder"></div>
 
   <?php if (is_single() && !is_home_uri()): ?>
-    <div id="content">
+    <div id="main">
       <a name="info" id="notes"></a>
       <?php the_content(); ?>
     </div>

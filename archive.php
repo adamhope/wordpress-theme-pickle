@@ -17,6 +17,8 @@ get_header(); ?>
   		the_post();
   ?>
 
+<div id="main">
+
   			<h1 class="page-title">
   <?php if ( is_day() ) : ?>
   				<?php printf( __( 'Daily Archives: <span>%s</span>', 'reflection' ), get_the_date() ); ?>
@@ -37,6 +39,8 @@ get_header(); ?>
   	rewind_posts();
   	 get_template_part( 'loop', 'archive' );
   ?>
+
+</div>
 
 <?
 // Get footer.

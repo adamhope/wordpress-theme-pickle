@@ -155,73 +155,73 @@ footer {
 	overflow: hidden;
 	padding: 40px 0 0 0;
 }
-#content {
+#main {
 	margin-bottom: 36px;
 }
-#content,
-#content input,
-#content textarea {
+#main,
+#main input,
+#main textarea {
 	color: #333;
 	font-size: 16px;
 	line-height: 24px;
 }
-#content p,
-#content ul,
-#content ol,
-#content dd,
-#content pre,
-#content hr {
+#main p,
+#main ul,
+#main ol,
+#main dd,
+#main pre,
+#main hr {
 	margin-bottom: 24px;
 }
-#content ul ul,
-#content ol ol,
-#content ul ol,
-#content ol ul {
+#main ul ul,
+#main ol ol,
+#main ul ol,
+#main ol ul {
 	margin-bottom: 0;
 }
-#content pre,
-#content kbd,
-#content tt,
-#content var {
+#main pre,
+#main kbd,
+#main tt,
+#main var {
 	font-size: 15px;
 	line-height: 21px;
 }
-#content code {
+#main code {
 	font-size: 13px;
 }
-#content dt,
-#content th {
+#main dt,
+#main th {
 	color: #000;
 }
-#content h1,
-#content h2,
-#content h3,
-#content h4,
-#content h5,
-#content h6 {
+#main h1,
+#main h2,
+#main h3,
+#main h4,
+#main h5,
+#main h6 {
 	color: #000;
 	line-height: 1.5em;
 	margin: 0 0 20px 0;
 }
-#content table {
+#main table {
 	border: 1px solid #e7e7e7;
 	margin: 0 -1px 24px 0;
 	text-align: left;
 	width: 100%;
 }
-#content tr th,
-#content thead th {
+#main tr th,
+#main thead th {
 	color: #888;
 	font-size: 12px;
 	font-weight: bold;
 	line-height: 18px;
 	padding: 9px 24px;
 }
-#content tr td {
+#main tr td {
 	border-top: 1px solid #e7e7e7;
 	padding: 6px 24px;
 }
-#content tr.odd td {
+#main tr.odd td {
 	background: #f2f7fc;
 }
 .hentry {
@@ -258,7 +258,7 @@ footer {
 .page-title a:hover {
 	color: #ff4b33;
 }
-#content .entry-title {
+#main .entry-title {
 	color: #000;
 	font-size: 21px;
 	font-weight: bold;
@@ -291,7 +291,7 @@ footer {
 	clear: both;
 	padding: 12px 0 0 0;
 }
-#content .entry-summary p:last-child {
+#main .entry-summary p:last-child {
 	margin-bottom: 12px;
 }
 .entry-content fieldset {
@@ -404,7 +404,7 @@ body.page .edit-link {
 .entry-utility a:hover {
 	color: #ff4b33;
 }
-#content .video-player {
+#main .video-player {
 	padding: 0;
 }
 
@@ -654,18 +654,18 @@ background:transparent url(images/prevlabel.gif) no-repeat 0% 30%;
 
 /*** Comments on image display ***/
 
-#comments,#content{
+#comments,#main{
 width:800px;
 padding-top:10px;
 margin:0 auto;
 font-family:"Trebuchet MS";
 }
 
-#comments a,#pagecontent a,#content a{
+#comments a,#pagecontent a,#main a{
 color:#9AB19E;
 }
 
-#comments a,#pagecontent a:hover,#content a:hover{
+#comments a,#pagecontent a:hover,#main a:hover{
 text-decoration:none;
 }
 
