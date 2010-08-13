@@ -1,26 +1,24 @@
   </div>
 
-  <footer>
+  <footer role="contentinfo">
     <div id="colophon">
 
       <?php get_sidebar('footer'); ?>
 
-      <div id="site-info">
+      <small id="site-info">
         <a href="<?php echo home_url( '/' ) ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
           <?php bloginfo('name'); ?>
         </a>
-      </div><!-- #site-info -->
 
-      <div id="site-generator">
         <?php do_action( 'reflection_credits' ); ?>
-        <a href="<?php echo esc_url( __('http://wordpress.org/', 'reflection') ); ?>"
-        title="<?php esc_attr_e('Semantic Personal Publishing Platform', 'reflection'); ?>" rel="generator">
-          <?php printf( __('Proudly powered by %s.', 'reflection'), 'WordPress' ); ?>
+        <a href="<?php echo esc_url( __('http://wordpress.org/', 'pickle') ); ?>"
+        title="<?php esc_attr_e('Semantic Personal Publishing Platform', 'pickle'); ?>" rel="generator">
+          <?php printf( __('Proudly powered by %s.', 'pickle'), 'WordPress' ); ?>
         </a>
-      </div><!-- #site-generator -->
+      </small><!-- #site-generator -->
 
     </div><!-- #colophon -->
-  </footer><!-- #footer -->
+  </footer>
   
   <!-- Grab Google CDN's jQuery. fall back to local if necessary -->
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>

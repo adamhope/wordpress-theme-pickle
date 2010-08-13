@@ -17,6 +17,12 @@ Author URI: http://www.adamhope.com
   text-decoration: none;
 }
 
+#site-description {
+    font-style: italic;
+  font-size: 12px;
+  text-decoration: none;
+}
+
 #colophon {
   border-top: 4px solid #000;
   padding:18px 0;
@@ -440,25 +446,25 @@ color:#999;
 
 /*** Navigation bar ***/
 
-#navbar{
+header nav {
 position:absolute;
 bottom:25px;
 right:0;
 }
 
-#navbar li, #titlebits li{
+header nav li, #titlebits li{
 display:inline;
 list-style-type: none;
 margin:0;
 padding:0 0 0 20px;
 }
 
-#navbar ul, #titlebits ul{
+header nav ul, #titlebits ul{
 padding:0;
 margin:0;
 }
 
-#navbar a{
+header nav a{
 color:#666;
 font-size:0.75em;
 font-weight: bold;
@@ -470,7 +476,7 @@ padding:0;
 margin:0;
 }
 
-#navbar a:hover{
+header nav a:hover{
 border-bottom: 6px solid #666;
 }
 

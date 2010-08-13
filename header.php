@@ -59,16 +59,17 @@
 
 <div id="frame">
   <header>
-    <h1 id="site-title">
-  		<a href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
-  		  <?php bloginfo( 'name' ); ?>
-  		</a>
-		</h1>
-		
-		<div id="site-description"><?php bloginfo( 'description' ); ?></div>
+    <hgroup>
+      <h1 id="site-title">
+    		<a href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
+    		  <?php bloginfo( 'name' ); ?>
+    		</a>
+  		</h1>
+  		<h2 id="site-description"><?php bloginfo( 'description' ); ?></h2>
+  	</hgroup>
     
-    <div id="navbar">
+    <nav role="navigation">
       <?php wp_nav_menu(); ?>
-    </div>
+    </nav>
 
   </header>
