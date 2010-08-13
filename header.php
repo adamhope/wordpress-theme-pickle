@@ -48,7 +48,7 @@
   <?php wp_head(); ?>
 
   <!-- All JavaScript at the bottom, except for Modernizr which enables HTML5 elements & feature detects -->
-  <script src="js/modernizr-1.5.min.js"></script>
+  <script src="<?php bloginfo('template_directory');?>/js/modernizr-1.5.min.js"></script>
 
 </head>
 <!--[if lt IE 7 ]> <body class="ie6"> <![endif]-->
