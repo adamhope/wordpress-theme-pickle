@@ -1,6 +1,6 @@
   </div>
 
-  <div id="footer" role="contentinfo">
+  <footer>
     <div id="colophon">
 
       <?php get_sidebar('footer'); ?>
@@ -20,9 +20,11 @@
       </div><!-- #site-generator -->
 
     </div><!-- #colophon -->
-  </div><!-- #footer -->
+  </footer><!-- #footer -->
   
-  <script type="text/javascript" src="<?php bloginfo('template_directory');?>/js/jquery-1.4.2.min.js"></script>
+  <!-- Grab Google CDN's jQuery. fall back to local if necessary -->
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+  <script>!window.jQuery && document.write('<script type="text/javascript" src="<?php bloginfo('template_directory');?>/js/jquery-1.4.2.min.js"></script>')</script>
   <script type="text/javascript" src="<?php bloginfo('template_directory');?>/js/tooltip.js"></script>
 
   <script src="<?php bloginfo('template_directory');?>/js/pickle.js" type="text/javascript" charset="utf-8"></script>

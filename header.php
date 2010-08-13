@@ -9,9 +9,10 @@
 
 ?>
 <!DOCTYPE html>
-<html dir="ltr" lang="en-US">
+<html lang="en" class="no-js">
 <head>
   <meta charset="<?php bloginfo( 'charset' ); ?>" />
+  <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><![endif]-->
   <title><?php
   	/*
   	 * Print the <title> tag based on what is being viewed.
@@ -33,24 +34,31 @@
   		echo ' | ' . sprintf( __( 'Page %s', 'reflection' ), max( $paged, $page ) );
 
   	?></title>
-  <meta http-equiv="Content-Type" content="<?php bloginfo('html_type'); ?>; charset=<?php bloginfo('charset'); ?>" />
 
   <link rel="profile" href="http://gmpg.org/xfn/11" />
-  <link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>" />
+  
+  <link rel="stylesheet" href="<?php bloginfo( 'stylesheet_url' ); ?>" />
   <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 
   <script type="text/javascript">
-    var opts = {};
-    var browseOpts = {};
+    var opts = {},
+        browseOpts = {};
   </script>
 
   <?php wp_head(); ?>
 
+  <!-- All JavaScript at the bottom, except for Modernizr which enables HTML5 elements & feature detects -->
+  <script src="js/modernizr-1.5.min.js"></script>
+
 </head>
-<body>
+<!--[if lt IE 7 ]> <body class="ie6"> <![endif]-->
+<!--[if IE 7 ]>    <body class="ie7"> <![endif]-->
+<!--[if IE 8 ]>    <body class="ie8"> <![endif]-->
+<!--[if IE 9 ]>    <body class="ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <body> <!--<![endif]-->
 
 <div id="frame">
-  <div id="header">
+  <header>
     <h1 id="site-title">
   		<a href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
   		  <?php bloginfo( 'name' ); ?>
@@ -63,4 +71,4 @@
       <?php wp_nav_menu(); ?>
     </div>
 
-  </div>
+  </header>
