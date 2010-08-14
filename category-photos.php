@@ -28,7 +28,7 @@ if ($allid)
 
 ?>
 
-<div id="pagecontent">
+<div id="main">
 	<table cellpadding="5" cellspacing="0" id="taxonomyTable">
 		<?php if ($disptype): ?>
 		<tr>
