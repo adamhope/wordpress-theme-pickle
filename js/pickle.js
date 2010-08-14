@@ -120,9 +120,9 @@ var Pickle = (function (user_opts) {
 
 var Browse = (function (user_opts) {
 
-    var imgCache = [],
+    var photoData,
+        imgCache = [],
         preloaded = 0,
-        photoData,
 
     setupTooltips = function () {
         $('.mosaic').each(function (i, el) {
@@ -135,14 +135,20 @@ var Browse = (function (user_opts) {
             delay: 0,
             showURL: false,
             fade: 250,
-            bodyHandler: function () { 
+            bodyHandler: function () {
                 return $(this).data('tip:title') + '<br />' + $(this).data('tip:text');
             }
         });
     },
 
-    preloadFinish = function () {
+    spinner = function (opacity) {
+        $('#tagProgress').css({
+            'opacity': opacity,
+            'visibility': 'visible'
+        });
+    },
 
+    preloadFinish = function () {
         var tagFlag, link, i;
 
         if (preloaded !== imgCache.length - 1) {
@@ -153,18 +159,23 @@ var Browse = (function (user_opts) {
         // Remove all images from container
         $('#tagContainer').empty();
 
+        spinner(0);
+
         tagFlag = typeof photoData[0].comment_count !== 'undefined';
 
         for (i = 0; i < imgCache.length; i = i + 1) {
             // TODO figure out why this work around is required, shouldn't be necessary
+            console.debug('photoData: ', photoData.length, 'imgCache: ', imgCache.length);
             if (!photoData[i]) {
                 return false;
             }
-            link    = $('<a href="' + photoData[i].permalink + '" />');
+            link = $('<a href="' + photoData[i].permalink + '" />');
             $(imgCache[i]).addClass('mosaic');
             $(link).append(imgCache[i]);
             $('#tagContainer').append(link);
         }
+        
+        console.debug(imgCache);
 
         if (tagFlag) {
             setupTooltips();
@@ -180,17 +191,19 @@ var Browse = (function (user_opts) {
     tagRefresh = function (data) {
         var i;
         photoData = data;
+        // TODO clear imgCache here
         for (i = 0; i < photoData.length; i = i + 1) {
             imgCache[i] = new Image();
             imgCache[i].onload = preloadFinish;
             imgCache[i].src = photoData[i].image_uri;
         }
     },
-    
+
     tagClick = function (el, type) {
         var params,
             ident,
             url = user_opts.templateDir + '/ajax_browse.php';
+
         switch (type) {
         case 'tag':
             ident = /tag-link-(\d+)/.exec($(el).attr('class'))[1];
@@ -202,44 +215,35 @@ var Browse = (function (user_opts) {
             ident = $(el).html();
         }
 
+        params = '?' + type + '=' + ident;
+
         // Set up heights for a smooth transition.
         // TODO don't think scrollHeight is working
-        $('#tagPics').css('height', $('#tagPics').scrollHeight);
+        $('#tagPics').css('height', $('#tagPics')[0].scrollHeight);
         $('#tagContainer').css({
-            'overflow': 'hidden',
-            'height': $('tagContainer').scrollHeight
+            'overflow': 'auto',
+            'height': $('#tagContainer')[0].scrollHeight
         });
+
         $('a.current').removeClass('current');
         $(el).addClass('current');
 
-        // Send off a JSON Request to the server for the list of images associated with this tag/year.
-        params = '?' + type + '=' + ident;
+        spinner(1);
+
         $.getJSON(url + params, tagRefresh);
     };
 
     return {
         init: function () {
-            
+
             photoData = user_opts.posts;
 
-            $('#tagCloud a').each(function (i, el) {
-                $(el).click(function (e) {
-                    tagClick(el, 'tag');
-                    e.preventDefault();
-                });
-            });
-            
-            $('#catCloud a').each(function (i, el) {
-                $(el).click(function (e) {
-                    tagClick(el, 'cat');
-                    e.preventDefault();
-                });
-            });
-            
-            $('#yearCloud a').each(function (i, el) {
-                $(el).click(function (e) {
-                    tagClick(el, 'year');
-                    e.preventDefault();
+            $(['cat', 'tag', 'year']).each(function (i, group) {
+                $('#' + group + 'Cloud a').each(function (i, el) {
+                    $(el).click(function (e) {
+                        tagClick(el, group);
+                        e.preventDefault();
+                    });
                 });
             });
 
@@ -248,12 +252,9 @@ var Browse = (function (user_opts) {
             }
 
             // Make tagProgress visible but with zero opacity (allows us to calculate height).
-            $('#tagProgress').css({
-                'opacity': 0,
-                'visibility': 'visible'
-            });
+            spinner(0);
 
         }
     };
-    
+
 }(browseOpts));
