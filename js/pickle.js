@@ -206,12 +206,15 @@ var Browse = (function (user_opts) {
             cur,
             url = user_opts.templateDir + '/ajax_browse.php';
 
-        if (type === "tag") {
-            ident = /tag-link-(\d+)/.exec($(el).attr('class'))[1];
-        } else if (type === "cat") {
-            ident = /cat-item-(\d+)/.exec($(el).parent().attr('class'))[1];
-        } else {
-            ident = $(el).html();
+        switch(type) {
+        case 'tag':
+          ident = /tag-link-(\d+)/.exec($(el).attr('class'))[1];
+          break;
+        case 'cat':
+          ident = /cat-item-(\d+)/.exec($(el).parent().attr('class'))[1];
+          break;
+        default:
+          ident = $(el).html();
         }
 
         // Set up heights for a smooth transition.
