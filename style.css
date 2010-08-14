@@ -36,6 +36,7 @@ footer {
 #footer-widget-area {
 	overflow: hidden;
 }
+
 #footer-widget-area .widget-area {
 	float: left;
 	margin-right: 20px;
@@ -432,7 +433,6 @@ header {
 
 #topContent{
     margin:0 auto;
-    padding:30px 0 0 0;
 }
 
 footer{
@@ -709,56 +709,56 @@ padding: 3px;
 
 /*** Mosaic and browser pages ***/
 
-.mosaic{
-border:1px solid #777;
-margin:2px;
-padding:1px;
-background:#bbb;
+.mosaic {
+    border:1px solid #777;
+    margin:2px;
+    padding:1px;
+    background:#bbb;
 }
 
-h2.mosaicheader{
-clear:left;
-font:1.4em Arial bold;
-letter-spacing:-1px;
-border-bottom:2px solid white;
-padding-top:15px;
+h2.mosaicheader {
+    clear:left;
+    font:1.4em Arial bold;
+    letter-spacing:-1px;
+    border-bottom:2px solid white;
+    padding-top:15px;
 }
 
 #taxonomyTable {
-width:100%
+    width:100%
 }
 
-#taxonomyTable a{
-color:#999;
-text-decoration:none;
+#taxonomyTable a {
+    color:#999;
+    text-decoration:none;
 }
 
-#taxonomyTable a.current{
-color:white;
+#taxonomyTable a.current {
+    text-decoration: underline;
 }
 
-#taxonomyTable a:hover{
-text-decoration:underline;
+#taxonomyTable a:hover {
+    text-decoration:underline;
 }
 
-#taxonomyTable td{
-border-bottom:2px solid white;
-vertical-align:bottom;
+#taxonomyTable td {
+    border-bottom:2px solid white;
+    vertical-align:bottom;
 }
 
-#yearCloud{
-width:50%;
-font-size:1.2em;
+#yearCloud {
+    width:50%;
+    font-size:1.2em;
 }
 
-#taxonomyTable th{
-font-size:130%;
-text-align:left;
-color:white;
-border-bottom: 2px solid white
+#taxonomyTable th {
+    font-size:130%;
+    text-align:left;
+    color:white;
+    border-bottom: 2px solid white
 }
 
-.tagbox{
+.tagbox {
     display: block
 }
 .tagbox * {
