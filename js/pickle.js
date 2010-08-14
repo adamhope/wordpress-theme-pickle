@@ -120,29 +120,29 @@ var Pickle = (function (user_opts) {
 
 var Browse = (function (user_opts) {
 
-    var preload = [],
+    var i,
+        preload = [],
         preloaded = 1,
         initialPosts,
 
         preloadFinish = function () {
 
-            console.debug('loaded', preloaded, 'of', preload.length);
-
             var tagFlag, tmpdata, link;
 
             if (preloaded !== preload.length) {
-                preloaded++;
+                preloaded = preloaded + 1;
                 return false;
             }
 
-            // Remove all images from container
-            $('.mosaic').remove();
+            console.debug(preload);
 
-            // Create image element and insert into container.
-            // TODO might not work
+            // Remove all images from container
+            // $('.mosaic').remove();
+            $('#tagContainer').empty();
+
             tagFlag = typeof $(preload[0]).data('imgData').comment_count != 'undefined';
 
-            for (var i = 0; i < preload.length; i++) {
+            for (i = 0; i < preload.length; i = i + 1) {
                 tmpdata = $(preload[i]).data('imgData'),
                 link = $('<a href="' + tmpdata.permalink + '" />');
 
@@ -180,7 +180,7 @@ var Browse = (function (user_opts) {
         },
 
     tagRefresh = function (data) {
-        // Create asset manager to grab all images from the server.
+
         var srcArray = [];
         for (var i = 0; i < data.length; i++) {
             srcArray[i] = data[i].image_uri;
@@ -215,18 +215,15 @@ var Browse = (function (user_opts) {
         }
 
         // Set up heights for a smooth transition.
-        $('tagPics').css('height', $('tagPics').scrollHeight);
+        // TODO don't think scrollHeight is working
+        $('#tagPics').css('height', $('#tagPics').scrollHeight);
 
-        $('tagContainer').css({
+        $('#tagContainer').css({
             'overflow': 'hidden',
             'height': $('tagContainer').scrollHeight
         });
 
-        // Highlight this link as the current one.
-        cur = $('a.current');
-        if (cur.length > 0) {
-            $(cur[0]).removeClass('current');
-        }
+        $('a.current').removeClass('current');
         $(el).addClass('current');
 
         // Send off a JSON Request to the server for the list of images associated with this tag/year.
