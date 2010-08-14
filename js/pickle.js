@@ -121,7 +121,7 @@ var Pickle = (function (user_opts) {
 var Browse = (function (user_opts) {
 
     var imgCache = [],
-        preloaded = 1,
+        preloaded = 0,
         photoData,
 
     setupTooltips = function () {
@@ -145,7 +145,7 @@ var Browse = (function (user_opts) {
 
         var tagFlag, link, i;
 
-        if (preloaded !== imgCache.length) {
+        if (preloaded !== imgCache.length - 1) {
             preloaded = preloaded + 1;
             return false;
         }
@@ -156,15 +156,14 @@ var Browse = (function (user_opts) {
         tagFlag = typeof photoData[0].comment_count !== 'undefined';
 
         for (i = 0; i < imgCache.length; i = i + 1) {
-
+            // TODO figure out why this work around is required, shouldn't be necessary
+            if (!photoData[i]) {
+                return false;
+            }
             link    = $('<a href="' + photoData[i].permalink + '" />');
-
             $(imgCache[i]).addClass('mosaic');
-
             $(link).append(imgCache[i]);
-
             $('#tagContainer').append(link);
-
         }
 
         if (tagFlag) {
@@ -179,8 +178,8 @@ var Browse = (function (user_opts) {
     },
 
     tagRefresh = function (data) {
-        var i,
-            photoData = data;
+        var i;
+        photoData = data;
         for (i = 0; i < photoData.length; i = i + 1) {
             imgCache[i] = new Image();
             imgCache[i].onload = preloadFinish;
