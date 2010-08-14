@@ -181,21 +181,25 @@ var Browse = (function (user_opts) {
 
     tagRefresh = function (data) {
 
-        var srcArray = [];
-        for (var i = 0; i < data.length; i++) {
+        console.debug(data);
+
+        var i, j, k,
+            srcArray = [];
+
+        for (i = 0; i < data.length; i = i + 1) {
             srcArray[i] = data[i].image_uri;
         }
         
-        var i = srcArray.length;
-        while (i--) {
-            preload[i] = new Image();
-            preload[i].onload = preloadFinish;
-            preload[i].src = srcArray[i];
+        j = srcArray.length;
+        while (j--) {
+            preload[j] = new Image();
+            preload[j].onload = preloadFinish;
+            preload[j].src = srcArray[j];
         }
 
         // Store data associated with each image using Mootools element storage.
-        for (var i = 0; i < data.length; i++) {
-            $(preload[i]).data('imgData', data[i]);
+        for (k = 0; k < data.length; k = k + 1) {
+            $(preload[k]).data('imgData', data[k]);
         }
     },
     
