@@ -120,116 +120,96 @@ var Pickle = (function (user_opts) {
 
 var Browse = (function (user_opts) {
 
-    var i,
-        preload = [],
+    var imgCache = [],
         preloaded = 1,
-        initialPosts,
+        photoData,
 
-        preloadFinish = function () {
-
-            var tagFlag, tmpdata, link;
-
-            if (preloaded !== preload.length) {
-                preloaded = preloaded + 1;
-                return false;
-            }
-
-            console.debug(preload);
-
-            // Remove all images from container
-            // $('.mosaic').remove();
-            $('#tagContainer').empty();
-
-            tagFlag = typeof $(preload[0]).data('imgData').comment_count != 'undefined';
-
-            for (i = 0; i < preload.length; i = i + 1) {
-                tmpdata = $(preload[i]).data('imgData'),
-                link = $('<a href="' + tmpdata.permalink + '" />');
-
-                $(preload[i]).addClass('mosaic');
-
-                $(link).append(preload[i]);
-
-                if (tagFlag) {
-                    $(preload[i]).data('tip:title', tmpdata.post_title);
-                    $(preload[i]).data(
-                        'tip:text', tmpdata.post_date + "<br />" + tmpdata.comment_count + " " + (tmpdata.comment_count === 1 ? "comment" : "comments")
-                    );
-                }
-                $('#tagContainer').append(link);
-            }
-
-            if (tagFlag) {
-                // TODO need tooltip alternative
-                $('.mosaic').tooltip({
-                    track: true,
-                    delay: 0,
-                    showURL: false,
-                    fade: 250 ,
-                    bodyHandler: function() { 
-                        return $(this).data('tip:title') + '<br />' + $(this).data('tip:text');
-                    }
-                });
-            }
-
-            $('#tagContainer').css({
-                'height': 'auto',
-                'overflow': 'auto'
+    setupTooltips = function () {
+        $('.mosaic').each(function (i, el) {
+            $(el).data({
+                'tip:title': photoData[i].post_title,
+                'tip:text': photoData[i].post_date + '<br />' + photoData[i].comment_count + ' ' + (photoData[i].comment_count === 1 ? 'comment' : 'comments')
             });
+        }).tooltip({
+            track: true,
+            delay: 0,
+            showURL: false,
+            fade: 250,
+            bodyHandler: function () { 
+                return $(this).data('tip:title') + '<br />' + $(this).data('tip:text');
+            }
+        });
+    },
 
-        },
+    preloadFinish = function () {
+
+        var tagFlag, link, i;
+
+        if (preloaded !== imgCache.length) {
+            preloaded = preloaded + 1;
+            return false;
+        }
+
+        // Remove all images from container
+        $('#tagContainer').empty();
+
+        tagFlag = typeof photoData[0].comment_count !== 'undefined';
+
+        for (i = 0; i < imgCache.length; i = i + 1) {
+
+            link    = $('<a href="' + photoData[i].permalink + '" />');
+
+            $(imgCache[i]).addClass('mosaic');
+
+            $(link).append(imgCache[i]);
+
+            $('#tagContainer').append(link);
+
+        }
+
+        if (tagFlag) {
+            setupTooltips();
+        }
+
+        $('#tagContainer').css({
+            'height': 'auto',
+            'overflow': 'auto'
+        });
+
+    },
 
     tagRefresh = function (data) {
-
-        console.debug(data);
-
-        var i, j, k,
-            srcArray = [];
-
-        for (i = 0; i < data.length; i = i + 1) {
-            srcArray[i] = data[i].image_uri;
-        }
-        
-        j = srcArray.length;
-        while (j--) {
-            preload[j] = new Image();
-            preload[j].onload = preloadFinish;
-            preload[j].src = srcArray[j];
-        }
-
-        // Store data associated with each image using Mootools element storage.
-        for (k = 0; k < data.length; k = k + 1) {
-            $(preload[k]).data('imgData', data[k]);
+        var i,
+            photoData = data;
+        for (i = 0; i < photoData.length; i = i + 1) {
+            imgCache[i] = new Image();
+            imgCache[i].onload = preloadFinish;
+            imgCache[i].src = photoData[i].image_uri;
         }
     },
     
     tagClick = function (el, type) {
-        
         var params,
             ident,
-            cur,
             url = user_opts.templateDir + '/ajax_browse.php';
-
-        switch(type) {
+        switch (type) {
         case 'tag':
-          ident = /tag-link-(\d+)/.exec($(el).attr('class'))[1];
-          break;
+            ident = /tag-link-(\d+)/.exec($(el).attr('class'))[1];
+            break;
         case 'cat':
-          ident = /cat-item-(\d+)/.exec($(el).parent().attr('class'))[1];
-          break;
+            ident = /cat-item-(\d+)/.exec($(el).parent().attr('class'))[1];
+            break;
         default:
-          ident = $(el).html();
+            ident = $(el).html();
         }
 
         // Set up heights for a smooth transition.
         // TODO don't think scrollHeight is working
         $('#tagPics').css('height', $('#tagPics').scrollHeight);
-
         $('#tagContainer').css({
             'overflow': 'hidden',
             'height': $('tagContainer').scrollHeight
         });
-
         $('a.current').removeClass('current');
         $(el).addClass('current');
 
@@ -241,7 +221,7 @@ var Browse = (function (user_opts) {
     return {
         init: function () {
             
-            initialPosts = user_opts.posts;
+            photoData = user_opts.posts;
 
             $('#tagCloud a').each(function (i, el) {
                 $(el).click(function (e) {
@@ -264,19 +244,8 @@ var Browse = (function (user_opts) {
                 });
             });
 
-            if (initialPosts && typeof initialPosts[0].comment_count !== 'undefined') {
-                $('.mosaic').each(function (i, el) {
-                    $(el).data('tip:title', initialPosts[i].post_title);
-                    $(el).data('tip:text', initialPosts[i].post_date + "<br />" + initialPosts[i].comment_count + " " + (initialPosts[i].comment_count === 1 ? "comment" : "comments"));
-                }).tooltip({
-                    track: true,
-                    delay: 0,
-                    showURL: false,
-                    fade: 250 ,
-                    bodyHandler: function() { 
-                        return $(this).data('tip:title') + '<br />' + $(this).data('tip:text');
-                    }
-                });
+            if (photoData && typeof photoData[0].comment_count !== 'undefined') {
+                setupTooltips();
             }
 
             // Make tagProgress visible but with zero opacity (allows us to calculate height).
@@ -289,4 +258,3 @@ var Browse = (function (user_opts) {
     };
     
 }(browseOpts));
-
