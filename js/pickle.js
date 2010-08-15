@@ -1,6 +1,6 @@
 /*jslint white: true, browser: true, onevar: true, undef: true, nomen: true, eqeqeq: true, plusplus: true, bitwise: true, regexp: true, newcap: true, immed: true, strict: true */
 
-/*global $: true, jQuery: true, opts: true */
+/*global $: true, jQuery: true, opts: true, browseOpts: true */
 
 "use strict";
 
@@ -165,7 +165,6 @@ var Browse = (function (user_opts) {
 
         for (i = 0; i < imgCache.length; i = i + 1) {
             // TODO figure out why this work around is required, shouldn't be necessary
-            console.debug('photoData: ', photoData.length, 'imgCache: ', imgCache.length);
             if (!photoData[i]) {
                 return false;
             }
@@ -174,8 +173,6 @@ var Browse = (function (user_opts) {
             $(link).append(imgCache[i]);
             $('#tagContainer').append(link);
         }
-        
-        console.debug(imgCache);
 
         if (tagFlag) {
             setupTooltips();
@@ -235,6 +232,10 @@ var Browse = (function (user_opts) {
 
     return {
         init: function () {
+
+            if (!browseOpts) {
+                return false;
+            }
 
             photoData = user_opts.posts;
 

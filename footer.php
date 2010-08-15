@@ -30,8 +30,10 @@
   <script type="text/javascript">
     browseOpts.templateDir = '<?php bloginfo('template_directory');?>';
     opts.templateDir = '<?php bloginfo('template_directory');?>';
-    $(document).ready(Pickle.init);
-    $(document).ready(Browse.init);
+    $(document).ready(function() {
+      Pickle.init();
+      Browse.init();
+    });
   </script>
 
 </body>
