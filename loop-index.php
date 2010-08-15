@@ -40,11 +40,13 @@ if (have_posts()) : while (have_posts()) : the_post();
   ?>
 
   <script type="text/javascript">
-    opts.nextPostID = <?=$next_post?>;
-    opts.prevPostID = <?=$prev_post?>;
+    var opts = {
+      nextPostID: <?=$next_post?>,
+      prevPostID: <?=$prev_post?>
+    }
   </script>
 
-  <div id="topContent" style="width:<?=im_dim()?>px;">
+  <div id="slideshow" style="width:<?=im_dim()?>px;">
     <div id="title">
       <div id="titlebits">
         <ul>

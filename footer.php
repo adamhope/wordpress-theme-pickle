@@ -11,8 +11,7 @@
           <?php bloginfo('name'); ?>
         </a>
         <?php do_action( 'reflection_credits' ); ?>
-        <a href="<?php echo esc_url( __('http://wordpress.org/', 'pickle') ); ?>"
-        title="<?php esc_attr_e('Semantic Personal Publishing Platform', 'pickle'); ?>" rel="generator">
+        <a href="<?php echo esc_url( __('http://wordpress.org/', 'pickle') ); ?>" title="<?php esc_attr_e('Semantic Personal Publishing Platform', 'pickle'); ?>" rel="generator">
           <?php printf( __('Proudly powered by %s.', 'pickle'), 'WordPress' ); ?>
         </a>
       </small>
@@ -26,13 +25,14 @@
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
   <script>!window.jQuery && document.write('<script type="text/javascript" src="<?php bloginfo('template_directory');?>/js/jquery-1.4.2.min.js"></sc'+'ript>')</script>
   <script type="text/javascript" src="<?php bloginfo('template_directory');?>/js/tooltip.js"></script>
-  <script src="<?php bloginfo('template_directory');?>/js/pickle.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="<?php bloginfo('template_directory');?>/js/pickle.js" type="text/javascript" charset="utf-8"></script>
   <script type="text/javascript">
-    browseOpts.templateDir = '<?php bloginfo('template_directory');?>';
+    var opts = opts || {},
+      posts = posts || {};
     opts.templateDir = '<?php bloginfo('template_directory');?>';
     $(document).ready(function() {
-      Pickle.init();
-      Browse.init();
+      Slideshow.init(opts);
+      Browser.init(opts, posts);
     });
   </script>
 

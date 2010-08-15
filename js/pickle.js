@@ -1,6 +1,6 @@
 /*jslint white: true, browser: true, onevar: true, undef: true, nomen: true, eqeqeq: true, plusplus: true, bitwise: true, regexp: true, newcap: true, immed: true, strict: true */
 
-/*global $: true, jQuery: true, opts: true, browseOpts: true */
+/*global $: true, jQuery: true, opts: true */
 
 "use strict";
 
@@ -18,10 +18,10 @@
     };
 }(jQuery));
 
-var Pickle = (function (user_opts) {
+var Slideshow = (function () {
 
     var cfg, preloadedImg, nextPostID, prevPostID, ajaxSource, DEFAULTS = {
-        ctx: '#topContent',
+        ctx: '#slideshow',
         mainImage: '#mainImage'
     },
 
@@ -101,8 +101,11 @@ var Pickle = (function (user_opts) {
     };
 
     return {
-        init: function () {
-            cfg = $.extend({}, DEFAULTS, user_opts);
+        init: function (opts) {
+            if (!opts) {
+                return false;
+            }
+            cfg = $.extend({}, DEFAULTS, opts);
             nextPostID = cfg.nextPostID;
             prevPostID = cfg.prevPostID;
             ajaxSource = cfg.templateDir + '/ajax_blog.php';
@@ -114,13 +117,12 @@ var Pickle = (function (user_opts) {
         }
     };
 
-}(opts));
+}());
 
-// photo category browser
+var Browser = (function () {
 
-var Browse = (function (user_opts) {
-
-    var photoData,
+    var cfg,
+        photoData,
         imgCache = [],
         preloaded = 0,
 
@@ -199,7 +201,7 @@ var Browse = (function (user_opts) {
     tagClick = function (el, type) {
         var params,
             ident,
-            url = user_opts.templateDir + '/ajax_browse.php';
+            url = cfg.templateDir + '/ajax_browse.php';
 
         switch (type) {
         case 'tag':
@@ -231,13 +233,14 @@ var Browse = (function (user_opts) {
     };
 
     return {
-        init: function () {
+        init: function (opts, posts) {
 
-            if (!browseOpts) {
+            if (!opts || !posts) {
                 return false;
             }
 
-            photoData = user_opts.posts;
+            cfg = opts;
+            photoData = posts.data;
 
             $(['cat', 'tag', 'year']).each(function (i, group) {
                 $('#' + group + 'Cloud a').each(function (i, el) {
@@ -258,4 +261,4 @@ var Browse = (function (user_opts) {
         }
     };
 
-}(browseOpts));
+}());

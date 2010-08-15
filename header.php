@@ -35,10 +35,6 @@
   <link rel="stylesheet" href="<?php bloginfo( 'stylesheet_url' ); ?>" />
   <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 
-  <script type="text/javascript">
-    var opts = {}, browseOpts = {};
-  </script>
-
   <?php wp_head(); ?>
 
   <!-- All JavaScript at the bottom, except for Modernizr which enables HTML5 elements & feature detects -->
