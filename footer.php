@@ -1,11 +1,9 @@
 
   <footer role="contentinfo">
     <div id="colophon">
-
       <div id="footer-widget-area">
         <?php get_sidebar('footer'); ?>
       </div>
-
       <small id="site-info">
         <a href="<?php echo home_url( '/' ) ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
           <?php bloginfo('name'); ?>
@@ -15,18 +13,17 @@
           <?php printf( __('Proudly powered by %s.', 'pickle'), 'WordPress' ); ?>
         </a>
       </small>
-
-    </div><!-- #colophon -->
+    </div>
   </footer>
 
 </div>
 
   <!-- Grab Google CDN's jQuery. fall back to local if necessary -->
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-  <script>!window.jQuery && document.write('<script type="text/javascript" src="<?php bloginfo('template_directory');?>/js/jquery-1.4.2.min.js"></sc'+'ript>')</script>
-  <script type="text/javascript" src="<?php bloginfo('template_directory');?>/js/tooltip.js"></script>
-  <script src="<?php bloginfo('template_directory');?>/js/pickle.js" type="text/javascript" charset="utf-8"></script>
-  <script type="text/javascript">
+  <script>!window.jQuery && document.write('<script src="<?php bloginfo('template_directory');?>/js/jquery-1.4.2.min.js"></sc'+'ript>')</script>
+  <script src="<?php bloginfo('template_directory');?>/js/tooltip.js"></script>
+  <script src="<?php bloginfo('template_directory');?>/js/pickle.js"></script>
+  <script>
     var opts = opts || {},
       posts = posts || {};
     opts.templateDir = '<?php bloginfo('template_directory');?>';

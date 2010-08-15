@@ -110,7 +110,7 @@ endwhile; endif;
     <strong class="tagbox1"><strong></strong></strong></strong>
   </div>
   <?php if (get_opt_or_default('mosaictips')): ?>
-    <script type="text/javascript">
+    <script>
       var posts = {data: <?php echo json_encode($postinfo);?>};
     </script>
   <?php endif; ?>

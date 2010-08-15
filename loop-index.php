@@ -39,7 +39,7 @@ if (have_posts()) : while (have_posts()) : the_post();
   $prev_post_perm = get_permalink($prev_post);
   ?>
 
-  <script type="text/javascript">
+  <script>
     var opts = {
       nextPostID: <?=$next_post?>,
       prevPostID: <?=$prev_post?>

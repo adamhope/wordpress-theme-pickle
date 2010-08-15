@@ -28,7 +28,7 @@
   	// Add a page number if necessary:
   	if ( $paged >= 2 || $page >= 2 )
   		echo ' | ' . sprintf( __( 'Page %s', 'reflection' ), max( $paged, $page ) );
-  	?></title>
+	?></title>
 
   <link rel="profile" href="http://gmpg.org/xfn/11" />
   <link rel="stylesheet" href="<?php bloginfo('template_directory');?>/reset.css" />
