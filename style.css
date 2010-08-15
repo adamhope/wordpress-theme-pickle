@@ -758,44 +758,6 @@ h2.mosaicheader {
     border-bottom: 2px solid white
 }
 
-.tagbox {
-    display: block
-}
-.tagbox * {
-    display:block;
-    height:1px;
-    overflow:hidden;
-    font-size:.01em;
-    background:#313131
-}
-.tagbox1 {
-    margin: 0 3px 0 3px;
-    padding: 0 1px 0 1px;
-    border-left:1px solid #151515;
-    border-right:1px solid #151515;
-    background:#242424
-}
-.tagbox2 {
-    margin: 0 1px 0 1px;
-    padding: 0 1px 0 1px;
-    border-left:1px solid #040404;
-    border-right:1px solid #040404;
-    background:#272727
-}
-.tagbox3 {
-    margin: 0 1px 0 1px;
-    border-left:1px solid #272727;
-    border-right:1px solid #272727;
-}
-.tagbox4 {
-    border-left:1px solid #151515;
-    border-right:1px solid #151515
-}
-.tagbox5 {
-    border-left:1px solid #242424;
-    border-right:1px solid #242424
-}
-
 #tagContainer {
     padding: 5px 5px 5px 8px;   
 }

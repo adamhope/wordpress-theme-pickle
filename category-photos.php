@@ -69,13 +69,6 @@ if ($allid)
   	</table>
   	
 	<div style="margin-top: 8px">
-    	<strong class="tagbox">
-    	<strong class="tagbox1"><strong></strong></strong>
-    	<strong class="tagbox2"><strong></strong></strong>
-    	<strong class="tagbox3"></strong>
-    	<strong class="tagbox4"></strong>
-    	<strong class="tagbox5"></strong></strong>
-
         <div id="tagPics">
           <div id="tagContainer">
 <?php
@@ -102,12 +95,6 @@ endwhile; endif;
       <img src="<?php bloginfo('template_directory'); ?>/images/browse-load.gif" id="tagProgress" alt="loading" />
     </div>
 
-    <strong class="tagbox">
-    <strong class="tagbox5"></strong>
-    <strong class="tagbox4"></strong>
-    <strong class="tagbox3"></strong>
-    <strong class="tagbox2"><strong></strong></strong>
-    <strong class="tagbox1"><strong></strong></strong></strong>
   </div>
   <?php if (get_opt_or_default('mosaictips')): ?>
     <script>
