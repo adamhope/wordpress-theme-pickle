@@ -27,24 +27,28 @@
 <!-- You can start editing here. -->
 
 <?php if ($comments) : ?>
-	<h3 id="comments"><?php comments_number('No Responses', 'One Response', '% Responses' );?> to &#8220;<?php the_title(); ?>&#8221;</h3>
+	<h3 id="comments">
+	  <?php comments_number('No Responses', 'One Response', '% Responses' );?> to &#8220;<?php the_title(); ?>&#8221;
+	</h3>
 
-	<ol class="commentlist">
+	<section class="comments">
 
 	<?php $i = 0; foreach ($comments as $comment) : $i++; ?>
 
-		<li <?php echo $oddcomment; ?>id="comment-<?php comment_ID() ?>">
-			<div class="commentcount"><?=$i?></div>
-			<cite><?php comment_author_link() ?>:</cite>
-			<div class="commenttext">
+		<article class="comment" <?php echo $oddcomment; ?>id="comment-<?php comment_ID() ?>">
+      <!-- <div class="commentcount"><?=$i?></div> -->
+			<h3 class="comment-author">
+			  <?php comment_author_link() ?>
+			  <time class="commentmetadata"><?php comment_date('F jS, Y') ?> at <?php comment_time() ?> <?php edit_comment_link('edit','&nbsp;&nbsp;',''); ?></time>
+			</h3>
+			<p class="comment-text">
 				<?php if ($comment->comment_approved == '0') : ?>
-				<p><em>Your comment is awaiting moderation.</em></p>
+				<em>Your comment is awaiting moderation.</em>
 				<?php endif; ?>
 				<?php comment_text() ?>
-			</div>
+			</p>
 			
-			<small class="commentmetadata"><?php comment_date('F jS, Y') ?> at <?php comment_time() ?> <?php edit_comment_link('edit','&nbsp;&nbsp;',''); ?></small>
-		</li>
+		</article>
 
 	<?php
 		/* Changes every other comment to a different class */
@@ -53,7 +57,7 @@
 
 	<?php endforeach; /* end for each comment */ ?>
 
-	</ol>
+	</section>
 
  <?php else : // this is displayed if there are no comments so far ?>
 
@@ -87,7 +91,7 @@
 <p><input type="text" name="author" id="author" value="<?php echo $comment_author; ?>" size="22" tabindex="1" />
 <label for="author"><small>Name <?php if ($req) echo "(required)"; ?></small></label></p>
 
-<p><input type="text" name="email" id="email" value="<?php echo $comment_author_email; ?>" size="22" tabindex="2" />
+<p><input type="email" name="email" id="email" value="<?php echo $comment_author_email; ?>" size="22" tabindex="2" />
 <label for="email"><small>Mail (will not be published) <?php if ($req) echo "(required)"; ?></small></label></p>
 
 <p><input type="text" name="url" id="url" value="<?php echo $comment_author_url; ?>" size="22" tabindex="3" />
