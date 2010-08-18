@@ -639,74 +639,6 @@ background:transparent url(images/nextlabel.gif) no-repeat 100% 30%;
 background:transparent url(images/prevlabel.gif) no-repeat 0% 30%;
 }
 
-/*** Comments on image display ***/
-
-/*#comments
-,#main{
-width:800px;
-padding-top:10px;
-margin:0 auto;
-font-family:"Trebuchet MS";
-}
-*/
-
-/*#comments a,#pagecontent a,#main a{
-color:#9AB19E;
-}
-*/
-
-/*#comments a,#pagecontent a:hover,#main a:hover{
-text-decoration:none;
-}
-
-#comments a:hover{
-color:#999;
-}
-
-#comments ol{
-list-style:none;
-padding-right:40px;
-}
-
-#comments li{
-background:#191919;
-border:1px solid #333;
-display:block;
-margin-bottom:10px;
-padding: 10px;
-}
-
-#comments li.alt{
-background:#111
-}
-
-#comments .commentcount{
-font:4em Georgia;
-float:right;
-color:#222;
-}
-
-#comments .commenttext{
-margin-right:50px;
-text-align:justify;
-color:#e0e0e0;
-}
-
-#comments cite{
-font-size:120%;
-}
-
-#comments small.commentmetadata{
-display:block;
-text-align:right;
-color:#777;
-}
-
-#comments input, #comments textarea{
-border: 1px solid #444;
-padding: 3px;
-}*/
-
 /*** Mosaic and browser pages ***/
 
 .mosaic {
@@ -769,7 +701,7 @@ line-height:0;
 height:1%; /* Ugly hack for IE */
 }
 
-#tagProgress{
+#tagProgress {
 display:block;
 position:absolute;
 left:50%;

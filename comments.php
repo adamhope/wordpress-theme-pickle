@@ -39,15 +39,14 @@
       <!-- <div class="commentcount"><?=$i?></div> -->
 			<h3 class="comment-author">
 			  <?php comment_author_link() ?>
-			  <time class="commentmetadata"><?php comment_date('F jS, Y') ?> at <?php comment_time() ?> <?php edit_comment_link('edit','&nbsp;&nbsp;',''); ?></time>
+			  <time class="comment-metadata"><?php comment_date('F jS, Y') ?> at <?php comment_time() ?> <?php edit_comment_link('edit','&nbsp;&nbsp;',''); ?></time>
 			</h3>
-			<p class="comment-text">
+			<div class="comment-text">
 				<?php if ($comment->comment_approved == '0') : ?>
-				<em>Your comment is awaiting moderation.</em>
+				<em>Your comment must be approved before it will be displayed.</em>
 				<?php endif; ?>
 				<?php comment_text() ?>
-			</p>
-			
+			</div>
 		</article>
 
 	<?php
@@ -63,18 +62,17 @@
 
 	<?php if ('open' == $post->comment_status) : ?>
 		<!-- If comments are open, but there are no comments. -->
-
 	 <?php else : // comments are closed ?>
 		<!-- If comments are closed. -->
 		<p class="nocomments">Comments are closed.</p>
-
 	<?php endif; ?>
+
 <?php endif; ?>
 
 
 <?php if ('open' == $post->comment_status) : ?>
 
-<h3 id="respond">Leave a Reply</h3>
+<h3 id="respond">Leave a Comment</h3>
 
 <?php if ( get_option('comment_registration') && !$user_ID ) : ?>
 <p>You must be <a href="<?php echo get_option('siteurl'); ?>/wp-login.php?redirect_to=<?php echo urlencode(get_permalink()); ?>">logged in</a> to post a comment.</p>
