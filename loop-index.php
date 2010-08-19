@@ -87,13 +87,11 @@ if (have_posts()) : while (have_posts()) : the_post();
   <div id="reflectionHolder"></div>
 
   <?php if (is_single() && !is_home_uri()): ?>
-    <div id="main">
       <a name="info" id="notes"></a>
       <?php the_content(); ?>
-    </div>
-    <div id="comments">
-      <?php comments_template(); ?>
-    </div>
+      <div id="comments">
+        <?php comments_template(); ?>
+      </div>
   <?php endif;?>
 
 <?php endif; // This was the if statement that broke the loop into three parts based on categories. ?>

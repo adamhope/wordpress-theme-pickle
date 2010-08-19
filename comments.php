@@ -27,9 +27,9 @@
 <!-- You can start editing here. -->
 
 <?php if ($comments) : ?>
-	<h3 id="comments">
-	  <?php comments_number('No Responses', 'One Response', '% Responses' );?> to &#8220;<?php the_title(); ?>&#8221;
-	</h3>
+	<h2 id="comments">
+	  <?php comments_number('No Comments', 'Comments (%)', 'Comments (%)' );?> <!-- to &#8220;<?php the_title(); ?>&#8221; -->
+	</h2>
 
 	<section class="comments">
 
@@ -37,11 +37,12 @@
 
 		<article class="comment" <?php echo $oddcomment; ?>id="comment-<?php comment_ID() ?>">
       <!-- <div class="commentcount"><?=$i?></div> -->
-			<h3 class="comment-author">
+			<h3 class="comment-metadata">
 			  <?php comment_author_link() ?>
-			  <time class="comment-metadata"><?php comment_date('F jS, Y') ?> at <?php comment_time() ?> <?php edit_comment_link('edit','&nbsp;&nbsp;',''); ?></time>
+			  <time><?php comment_date('jS F, Y') ?> at <?php comment_time() ?></time>
+			  <span><?php edit_comment_link('edit','&nbsp;&nbsp;',''); ?></span>
 			</h3>
-			<div class="comment-text">
+			<div class="comment-body">
 				<?php if ($comment->comment_approved == '0') : ?>
 				<em>Your comment must be approved before it will be displayed.</em>
 				<?php endif; ?>

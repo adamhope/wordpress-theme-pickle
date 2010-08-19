@@ -153,10 +153,9 @@ footer {
 	clear: both;
 	overflow: hidden;
 	padding: 40px 0 0 0;
-}
-#main {
 	margin-bottom: 36px;
 }
+
 #main,
 #main input,
 #main textarea {
@@ -632,11 +631,31 @@ top:0;
 #overPrevLink{left:0}
 
 #overNextLink:hover{
-background:transparent url(images/nextlabel.gif) no-repeat 100% 30%;
+    background:transparent url(images/nextlabel.gif) no-repeat 100% 30%;
 }
 
 #overPrevLink:hover{
-background:transparent url(images/prevlabel.gif) no-repeat 0% 30%;
+    background:transparent url(images/prevlabel.gif) no-repeat 0% 30%;
+}
+
+/* Comments */
+
+div#comments {
+   margin-top: 36px;
+}
+
+.comment-metadata {
+    
+}
+
+.comment-metadata time,
+.comment-metadata span {
+    font-size: 13px;
+    margin-left: 4px;
+}
+
+.comment-body {
+    
 }
 
 /*** Mosaic and browser pages ***/
