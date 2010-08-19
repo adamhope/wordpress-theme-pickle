@@ -13,6 +13,5 @@
 // }
 
 TODO change slideshow to only load posts in the same category that also have images
-TODO switch to jQuery
 TODO CSS3 version of reflection when supported
 TODO show fragment of next previous images
