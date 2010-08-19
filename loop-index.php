@@ -68,7 +68,7 @@ if (have_posts()) : while (have_posts()) : the_post();
       </h3>
     </div>
     <div id="imageHolder">
-      <div id="panelExif" class="overlay" style="right:0;top:0;">
+      <div id="panelExif" class="overlay">
         <?echo get_exif();?>
       </div>
         <div id="panelInfo" class="overlay bottomPanel">
