@@ -32,7 +32,7 @@ if ($allid)
 	<table cellpadding="5" cellspacing="0" id="taxonomyTable">
 		<?php if ($disptype): ?>
 		<tr>
-		  <th>By year</th><th style="text-align:right"><?=$disptype == 1 ? 'By tag' : 'By category'?></th>
+		  <th>Browse by year</th><th style="text-align:right">Browse <?=$disptype == 1 ? 'by tag' : 'by category'?></th>
 		</tr>
 		<?php else: ?>
 		<tr>
