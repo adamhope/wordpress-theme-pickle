@@ -71,7 +71,7 @@ if (have_posts()) : while (have_posts()) : the_post();
       <div id="panelExif" class="overlay" style="right:0;top:0;">
         <?echo get_exif();?>
       </div>
-        <div id="panelInfo" class="overlay bottomPanel" style="bottom:0;left:0;right:0;z-index:6">
+        <div id="panelInfo" class="overlay bottomPanel">
           <?php the_content(__('Read more...')); ?>
         </div>
       <div id="overlayNav">
