@@ -490,7 +490,7 @@ add_action( 'widgets_init', 'reflection_widgets_init' );
 function pickle_posted_on() {
 	printf( __( '<span class="%1$s">Posted on</span> %2$s <span class="meta-sep">by</span> %3$s', 'twentyten' ),
 		'meta-prep meta-prep-author',
-		sprintf( '<a href="%1$s" title="%2$s" rel="bookmark"><span class="entry-date">%3$s</span></a>',
+		sprintf( '<a href="%1$s" title="%2$s" rel="bookmark"><time class="entry-date">%3$s</time></a>',
 			get_permalink(),
 			esc_attr( get_the_time() ),
 			get_the_date()

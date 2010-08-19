@@ -40,10 +40,7 @@ if (have_posts()) : while (have_posts()) : the_post();
   ?>
 
   <script>
-    var opts = {
-      nextPostID: <?=$next_post?>,
-      prevPostID: <?=$prev_post?>
-    }
+    var opts = {nextPostID: <?=$next_post?>, prevPostID: <?=$prev_post?>}
   </script>
 
   <div id="slideshow" style="width:<?=im_dim()?>px;">
@@ -67,7 +64,7 @@ if (have_posts()) : while (have_posts()) : the_post();
       </div>
       <h3 id="textTitle">
         <a href="<?php the_permalink();?>"><?php the_title();?></a>
-        <span id="inlinedate"><?php the_date('jS F Y');?></span>
+        <time id="inlinedate"><?php the_date('jS F Y');?></time>
       </h3>
     </div>
     <div id="imageHolder">
