@@ -90,6 +90,22 @@ if (have_posts()) : while (have_posts()) : the_post();
         <?php comments_template(); ?>
       </div>
   <?php endif;?>
+  
+<?php else: ?>
+  <!-- Single post for other categories -->
+
+  <article>
+    <h2><?php the_title();?></h2>
+    <?php the_content(); ?>
+  </article>
+  
+  <?php if (is_single() && !is_home_uri()): ?>
+      <a name="info" id="notes"></a>
+      <?php the_content(); ?>
+      <div id="comments">
+        <?php comments_template(); ?>
+      </div>
+  <?php endif;?>
 
 <?php endif; // This was the if statement that broke the loop into three parts based on categories. ?>
 
