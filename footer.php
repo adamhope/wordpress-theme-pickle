@@ -22,10 +22,10 @@
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
   <script>!window.jQuery && document.write('<script src="<?php bloginfo('template_directory');?>/js/jquery-1.4.2.min.js"></sc'+'ript>')</script>
   <script src="<?php bloginfo('template_directory');?>/js/tooltip.js"></script>
-  <script src="<?php bloginfo('template_directory');?>/js/pickle.min.js"></script>
+  <script src="<?php bloginfo('template_directory');?>/js/pickle.js"></script>
   <script>
-    var opts = opts || {},
-      posts = posts || {};
+    var opts  = opts || {},
+        posts = posts || {};
     opts.templateDir = '<?php bloginfo('template_directory');?>';
     $(document).ready(function() {
       Slideshow.init(opts);
@@ -34,5 +34,4 @@
   </script>
 
 </body>
-
 </html>

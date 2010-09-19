@@ -48,33 +48,31 @@ var Slideshow = (function () {
         $('#nextPostLink', cfg.ctx).html(data.next_post === 0 ? '' : '&raquo;');
         $('#prevPostLink', cfg.ctx).html(data.prev_post === 0 ? '' : '&laquo;');
 
-        $('#overNextLink', cfg.ctx).css({
-            'display': data.next_post === 0 ? 'none' : 'block'
-        });
-        $('#overPrevLink', cfg.ctx).css({
-            'display': data.prev_post === 0 ? 'none' : 'block'
-        });
+        $('#overNextLink', cfg.ctx).css({'display': data.next_post === 0 ? 'none' : 'block'});
+        $('#overPrevLink', cfg.ctx).css({'display': data.prev_post === 0 ? 'none' : 'block'});
 
-        $('.previous').attr('href', data.next_post_perm);
-        $('.next').attr('href', data.prev_post_perm);
+        $('.previous').attr('href', data.nextPostPerm);
+        $('.next').attr('href', data.prevPostPerm);
 
         $('#panelExif', cfg.ctx).html(data.exif);
         $('#comment', cfg.ctx).html(data.comment_count + " comment" + (data.comment_count !== 1 ? "s" : ""));
-        $('#comment', cfg.ctx).attr({
-            'href': data.permalink + '#comments'
-        });
-        $('#textTitle', cfg.ctx).html('<a href="' + data.permalink + '">' + data.post_title + '</a><span id="inlinedate">' + data.post_date + '</span>');
+        $('#comment', cfg.ctx).attr({'href': data.permalink + '#comments'});
+        $('#textTitle', cfg.ctx).html('<a href="' + data.permalink + '">' + data.post_title + '</a><time id="inlinedate">' + data.post_date + '</time>');
         $('#panelInfo', cfg.ctx).html(data.post_content);
 
     },
 
     getNewContent = function (el) {
-        var postID, params, direction = $(el).attr('class');
-        if (direction === 'previous') {
-            postID = prevPostID;
-        } else if (direction === 'next') {
+        var postID, params,
+            direction = $(el).attr('class');
+        switch (direction) {
+        case 'next':
             postID = nextPostID;
-        } else {
+            break;
+        case 'previous':
+            postID = prevPostID;
+            break;
+        default:
             return false;
         }
         params = '?id=' + postID;
@@ -144,10 +142,7 @@ var Browser = (function () {
     },
 
     spinner = function (opacity) {
-        $('#tagProgress').css({
-            'opacity': opacity,
-            'visibility': 'visible'
-        });
+        $('#tagProgress').css({'opacity': opacity, 'visibility': 'visible'});
     },
 
     preloadFinish = function () {
@@ -166,7 +161,7 @@ var Browser = (function () {
         tagFlag = typeof photoData[0].comment_count !== 'undefined';
 
         for (i = 0; i < imgCache.length; i = i + 1) {
-            // TODO figure out why this work around is required, shouldn't be necessary
+            // TODO shouldn't be necessary if the image cache is cleared
             if (!photoData[i]) {
                 return false;
             }
