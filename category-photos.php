@@ -60,9 +60,7 @@ if ($allid)
 				</td>
 			<?php elseif ($disptype == 2): ?>
 				<td id="catCloud">
-					<?php
-						wp_list_categories();
-					?>
+					<?php wp_list_categories(); ?>
 				</td>
 			<?php endif;?>
   		</tr>
