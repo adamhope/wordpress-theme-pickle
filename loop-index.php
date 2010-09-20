@@ -47,13 +47,15 @@ if (have_posts()) : while (have_posts()) : the_post();
     <div id="title">
       <div id="titlebits">
         <ul>
-            <li>
-              <a id="prevPostLink" class="previous" href="<?=$prev_post ? $prev_post_perm.'">&laquo;' : '">';?></a> |
-              <a id="nextPostLink" class="next" href="<?=$next_post ? $next_post_perm.'">&raquo;' : '">';?></a>
-            </li>
+          <li>
+            <a id="prevPostLink" class="previous" href="<?=$prev_post ? $prev_post_perm.'">&laquo;' : '">';?></a> |
+            <a id="nextPostLink" class="next" href="<?=$next_post ? $next_post_perm.'">&raquo;' : '">';?></a>
+          </li>
+          <?php if ('open' == $post->comment_status) : ?>
           <li>
             <a id="comment" href="<?php comments_link();?>"><?php comments_number(__('0 comments',TD),__('1 comment',TD),__('% comments',TD));?></a>
           </li>
+          <?php endif ?>
           <li>
             <a class="panel" id="exif" href=""><?_e('exif',TD);?></a>
           </li>
@@ -86,9 +88,11 @@ if (have_posts()) : while (have_posts()) : the_post();
   <?php if (is_single() && !is_home_uri()): ?>
       <a name="info" id="notes"></a>
       <?php the_content(); ?>
-      <div id="comments">
-        <?php comments_template(); ?>
-      </div>
+      <?php if ('open' == $post->comment_status) : ?>
+        <div id="comments">
+          <?php comments_template(); ?>
+        </div>
+      <?php endif; ?>
   <?php endif;?>
 
 <?php else: ?>
@@ -97,9 +101,11 @@ if (have_posts()) : while (have_posts()) : the_post();
   <article>
     <h2><?php the_title();?></h2>
     <?php the_content(); ?>
-    <div id="comments">
-      <?php comments_template(); ?>
-    </div>
+    <?php if ('open' == $post->comment_status) : ?>
+      <div id="comments">
+        <?php comments_template(); ?>
+      </div>
+    <?php endif; ?>
   </article>
 
 <?php endif; // This was the if statement that broke the loop into three parts based on categories. ?>
