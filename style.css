@@ -456,7 +456,8 @@ header {
 }
 
 header hgroup {
-    height: 60px;
+    overflow: auto;
+    width: 100%;
 }
 
 #slideshow {
@@ -464,10 +465,9 @@ header hgroup {
 }
 
 footer {
-    font:0.7em Verdana;
+    font-size: 0.7em;
     padding: 30px 0 10px 0;
-    color:#555;
-    clear:left;
+    color: #555;
 }
 
 footer a{
