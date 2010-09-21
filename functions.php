@@ -334,8 +334,7 @@ function reflection_admin() {
  * 
  * @param bool $removeamps If true, replace XHTML ampersand with standard ampersand.
  */
-function get_thumbnail($removeamps=false)
-{
+function get_thumbnail($removeamps=false) {
 	global $post;
 	
 	$uri = $post->image->getThumbnailHref(array('w='.im_dim(), 'q=70'));
@@ -346,10 +345,8 @@ function get_thumbnail($removeamps=false)
 /**
  * Determines the image width.
  */
-function im_dim()
-{
+function im_dim() {
 	global $post;
-
 	if ($post->image->width > $post->image->height) {
 		$wl = get_opt_or_default('widthland');
 		return $post->image->width > $wl ? $wl : $post->image->width;
@@ -362,8 +359,7 @@ function im_dim()
 /**
  * Grabs EXIF information from the database.
  */
-function get_exif()
-{
+function get_exif() {
 	global $post;
 	
 	$exif_info = yapb_get_exif();
@@ -412,7 +408,6 @@ if (is_admin()) {
 			}
 		}
 	}
-
 	add_action('admin_menu', 'reflection_add_pages');
 }
 
@@ -431,6 +426,10 @@ add_filter('yapb_get_exif', 'yapb_get_exif_filter');
 */
 
 // register_sidebar();
+
+register_nav_menus( array(
+	'primary' => __( 'Primary Navigation', 'reflection' ),
+) );
 
 function reflection_widgets_init() {
 

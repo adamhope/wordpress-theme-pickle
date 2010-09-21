@@ -11,7 +11,7 @@
 <!DOCTYPE html>
 <html lang="en" class="no-js">
 <head>
-  <meta charset="<?php bloginfo( 'charset' ); ?>" />
+  <meta charset="<?php bloginfo('charset'); ?>" />
   <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><![endif]-->
   <title><?php
   	/*
@@ -32,8 +32,8 @@
 
   <link rel="profile" href="http://gmpg.org/xfn/11" />
   <link rel="stylesheet" href="<?php bloginfo('template_directory');?>/reset.css" />
-  <link rel="stylesheet" href="<?php bloginfo( 'stylesheet_url' ); ?>" />
-  <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
+  <link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>" />
+  <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
 
   <?php wp_head(); ?>
 
@@ -52,12 +52,12 @@
     <hgroup>
       <h1 id="site-title">
     		<a href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
-    		  <?php bloginfo( 'name' ); ?>
+    		  <?php bloginfo('name'); ?>
     		</a>
   		</h1>
-  		<h2 id="site-description"><?php bloginfo( 'description' ); ?></h2>
+  		<h2 id="site-description"><?php bloginfo('description'); ?></h2>
   	</hgroup>
     <nav role="navigation">
-      <?php wp_nav_menu(); ?>
+      <?php wp_nav_menu(array('theme_location' => 'primary')); ?>
     </nav>
   </header>
