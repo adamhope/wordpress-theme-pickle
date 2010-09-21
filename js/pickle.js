@@ -81,9 +81,18 @@ var Slideshow = (function () {
         });
     },
 
+    // TODO this only needs to be done when the page first loads
+    setImageHolderSize = function () {
+        $('#imageHolder', cfg.ctx).css({
+            'width':  $('#mainImage', cfg.ctx).css('width'),
+            'height': $('#mainImage', cfg.ctx).css('height')
+        });
+    },
+
     setupNavigation = function () {
         $('.previous, .next').each(function (i, el) {
             $(el).click(function (e) {
+                setImageHolderSize();
                 getNewContent(el);
                 e.preventDefault();
             });
@@ -103,14 +112,10 @@ var Slideshow = (function () {
             if (!opts) {
                 return false;
             }
-            cfg = $.extend({}, DEFAULTS, opts);
+            cfg        = $.extend({}, DEFAULTS, opts);
             nextPostID = cfg.nextPostID;
             prevPostID = cfg.prevPostID;
             ajaxSource = cfg.templateDir + '/ajax_blog.php';
-            $('#imageHolder', cfg.ctx).css({
-                'width': $('#mainImage', cfg.ctx).css('width'),
-                'height': $('#mainImage', cfg.ctx).css('height')
-            });
             setupNavigation();
         }
     };
