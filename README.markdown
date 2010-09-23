@@ -12,3 +12,4 @@ There is still a lot of work to do on this theme so before you jump in expect th
   2. Update admin settings for theme
   3. Simplification of HTML, CSS and JS
   4. Use minimised jQuery tooltip plugin
+  5. Fix photo category template
