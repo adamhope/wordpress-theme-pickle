@@ -23,8 +23,9 @@ $disptype = get_opt_or_default('archivedisp');
 $allid    = $wpdb->get_var("SELECT p.ID FROM $wpdb->posts AS p, $wpdb->postmeta AS m
                             WHERE p.ID = m.post_id AND p.post_status='publish' AND m.meta_key='_wp_page_template' AND m.meta_value='archive.php'");
 $alluri   = '';
-if ($allid)
+if ($allid) {
   $alluri = get_permalink($allid);
+}
 
 ?>
 
