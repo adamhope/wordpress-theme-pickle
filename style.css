@@ -1,7 +1,7 @@
 /*
 Theme Name: PicklePhoto
 Theme URI: http://www.adamhope.com
-Description: YAPB theme for photos and regular content, based on Reflection.
+Description: YAPB theme for photos and regular content, based on Reflection and TwentyTen.
 Version: 0.5
 Author: Adam Hope
 Author URI: http://www.adamhope.com
@@ -530,14 +530,14 @@ header nav a:hover {
 }
 
 #inlinedate {
-    padding-left:8px;
-    font-weight:normal;
-    color:#2e2e2e;
+    padding-left: 8px;
+    font-weight: normal;
+    color: #2e2e2e;
 }
 
 #textTitle a {
-    color:#666;
-    text-decoration:none;
+    color: #666;
+    text-decoration: none;
 }
 
 #textTitle a:hover {
@@ -578,10 +578,14 @@ header nav a:hover {
 }
 
 .overlay{
-/*visibility:hidden;*/
-display: none;
-position:absolute;
-z-index:3;
+    /*visibility:hidden;*/
+    display: none;
+    position:absolute;
+    z-index:3;
+}
+
+#exif {
+    display: none;
 }
 
 #panelExif {
@@ -617,24 +621,24 @@ z-index:3;
     text-transform:lowercase;
 }
 
-#panelInfo{
-background:black;
-border:2px solid #fff;
-padding:5px;
-font:0.8em Verdana;
-bottom:0;
-left:0;
-right:0;
-z-index:6
+#panelInfo {
+    background:black;
+    border:2px solid #fff;
+    padding:5px;
+    font:0.8em Verdana;
+    bottom:0;
+    left:0;
+    right:0;
+    z-index:6
 }
 
-#panelInfo a{
-color:#888;
-text-decoration:none;
+#panelInfo a {
+    color:#888;
+    text-decoration:none;
 }
 
-#panelInfo a:hover{
-text-decoration:underline;
+#panelInfo a:hover {
+    text-decoration:underline;
 }
 
 #imageHolder {
@@ -651,7 +655,8 @@ height:100%;
 background:transparent url(images/1px.gif);
 }
 
-#overNextLink,#overPrevLink{
+#overNextLink,
+#overPrevLink {
 position:absolute;
 display:block;
 width:50%;

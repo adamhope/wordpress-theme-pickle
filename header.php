@@ -27,7 +27,7 @@
   		echo " | $site_description";
   	// Add a page number if necessary:
   	if ( $paged >= 2 || $page >= 2 )
-  		echo ' | ' . sprintf( __( 'Page %s', 'reflection' ), max( $paged, $page ) );
+  		echo ' | ' . sprintf( __( 'Page %s', 'pickle' ), max( $paged, $page ) );
 	?></title>
 
   <link rel="profile" href="http://gmpg.org/xfn/11" />

@@ -16,9 +16,9 @@ if (is_home()) {
 <?php /* If there are no posts to display, such as an empty archive page */ ?>
 <?php if ( ! have_posts() ) : ?>
 	<div id="post-0" class="post error404 not-found">
-		<h1 class="entry-title"><?php _e( 'Not Found', 'twentyten' ); ?></h1>
+		<h1 class="entry-title"><?php _e( 'Not Found', 'pickle' ); ?></h1>
 		<div class="entry-content">
-			<p><?php _e( 'Apologies, but no results were found for the requested archive. Perhaps searching will help find a related post.', 'twentyten' ); ?></p>
+			<p><?php _e( 'Apologies, but no results were found for the requested archive. Perhaps searching will help find a related post.', 'pickle' ); ?></p>
 			<?php get_search_form(); ?>
 		</div><!-- .entry-content -->
 	</div><!-- #post-0 -->
@@ -29,7 +29,7 @@ if (is_home()) {
 if (have_posts()) : while (have_posts()) : the_post();
 ?>
 
-<?php if ( in_category( _x('photos', 'photo category slug', 'reflection') ) ) : ?>
+<?php if ( in_category( _x('photos', 'photo category slug', 'pickle') ) ) : ?>
 
   <?
   // Grab next/previous post IDs if they exist and are in same category. Odd syntax is hack for PHP4.
@@ -39,9 +39,7 @@ if (have_posts()) : while (have_posts()) : the_post();
   $prev_post_perm = get_permalink($prev_post);
   ?>
 
-  <script>
-    var opts = {nextPostID: <?=$next_post?>, prevPostID: <?=$prev_post?>}
-  </script>
+  <script>var opts = {nextPostID: <?=$next_post?>, prevPostID: <?=$prev_post?>}</script>
 
   <div id="slideshow" style="width:<?=im_dim()?>px;">
     <div id="title">
@@ -53,14 +51,14 @@ if (have_posts()) : while (have_posts()) : the_post();
           </li>
           <?php if ('open' == $post->comment_status) : ?>
           <li>
-            <a id="comment" href="<?php comments_link();?>"><?php comments_number(__('0 comments',TD),__('1 comment',TD),__('% comments',TD));?></a>
+            <a id="comment" href="<?php comments_link();?>"><?php comments_number(__('0 comments',TD), __('1 comment',TD), __('% comments',TD));?></a>
           </li>
           <?php endif ?>
           <li>
-            <a class="panel" id="exif" href=""><?_e('exif',TD);?></a>
+            <a class="panel" id="exif" href=""><?_e('exif', TD);?></a>
           </li>
           <li>
-            <a class="panel" id="info" href="<?the_permalink();?>#notes"><?_e('info',TD);?></a>
+            <a class="panel" id="info" href="<?the_permalink();?>#notes"><?_e('info', TD);?></a>
           </li>
         </ul>
       </div>
@@ -73,9 +71,9 @@ if (have_posts()) : while (have_posts()) : the_post();
       <div id="panelExif" class="overlay">
         <?echo get_exif();?>
       </div>
-        <div id="panelInfo" class="overlay bottomPanel">
-          <?php the_content(__('Read more...')); ?>
-        </div>
+      <div id="panelInfo" class="overlay bottomPanel">
+        <?php the_content(__('Read more...')); ?>
+      </div>
       <div id="overlayNav">
         <a href="<?=$prev_post ? $prev_post_perm.'"' : '" style="display:none"'?> id="overPrevLink" class="previous"></a>
         <a href="<?=$next_post ? $next_post_perm.'"' : '" style="display:none"'?> id="overNextLink" class="next"></a>
@@ -83,7 +81,7 @@ if (have_posts()) : while (have_posts()) : the_post();
       <img id="mainImage" src="<?=get_thumbnail();?>" alt="image" />
     </div>
   </div>
-  <div id="reflectionHolder"></div>
+  <div id="pickleHolder"></div>
 
   <?php if (is_single() && !is_home_uri()): ?>
       <a name="info" id="notes"></a>
@@ -106,6 +104,10 @@ if (have_posts()) : while (have_posts()) : the_post();
         <?php comments_template(); ?>
       </div>
     <?php endif; ?>
+    <div id="nav-below" class="navigation">
+    	<div class="nav-previous"><?php next_post_link('%link', '&larr; %title', TRUE); ?></div>
+    	<div class="nav-next"><?php previous_post_link('%link', '%title &rarr;', TRUE); ?></div>
+    </div><!-- #nav-below -->
   </article>
 
 <?php endif; // This was the if statement that broke the loop into three parts based on categories. ?>

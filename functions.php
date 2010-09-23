@@ -4,7 +4,7 @@
  * also define things which make it much easier to create administration
  * pages and deal with options.
  *
- * @package Reflection
+ * @package pickle
  */
 
 /**
@@ -12,7 +12,7 @@
  * 
  * @global string $pfix
  */
-$pfix = "reflection_";
+$pfix = "pickle_";
 
 /**
  * Version number for use in the footer.
@@ -22,10 +22,10 @@ $pfix = "reflection_";
 $vnum = "1.1";
 
 /**
- * Array of options we use in reflection.
+ * Array of options we use in pickle.
  * 
  * This is an array containing all the names and default values that we use for
- * Reflection. Each element is also an array with three possible keys
+ * pickle. Each element is also an array with three possible keys
  * 
  * - type: Can be text, hidden, int or check
  * - size: For int/text types, size of textfield.
@@ -201,10 +201,10 @@ function get_opt_or_default($optname) {
 }
 
 /**
- * Filter function to create the option page for Reflection.
+ * Filter function to create the option page for pickle.
  */
-function reflection_add_pages() {
-	add_theme_page('Reflection Options', 'Reflection', 'edit_themes', basename(__FILE__), 'reflection_admin');
+function pickle_add_pages() {
+	add_theme_page('pickle Options', 'pickle', 'edit_themes', basename(__FILE__), 'pickle_admin');
 }
 
 /**
@@ -243,11 +243,11 @@ function field_print($name) {
 /**
  * Sets up the administration page itself.
  */
-function reflection_admin() {
+function pickle_admin() {
 	global $updateflag;
 
 	echo '<div class="wrap">';
-	echo '<h2>'.__('Reflection Options').'</h2>';
+	echo '<h2>'.__('pickle Options').'</h2>';
 	if ($updateflag) { ?><div class="updated"><p><strong><?php _e('Options saved.'); ?></strong></p></div><? }
 
 	?>
@@ -408,7 +408,7 @@ if (is_admin()) {
 			}
 		}
 	}
-	add_action('admin_menu', 'reflection_add_pages');
+	add_action('admin_menu', 'pickle_add_pages');
 }
 
 /*
@@ -428,16 +428,16 @@ add_filter('yapb_get_exif', 'yapb_get_exif_filter');
 // register_sidebar();
 
 register_nav_menus( array(
-	'primary' => __( 'Primary Navigation', 'reflection' ),
+	'primary' => __( 'Primary Navigation', 'pickle' ),
 ) );
 
-function reflection_widgets_init() {
+function pickle_widgets_init() {
 
 	// Area 1, located in the footer. Empty by default.
 	register_sidebar( array(
-		'name' => __( 'First Footer Widget Area', 'reflection' ),
+		'name' => __( 'First Footer Widget Area', 'pickle' ),
 		'id' => 'first-footer-widget-area',
-		'description' => __( 'The first footer widget area', 'reflection' ),
+		'description' => __( 'The first footer widget area', 'pickle' ),
 		'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
 		'after_widget' => '</li>',
 		'before_title' => '<h3 class="widget-title">',
@@ -446,9 +446,9 @@ function reflection_widgets_init() {
 
 	// Area 2, located in the footer. Empty by default.
 	register_sidebar( array(
-		'name' => __( 'Second Footer Widget Area', 'reflection' ),
+		'name' => __( 'Second Footer Widget Area', 'pickle' ),
 		'id' => 'second-footer-widget-area',
-		'description' => __( 'The second footer widget area', 'reflection' ),
+		'description' => __( 'The second footer widget area', 'pickle' ),
 		'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
 		'after_widget' => '</li>',
 		'before_title' => '<h3 class="widget-title">',
@@ -457,9 +457,9 @@ function reflection_widgets_init() {
 
 	// Area 3, located in the footer. Empty by default.
 	register_sidebar( array(
-		'name' => __( 'Third Footer Widget Area', 'reflection' ),
+		'name' => __( 'Third Footer Widget Area', 'pickle' ),
 		'id' => 'third-footer-widget-area',
-		'description' => __( 'The third footer widget area', 'reflection' ),
+		'description' => __( 'The third footer widget area', 'pickle' ),
 		'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
 		'after_widget' => '</li>',
 		'before_title' => '<h3 class="widget-title">',
@@ -468,9 +468,9 @@ function reflection_widgets_init() {
 
 	// Area 4, located in the footer. Empty by default.
 	register_sidebar( array(
-		'name' => __( 'Fourth Footer Widget Area', 'reflection' ),
+		'name' => __( 'Fourth Footer Widget Area', 'pickle' ),
 		'id' => 'fourth-footer-widget-area',
-		'description' => __( 'The fourth footer widget area', 'reflection' ),
+		'description' => __( 'The fourth footer widget area', 'pickle' ),
 		'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
 		'after_widget' => '</li>',
 		'before_title' => '<h3 class="widget-title">',
@@ -478,8 +478,8 @@ function reflection_widgets_init() {
 	) );
 }
 
-/** Register sidebars by running reflection_widgets_init() on the widgets_init hook. */
-add_action( 'widgets_init', 'reflection_widgets_init' );
+/** Register sidebars by running pickle_widgets_init() on the widgets_init hook. */
+add_action( 'widgets_init', 'pickle_widgets_init' );
 
 /**
  * Prints HTML with meta information for the current post—date/time and author.
@@ -487,7 +487,7 @@ add_action( 'widgets_init', 'reflection_widgets_init' );
  * @since Twenty Ten 1.0
  */
 function pickle_posted_on() {
-	printf( __( '<span class="%1$s">Posted on</span> %2$s <span class="meta-sep">by</span> %3$s', 'twentyten' ),
+	printf( __( '<span class="%1$s">Posted on</span> %2$s <span class="meta-sep">by</span> %3$s', 'pickle' ),
 		'meta-prep meta-prep-author',
 		sprintf( '<a href="%1$s" title="%2$s" rel="bookmark"><time class="entry-date">%3$s</time></a>',
 			get_permalink(),
@@ -496,7 +496,7 @@ function pickle_posted_on() {
 		),
 		sprintf( '<span class="author vcard"><a class="url fn n" href="%1$s" title="%2$s">%3$s</a></span>',
 			get_author_posts_url( get_the_author_meta( 'ID' ) ),
-			sprintf( esc_attr__( 'View all posts by %s', 'twentyten' ), get_the_author() ),
+			sprintf( esc_attr__( 'View all posts by %s', 'pickle' ), get_the_author() ),
 			get_the_author()
 		)
 	);

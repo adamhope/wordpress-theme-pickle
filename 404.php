@@ -3,7 +3,7 @@
  * Error finding requested page. Output error page with links to most popular
  * pages and also contact e-mail.
  *
- * @package Reflection
+ * @package pickle
  */
 
 // Grab header.

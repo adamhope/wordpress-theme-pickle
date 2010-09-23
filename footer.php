@@ -8,7 +8,7 @@
         <a href="<?php echo home_url( '/' ) ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
           <?php bloginfo('name'); ?>
         </a>
-        <?php do_action( 'reflection_credits' ); ?>
+        <?php do_action( 'pickle_credits' ); ?>
         <a href="<?php echo esc_url( __('http://wordpress.org/', 'pickle') ); ?>" title="<?php esc_attr_e('Semantic Personal Publishing Platform', 'pickle'); ?>" rel="generator">
           <?php printf( __('Proudly powered by %s.', 'pickle'), 'WordPress' ); ?>
         </a>
