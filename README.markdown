@@ -1,6 +1,6 @@
 ## Pickle
 
-Pickle is a YAPB enabled theme for wordpress based on Reflection and TwentyTen.
+Pickle is a YAPB enabled theme for wordpress originally based on Reflection and TwentyTen.
 
 I created this theme because although I liked Reflection it does not support widgets or custom menus or posts which do not contain photos.
 
@@ -9,7 +9,6 @@ I created this theme because although I liked Reflection it does not support wid
 There is still a lot of work to do on this theme so before you jump in expect the following to change:
 
   1. Will make full use of HTML5
-  2. Update admin settings for theme
-  3. Simplification of HTML, CSS and JS
-  4. Use minimised jQuery tooltip plugin
-  5. Fix photo category template
+  2. Simplification of HTML, CSS and JS
+  3. Add theme option to remove all references to comments
+  4. Add theme option to remove all references to EXIF data
