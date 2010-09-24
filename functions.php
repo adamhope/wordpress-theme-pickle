@@ -204,7 +204,7 @@ function get_opt_or_default($optname) {
  * Filter function to create the option page for pickle.
  */
 function pickle_add_pages() {
-	add_theme_page('pickle Options', 'pickle', 'edit_themes', basename(__FILE__), 'pickle_admin');
+	add_theme_page('Pickle Options', 'Pickle', 'edit_themes', basename(__FILE__), 'pickle_admin');
 }
 
 /**
@@ -247,7 +247,7 @@ function pickle_admin() {
 	global $updateflag;
 
 	echo '<div class="wrap">';
-	echo '<h2>'.__('pickle Options').'</h2>';
+	echo '<h2>'.__('Pickle Options').'</h2>';
 	if ($updateflag) { ?><div class="updated"><p><strong><?php _e('Options saved.'); ?></strong></p></div><? }
 
 	?>
