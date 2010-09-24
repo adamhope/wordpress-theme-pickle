@@ -53,10 +53,11 @@ if ($allid) {
       <?php if ($disptype == 1): ?>
         <td id="tagCloud">
           <?php 
-            if ($thistag !== false)
+            if ($thistag !== false) {
               echo implode(' ', str_replace('tag-link-' . $curtag, 'tag-link-' . $curtag.' current', wp_tag_cloud('format=array')));
-            else
+            } else {
               wp_tag_cloud('');
+            }
           ?>
         </td>
       <?php elseif ($disptype == 2): ?>
@@ -67,9 +68,9 @@ if ($allid) {
       </tr>
     </table>
     
-  <div style="margin-top: 8px">
-        <div id="tagPics">
-          <div id="tagContainer">
+    <div style="margin-top: 8px">
+      <div id="tagPics">
+        <div id="tagContainer">
 <?php
 
 // Grab all posts from the database in correct order.
@@ -93,7 +94,6 @@ endwhile; endif;
       </div>
       <img src="<?php bloginfo('template_directory'); ?>/images/browse-load.gif" id="tagProgress" alt="loading" />
     </div>
-
   </div>
   <?php if (get_opt_or_default('mosaictips')): ?>
     <script>
@@ -103,8 +103,5 @@ endwhile; endif;
 </div>
 
 <?
-
-// Get footer.
-get_footer();
-
+  get_footer();
 ?>
