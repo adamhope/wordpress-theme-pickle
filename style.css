@@ -795,7 +795,7 @@ h2.mosaicheader {
     position: relative;
     line-height: 0;
     height: 1%;
-    /* Ugly hack for IE */: ;
+    /* Ugly hack for IE */
 }
 
 #tagProgress {
