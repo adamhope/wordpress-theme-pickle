@@ -33,7 +33,7 @@ Author URI: http://www.adamhope.com
     width: 220px;
 }
 
-#colophon {
+footer {
     border-top: 4px solid #000;
     padding: 18px 0;
 }
@@ -51,12 +51,7 @@ footer {
 
 #footer-widget-area .widget-area {
     float: left;
-    margin-right: 20px;
-    width: 220px;
-}
-
-#footer-widget-area #fourth {
-    margin-right: 0
+    width: 300px;
 }
 
 /* =Widget Areas
