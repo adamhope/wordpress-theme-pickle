@@ -625,6 +625,10 @@ footer a:hover {
     display: none
 }
 
+.panel {
+    color: #666;
+}
+
 #panelExif {
     background-color: #aaa;
     width: 350px;
