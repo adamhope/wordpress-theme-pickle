@@ -1,5 +1,3 @@
-ProCSSor
-DownloadCopyReturn
 /**
  * Theme Name: Pickle
  * Theme URI: http://www.adamhope.com
@@ -109,7 +107,7 @@ DownloadCopyReturn
 }
 
 .widget_rss a.rsswidget {
-    color: #000
+    color: #000;
 }
 
 .widget_rss a.rsswidget:hover {
@@ -170,7 +168,7 @@ DownloadCopyReturn
 
 #main dt,
 #main th {
-    color: #000
+    color: #000;
 }
 
 #main h1,
@@ -226,7 +224,7 @@ DownloadCopyReturn
 }
 
 .page-title {
-    color: #000;
+    color: #2E2E2E;
     font-size: 14px;
     font-weight: bold;
     margin: 0 0 36px 0;
@@ -251,7 +249,7 @@ DownloadCopyReturn
 }
 
 #main .entry-title {
-    color: #000;
+    color: #2E2E2E;
     font-size: 21px;
     font-weight: bold;
     line-height: 1.3em;
@@ -260,7 +258,7 @@ DownloadCopyReturn
 
 .entry-title a:link,
 .entry-title a:visited {
-    color: #000;
+    color: #2E2E2E;
     text-decoration: none;
 }
 
@@ -347,7 +345,7 @@ DownloadCopyReturn
 }
 
 .page-link {
-    color: #000;
+    color: #2E2E2E;
     font-weight: bold;
     margin: 0 0 22px 0;
     word-spacing: 0.5em;
@@ -463,7 +461,7 @@ header hgroup {
 }
 
 #site-title a {
-    color: #000;
+    color: #2E2E2E;
     font-size: 30px;
     text-decoration: none;
 }
