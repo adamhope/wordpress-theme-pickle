@@ -46,7 +46,8 @@
 
 .widget-title {
     color: #222;
-    font-weight: bold;
+    font-weight: normal;
+    margin-bottom: 8px;
 }
 
 .widget-area a:link,
@@ -123,11 +124,9 @@
 
 #main {
     width: 960px;
-    margin: 0 auto;
+    margin: 0 auto 36px auto;
     clear: both;
     overflow: hidden;
-    padding: 40px 0 0 0;
-    margin-bottom: 36px;
 }
 
 #main,
