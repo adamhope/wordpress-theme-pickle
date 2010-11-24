@@ -21,7 +21,7 @@
 var Slideshow = (function () {
 
     var cfg, preloadedImg, nextPostID, prevPostID, ajaxSource, DEFAULTS = {
-        ctx: '#slideshow',
+        ctx      : '#slideshow',
         mainImage: '#mainImage'
     },
 
