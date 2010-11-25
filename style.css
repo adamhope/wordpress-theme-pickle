@@ -45,7 +45,7 @@
 }
 
 .widget-title {
-    color: #222;
+    color: #292929;
     font-weight: normal;
     margin-bottom: 8px;
 }
@@ -73,7 +73,7 @@
 }
 
 #wp-calendar caption {
-    color: #222;
+    color: #292929;
     font-size: 14px;
     font-weight: bold;
     padding-bottom: 4px;
@@ -223,7 +223,7 @@
 }
 
 .page-title {
-    color: #2E2E2E;
+    color: #292929;
     font-size: 14px;
     font-weight: bold;
     margin: 0 0 36px 0;
@@ -248,7 +248,7 @@
 }
 
 #main .entry-title {
-    color: #2E2E2E;
+    color: #292929;
     font-size: 21px;
     font-weight: bold;
     line-height: 1.3em;
@@ -257,7 +257,7 @@
 
 .entry-title a:link,
 .entry-title a:visited {
-    color: #2E2E2E;
+    color: #292929;
     text-decoration: none;
 }
 
@@ -344,7 +344,7 @@
 }
 
 .page-link {
-    color: #2E2E2E;
+    color: #292929;
     font-weight: bold;
     margin: 0 0 22px 0;
     word-spacing: 0.5em;
@@ -460,7 +460,7 @@ header hgroup {
 }
 
 #site-title a {
-    color: #2E2E2E;
+    color: #292929;
     font-size: 30px;
     text-decoration: none;
 }
@@ -567,7 +567,7 @@ footer a:hover {
 #inlinedate {
     padding-left: 8px;
     font-weight: normal;
-    color: #2e2e2e;
+    color: #292929;
 }
 
 #textTitle a {
@@ -631,7 +631,7 @@ footer a:hover {
     width: 350px;
     border: 2px solid #fff;
     border-top: none;
-    color: black;
+    color: #292929;
     font-size: 0.8em;
     right: 0;
     top: 0;
@@ -660,7 +660,7 @@ footer a:hover {
 }
 
 #panelInfo {
-    background: black;
+    background: #292929;
     border: 2px solid #fff;
     padding: 5px;
     font: 0.8em Verdana;
@@ -808,7 +808,7 @@ h2.mosaicheader {
 }
 
 #tagPics {
-    background: #313131;
+    background: #292929;
     position: relative;
     line-height: 0;
     height: 1%;
