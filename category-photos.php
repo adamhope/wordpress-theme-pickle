@@ -68,7 +68,7 @@ if ($allid) {
       </tr>
     </table>
     
-    <div style="margin-top: 8px">
+    <div>
       <div id="tagPics">
         <div id="tagContainer">
 <?php
@@ -85,8 +85,8 @@ if (have_posts()) : while (have_posts()) : the_post();
     'comment_count' => $post->comment_count
   ));
 
-  echo '<a href="'.get_permalink($post->ID).'">';
-  echo '<img class="mosaic" src="' . square_thumb($post->ID) . '" alt="thumb" />';
+  echo '<a href="' . get_permalink($post->ID) . '">';
+  echo '<img class="mosaic" src="' . square_thumb($post->ID) . '" alt=" " />';
   echo '</a>';
 
 endwhile; endif;
