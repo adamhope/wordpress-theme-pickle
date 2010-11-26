@@ -479,7 +479,7 @@ header hgroup {
 
 header nav ul {
     float: right;
-    margin: 0 20px;
+    margin: 0 0 0 20px;
 }
 
 header nav li {
@@ -746,8 +746,8 @@ footer a:hover {
    ================================================== */
 
 .mosaic {
-/*    border: 1px solid #777;*/
-    margin: 2px;
+    margin: 15px;
+    /* NOTE: for smaller 100px thumbnails  margin: 2px; */
     padding: 1px;
     background: #bbb;
 }
