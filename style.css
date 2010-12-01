@@ -805,11 +805,11 @@ h2.mosaicheader {
     border-bottom: 2px solid #E7E7E7;
 }
 
-#tagContainer {
+#tag-pics {
     padding: 5px 5px 5px 8px
 }
 
-#tagPics {
+#tag-pics-wrapper {
     background: #292929;
     position: relative;
     line-height: 0;
