@@ -133,7 +133,10 @@ var Browser = (function () {
         $('.mosaic').each(function (i, el) {
             $(el).data({
                 'tip:title': photoData[i].post_title,
-                'tip:text': photoData[i].post_date + '<br />' + photoData[i].comment_count + ' ' + (photoData[i].comment_count === 1 ? 'comment' : 'comments')
+                'tip:text': photoData[i].post_date    +
+                '<br />' + photoData[i].comment_count +
+                ' '                                   +
+                (photoData[i].comment_count === 1 ? 'comment' : 'comments')
             });
         }).tooltip({
             track: true,
@@ -159,7 +162,7 @@ var Browser = (function () {
         }
 
         // Remove all images from container
-        $('#tagContainer').empty();
+        $('#tag-pics').empty();
 
         spinner(0);
 
@@ -173,17 +176,12 @@ var Browser = (function () {
             link = $('<a href="' + photoData[i].permalink + '" />');
             $(imgCache[i]).addClass('mosaic');
             $(link).append(imgCache[i]);
-            $('#tagContainer').append(link);
+            $('#tag-pics').append(link);
         }
 
         if (tagFlag) {
             setupTooltips();
         }
-
-        $('#tagContainer').css({
-            'height': 'auto',
-            'overflow': 'auto'
-        });
 
     },
 
@@ -215,14 +213,6 @@ var Browser = (function () {
         }
 
         params = '?' + type + '=' + ident;
-
-        // Set up heights for a smooth transition.
-        // TODO don't think scrollHeight is working
-        $('#tagPics').css('height', $('#tagPics')[0].scrollHeight);
-        $('#tagContainer').css({
-            'overflow': 'auto',
-            'height': $('#tagContainer')[0].scrollHeight
-        });
 
         $('a.current').removeClass('current');
         $(el).addClass('current');
