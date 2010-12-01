@@ -69,8 +69,8 @@ if ($allid) {
     </table>
     
     <div>
-      <div id="tagPics">
-        <div id="tagContainer">
+      <div id="tag-pics-wrapper">
+        <div id="tag-pics">
 <?php
 
 // Grab all posts from the database in correct order.
