@@ -10,7 +10,7 @@
 /* ===[ Structure the footer area ]=== */
 
 #footer-widget-area {
-    overflow: hidden
+    overflow: hidden;
 }
 
 #footer-widget-area .widget-area {
@@ -41,13 +41,14 @@
 }
 
 .widget-container {
-    margin: 0 0 18px 0
+    line-height: 24px;
+    margin: 0 0 24px 0;
 }
 
 .widget-title {
     color: #292929;
     font-weight: normal;
-    margin-bottom: 8px;
+    line-height: 24px;
 }
 
 .widget-area a:link,
@@ -63,6 +64,7 @@
 .widget-area .entry-meta {
     font-size: 11px
 }
+
 
 #wp_tag_cloud div {
     line-height: 1.6em
@@ -177,8 +179,6 @@
 #main h5,
 #main h6 {
     color: #000;
-    line-height: 1.5em;
-    margin: 0 0 20px 0;
 }
 
 #main table {
@@ -439,7 +439,7 @@ body {
 /* ===[ Header ]=== */
 
 header {
-    padding: 40px 0;
+    padding: 24px 0;
 }
 
 header #header-wrapper {
@@ -455,8 +455,8 @@ header hgroup {
 
 #site-title {
     font-size: 30px;
-    line-height: 36px;
-    margin: 0 0 18px;
+    line-height: 48px;
+    margin: 0 0 24px;
 }
 
 #site-title a {
@@ -508,12 +508,12 @@ header nav a:hover {
 
 footer {
     color: #555;
-    padding: 30px 0px;
+    padding: 22px 0px;
 }
 
 footer #footer-wrapper {
     border-top: 4px solid #000;
-    padding: 18px 0;
+    padding: 20px 0 24px 0;
     margin: 0 auto;
     text-align: left;
     width: 960px;
@@ -530,8 +530,8 @@ footer a:hover {
 
 #copyright {
     border-top: 2px solid #E7E7E7;
-    padding-top: 9px;
-    font-size: 0.7em
+    line-height: 22px;
+    font-size: 0.7em;
 }
 
 /* ===[ Slideshow ]=== */
@@ -561,7 +561,8 @@ footer a:hover {
 
 #textTitle {
     letter-spacing: -1px;
-    font: bold 1.4em Arial;
+    font: bold 24px Arial;
+    line-height: 48px;
     margin: 0;
     padding: 0;
 }
@@ -597,6 +598,7 @@ footer a:hover {
 }
 
 #titlebits li {
+    line-height: 24px;
     padding-left: 10px
 }
 
@@ -607,12 +609,14 @@ footer a:hover {
     overflow: hidden;
     top: 0;
     left: 0;
+    padding-bottom: 200px;
 }
 
-#mainImage {
-    display: block
+#imageHolder {
+    -webkit-box-shadow: rgba(0, 0, 0, 0.5) 0 1px 6px;
+    border: 1px solid #000;
+    padding: 1px;
 }
-
 .overlay {
     /*visibility: hidden;*/
     display: none;
