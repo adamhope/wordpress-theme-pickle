@@ -544,7 +544,7 @@ footer a:hover {
 }
 
 #titlebits ul {
-    padding: 0;
+    padding: 20px 0 0 0;
     margin: 0;
 }
 
@@ -585,7 +585,6 @@ footer a:hover {
 #titlebits {
     position: absolute;
     right: 0;
-    bottom: 0.2em;
     font: 0.7em Verdana;
 }
 
