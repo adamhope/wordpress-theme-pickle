@@ -15,7 +15,7 @@
 
 #footer-widget-area .widget-area {
     float: left;
-    width: 300px;
+    width: 320px;
 }
 
 /* ===[ Widget Areas ]=== */
@@ -496,8 +496,9 @@ header nav a {
     color: #666;
     display: block;
     font-weight: bold;
-    padding: 11px 20px;
+    padding: 11px 20px 7px 20px;
     text-decoration: none;
+    border-bottom: 4px solid #FFFFFF;
 }
 
 header nav a:hover {
