@@ -46,7 +46,7 @@
 }
 
 .widget-title {
-    color: #292929;
+    color: #333333;
     font-weight: normal;
     line-height: 24px;
 }
@@ -75,7 +75,7 @@
 }
 
 #wp-calendar caption {
-    color: #292929;
+    color: #333333;
     font-size: 14px;
     font-weight: bold;
     padding-bottom: 4px;
@@ -134,7 +134,7 @@
 #main,
 #main input,
 #main textarea {
-    color: #333;
+    color: #999;
     font-size: 16px;
     line-height: 24px;
 }
@@ -223,7 +223,7 @@
 }
 
 .page-title {
-    color: #292929;
+    color: #333333;
     font-size: 14px;
     line-height: 24px;
     font-weight: bold;
@@ -251,7 +251,7 @@
 /* Blog entry */
 
 #main .entry-title {
-    color: #292929;
+    color: #333333;
     font-size: 21px;
     font-weight: bold;
     line-height: 24px;
@@ -260,7 +260,7 @@
 
 .entry-title a:link,
 .entry-title a:visited {
-    color: #292929;
+    color: #333333;
     text-decoration: none;
 }
 
@@ -343,7 +343,7 @@
 }
 
 .page-link {
-    color: #292929;
+    color: #333333;
     font-weight: bold;
     margin: 0 0 22px 0;
     word-spacing: 0.5em;
@@ -459,7 +459,7 @@ header hgroup {
 }
 
 #site-title a {
-    color: #292929;
+    color: #333333;
     font-size: 30px;
     text-decoration: none;
 }
@@ -501,7 +501,7 @@ header nav a {
 }
 
 header nav a:hover {
-    border-bottom: 4px solid #292929;
+    border-bottom: 4px solid #333333;
 }
 
 /* ===[ Footer ]=== */
@@ -570,7 +570,7 @@ footer a:hover {
 #inlinedate {
     padding-left: 8px;
     font-weight: normal;
-    color: #292929;
+    color: #333333;
 }
 
 #textTitle a {
@@ -636,7 +636,7 @@ footer a:hover {
     width: 350px;
     border: 2px solid #fff;
     border-top: none;
-    color: #292929;
+    color: #333333;
     font-size: 0.8em;
     right: 0;
     top: 0;
@@ -665,7 +665,7 @@ footer a:hover {
 }
 
 #panelInfo {
-    background: #292929;
+    background: #333333;
     border: 2px solid #fff;
     padding: 5px;
     font: 0.8em Verdana;
@@ -803,7 +803,7 @@ h2.mosaicheader {
 #taxonomyTable th {
     font-size: 130%;
     text-align: left;
-    color: white;
+    color: #FFFFFF;
     border-bottom: 2px solid #E7E7E7;
 }
 
@@ -812,7 +812,7 @@ h2.mosaicheader {
 }
 
 #tag-pics-wrapper {
-    background: #292929;
+    background: #333333;
     position: relative;
     line-height: 0;
     height: 1%;
