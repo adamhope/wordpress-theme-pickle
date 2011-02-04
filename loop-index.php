@@ -1,20 +1,22 @@
 <div id="main">
 
   <!-- TODO: homepage only -->
-   <div id="slider">
-   <?php 
-     $category = 'photos'; // get_option('wpns_category');
-     $n_slices = 5; //get_option('wpns_slices');
-   ?>
-   <?php query_posts( 'cat='.$category.'&posts_per_page=$n_slices' ); if( have_posts() ) : while( have_posts() ) : the_post(); ?>
-     <?php if(has_post_thumbnail()) : ?>
-       <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"> 
-         <?php the_post_thumbnail('medium'); ?>
-       </a>
-    <?php endif ?>
-  <?php endwhile; endif;?>
-  <?php wp_reset_query();?>
-  </div>
+  <?php
+    if (is_home()) :
+    $category = 'photos'; // get_option('wpns_category');
+    $n_slices = 5; //get_option('wpns_slices');
+  ?>
+     <div id="slider">
+     <?php query_posts( 'cat='.$category.'&posts_per_page=$n_slices' ); if( have_posts() ) : while( have_posts() ) : the_post(); ?>
+       <?php if(has_post_thumbnail()) : ?>
+         <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"> 
+           <?php the_post_thumbnail('medium'); ?>
+         </a>
+      <?php endif ?>
+    <?php endwhile; endif;?>
+    <?php wp_reset_query();?>
+    </div>
+  <?php endif; ?>
 
 <?php /* If there are no posts to display, such as an empty archive page */ ?>
 <?php if ( ! have_posts() ) : ?>
