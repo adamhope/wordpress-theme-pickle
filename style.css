@@ -740,19 +740,24 @@ footer a:hover {
 
 /* ===[ Mosaic and browser pages ]== */
 
+#tag-pics a,
 .mosaic {
     margin: 15px;
     /* NOTE: adjust depending on thumbnail sizes */
     padding: 1px;
     background: #bbb;
-}
-
-.mosaic {
     -webkit-box-shadow: rgba(0, 0, 0, 0.5) 0 1px 6px;
     -webkit-transition: opacity 0.2s ease-in;
     opacity: 1;
+    /* temp */
+    display: block;
+    float: left;
+    width: 280px;
+    height: 280px;
+    overflow: hidden;
 }
 
+#tag-pics a:hover,
 .mosaic:hover {
     opacity: 0.5;
 }
@@ -801,7 +806,7 @@ h2.mosaicheader {
 }
 
 #tag-pics {
-    padding: 5px 5px 5px 8px
+    padding: 5px 5px 5px 8px;
 }
 
 #tag-pics-wrapper {

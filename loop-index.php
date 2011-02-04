@@ -1,17 +1,32 @@
 <?php
 
-if (is_home()) {
-    $args = array(
-      'posts_per_page' => 1,
-      'paged' => $paged,
-      'category_name' => 'Photos'
-    );
-    query_posts($args);
-}
+// if (is_home()) {
+//     $args = array(
+//       'posts_per_page' => 1,
+//       'paged' => $paged,
+//       'category_name' => 'Photos'
+//     );
+//     query_posts($args);
+// }
 
 ?>
 
 <div id="main">
+
+   <div id="slider">
+   <?php 
+     $category = 'photos'; // get_option('wpns_category');
+     $n_slices = 5; //get_option('wpns_slices');
+   ?>
+   <?php query_posts( 'cat='.$category.'&posts_per_page=$n_slices' ); if( have_posts() ) : while( have_posts() ) : the_post(); ?>
+     <?php if(has_post_thumbnail()) : ?>
+       <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"> 
+         <?php the_post_thumbnail('medium'); ?>
+       </a>
+    <?php endif ?>
+  <?php endwhile; endif;?>
+  <?php wp_reset_query();?>
+  </div>
 
 <?php /* If there are no posts to display, such as an empty archive page */ ?>
 <?php if ( ! have_posts() ) : ?>
@@ -30,58 +45,6 @@ if (have_posts()) : while (have_posts()) : the_post();
 ?>
 
 <?php if ( in_category( _x('photos', 'photo category slug', 'pickle') ) ) : ?>
-
-  <?
-  // Grab next/previous post IDs if they exist and are in same category. Odd syntax is hack for PHP4.
-  $next_post      = is_object($npobj = get_next_post(true))     ? $npobj->ID : 0;
-  $prev_post      = is_object($ppobj = get_previous_post(true)) ? $ppobj->ID : 0;
-  $next_post_perm = get_permalink($next_post);
-  $prev_post_perm = get_permalink($prev_post);
-  ?>
-
-  <script>var opts = {nextPostID: <?=$next_post?>, prevPostID: <?=$prev_post?>}</script>
-
-  <div id="slideshow" style="width:<?=im_dim()?>px;">
-    <div id="title">
-      <div id="titlebits">
-        <ul>
-          <li>
-            <a id="prevPostLink" class="previous" href="<?=$prev_post ? $prev_post_perm.'">&laquo;' : '">';?></a> |
-            <a id="nextPostLink" class="next" href="<?=$next_post ? $next_post_perm.'">&raquo;' : '">';?></a>
-          </li>
-          <?php if ('open' == $post->comment_status) : ?>
-          <li>
-            <a id="comment" href="<?php comments_link();?>"><?php comments_number(__('0 comments',TD), __('1 comment',TD), __('% comments',TD));?></a>
-          </li>
-          <?php endif ?>
-          <li>
-            <a class="panel" id="exif" href=""><?_e('exif', TD);?></a>
-          </li>
-          <li>
-            <a class="panel" id="info" href="<?the_permalink();?>#notes"><?_e('info', TD);?></a>
-          </li>
-        </ul>
-      </div>
-      <h3 id="textTitle">
-        <a href="<?php the_permalink();?>"><?php the_title();?></a>
-        <time id="inlinedate"><?php the_date('jS F Y');?></time>
-      </h3>
-    </div>
-    <div id="imageHolder">
-      <div id="panelExif" class="overlay">
-        <?echo get_exif();?>
-      </div>
-      <div id="panelInfo" class="overlay bottomPanel">
-        <?php the_content(__('Read more...')); ?>
-      </div>
-      <div id="overlayNav">
-        <a href="<?=$prev_post ? $prev_post_perm.'"' : '" style="display:none"'?> id="overPrevLink" class="previous"></a>
-        <a href="<?=$next_post ? $next_post_perm.'"' : '" style="display:none"'?> id="overNextLink" class="next"></a>
-      </div>
-      <img id="mainImage" src="<?=get_thumbnail();?>" alt="image" />
-    </div>
-  </div>
-  <div id="pickleHolder"></div>
 
   <?php if (is_single() && !is_home_uri()): ?>
       <a name="info" id="notes"></a>

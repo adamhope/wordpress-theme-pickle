@@ -71,34 +71,49 @@ if ($allid) {
     <div>
       <div id="tag-pics-wrapper">
         <div id="tag-pics">
+          
+          
+           <!-- <div id="slider"> -->
+           <?php 
+             $category = 'photos'; // get_option('wpns_category');
+             $n_slices = 5; //get_option('wpns_slices');
+           ?>
+           <?php query_posts( 'cat='.$category.'&posts_per_page=$n_slices' ); if( have_posts() ) : while( have_posts() ) : the_post(); ?>
+             <?php if(has_post_thumbnail()) : ?>
+               <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"> 
+                   <?php the_post_thumbnail('medium'); ?>
+               </a>
+            <?php endif ?>
+          <?php endwhile; endif;?>
+          <?php wp_reset_query();?>
+          <!-- </div> -->
+          
 <?php
 
 // Grab all posts from the database in correct order.
-$orderby = get_opt_or_default('mosaicdesc') ? 'DESC' : 'ASC';
+// $orderby = get_opt_or_default('mosaicdesc') ? 'DESC' : 'ASC';
 
 // Begin The Loop.
-if (have_posts()) : while (have_posts()) : the_post();
-  array_push($postinfo, array(
-    'post_title' => $post->post_title,
-    'post_date' => get_the_time('jS F Y'),
-    'comment_status' => $post->comment_status,
-    'comment_count' => $post->comment_count
-  ));
-
-  echo '<a href="' . get_permalink($post->ID) . '">';
-  echo '<img class="mosaic" src="' . square_thumb($post->ID) . '" alt=" " />';
-  echo '</a>';
-
-endwhile; endif;
+// if (have_posts()) : while (have_posts()) : the_post();
+//   array_push($postinfo, array(
+//     'post_title' => $post->post_title,
+//     'post_date' => get_the_time('jS F Y'),
+//     'comment_status' => $post->comment_status,
+//     'comment_count' => $post->comment_count
+//   ));
+// 
+//   echo '<a href="' . get_permalink($post->ID) . '">';
+//   echo '<img class="mosaic" src="' . square_thumb($post->ID) . '" alt=" " />';
+//   echo '</a>';
+// 
+// endwhile; endif;
 ?>
       </div>
       <img src="<?php bloginfo('template_directory'); ?>/images/browse-load.gif" id="tagProgress" alt="loading" />
     </div>
   </div>
   <?php if (get_opt_or_default('mosaictips')): ?>
-    <script>
-      var posts = {data: <?php echo json_encode($postinfo);?>};
-    </script>
+    <!-- TODO remove -->
   <?php endif; ?>
 </div>
 

@@ -130,6 +130,7 @@ var Browser = (function () {
         preloaded = 0,
 
     setupTooltips = function () {
+
         $('.mosaic').each(function (i, el) {
             $(el).data({
                 'tip:title': photoData[i].post_title,
