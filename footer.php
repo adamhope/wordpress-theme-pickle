@@ -21,11 +21,13 @@
   <!-- Grab Google CDN's jQuery. fall back to local if necessary -->
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
   <script>!window.jQuery && document.write('<script src="<?php bloginfo('template_directory');?>/js/jquery-1.4.2.min.js"></sc'+'ript>')</script>
-  <script src="<?php bloginfo('template_directory');?>/3rdparty/nivo-slider/jquery.nivo.slider.pack.js"></script>
+  <script src="<?php bloginfo('template_directory');?>/3rdparty/ProLoser-AnythingSlider-6958793/js/jquery.anythingslider.min.js"></script>
   
   <script>
-  jQuery(window).load(function() {
-  	jQuery('#slider').nivoSlider();
+  jQuery().ready(function() {
+     $('#slider').anythingSlider({
+       pauseOnHover: true
+     });
   });
   </script>
 

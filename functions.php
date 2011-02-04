@@ -492,14 +492,6 @@ function pickle_posted_on() {
 	);
 }
 
-function is_home_uri() {
-  if ($_SERVER['REQUEST_URI'] == '/' || $_SERVER['REQUEST_URI'] == '/index.php') {
-    return true;
-  } else {
-    return false;
-  }
-}
-
 if ( function_exists( 'add_theme_support' ) ) {
 
   add_theme_support( 'post-thumbnails' ); 
@@ -508,7 +500,8 @@ if ( function_exists( 'add_theme_support' ) ) {
 
   // additional image sizes
   add_image_size( 'mosaic-thumb', 280, 280 ); // last param is crop
-  add_image_size( 'single', 500, 999 );
+  add_image_size( 'single', 480, 999 );
+  add_image_size( 'slideshow', 480, 400 );
   
 }
 
