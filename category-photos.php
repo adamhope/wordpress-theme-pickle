@@ -54,7 +54,7 @@ if ($allid) {
         <td id="tagCloud">
           <?php 
             if ($thistag !== false) {
-              echo implode(' ', str_replace('tag-link-' . $curtag, 'tag-link-' . $curtag.' current', wp_tag_cloud('format=array')));
+              echo implode(' ', str_replace('tag-link-' . $curtag, 'tag-link-' . $curtag .' current', wp_tag_cloud('format=array')));
             } else {
               wp_tag_cloud('');
             }
@@ -70,44 +70,21 @@ if ($allid) {
     
     <div>
       <div id="tag-pics-wrapper">
-        <div id="tag-pics">
-          
-          
-           <!-- <div id="slider"> -->
+        <div id="tag-pics" class="clearf">
+
            <?php 
              $category = 'photos'; // get_option('wpns_category');
              $n_slices = 5; //get_option('wpns_slices');
            ?>
+
            <?php query_posts( 'cat='.$category.'&posts_per_page=$n_slices' ); if( have_posts() ) : while( have_posts() ) : the_post(); ?>
              <?php if(has_post_thumbnail()) : ?>
                <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"> 
-                   <?php the_post_thumbnail('medium'); ?>
+                   <?php the_post_thumbnail('mosaic-thumb', array('class' => 'mosaic')); ?>
                </a>
             <?php endif ?>
           <?php endwhile; endif;?>
-          <?php wp_reset_query();?>
-          <!-- </div> -->
-          
-<?php
 
-// Grab all posts from the database in correct order.
-// $orderby = get_opt_or_default('mosaicdesc') ? 'DESC' : 'ASC';
-
-// Begin The Loop.
-// if (have_posts()) : while (have_posts()) : the_post();
-//   array_push($postinfo, array(
-//     'post_title' => $post->post_title,
-//     'post_date' => get_the_time('jS F Y'),
-//     'comment_status' => $post->comment_status,
-//     'comment_count' => $post->comment_count
-//   ));
-// 
-//   echo '<a href="' . get_permalink($post->ID) . '">';
-//   echo '<img class="mosaic" src="' . square_thumb($post->ID) . '" alt=" " />';
-//   echo '</a>';
-// 
-// endwhile; endif;
-?>
       </div>
       <img src="<?php bloginfo('template_directory'); ?>/images/browse-load.gif" id="tagProgress" alt="loading" />
     </div>

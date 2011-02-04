@@ -502,6 +502,15 @@ function is_home_uri() {
 
 if ( function_exists( 'add_theme_support' ) ) { 
   add_theme_support( 'post-thumbnails' ); 
+  
+  set_post_thumbnail_size( 150, 150, true ); // default Post Thumbnail dimensions (cropped)
+
+  // additional image sizes
+  add_image_size( 'mosaic-thumb', 280, 280 );
+  
+  // additional image sizes
+  add_image_size( 'single', 500, 999 );
+  
 }
 
 ?>

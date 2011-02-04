@@ -1,18 +1,6 @@
-<?php
-
-// if (is_home()) {
-//     $args = array(
-//       'posts_per_page' => 1,
-//       'paged' => $paged,
-//       'category_name' => 'Photos'
-//     );
-//     query_posts($args);
-// }
-
-?>
-
 <div id="main">
 
+  <!-- TODO: homepage only -->
    <div id="slider">
    <?php 
      $category = 'photos'; // get_option('wpns_category');
@@ -47,6 +35,13 @@ if (have_posts()) : while (have_posts()) : the_post();
 <?php if ( in_category( _x('photos', 'photo category slug', 'pickle') ) ) : ?>
 
   <?php if (is_single() && !is_home_uri()): ?>
+
+     <?php if(has_post_thumbnail()) : ?>
+       <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"> 
+           <?php the_post_thumbnail('single'); ?>
+       </a>
+    <?php endif ?>
+
       <a name="info" id="notes"></a>
       <?php the_content(); ?>
       <?php if ('open' == $post->comment_status) : ?>
