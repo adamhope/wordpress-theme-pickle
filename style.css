@@ -172,14 +172,18 @@
     color: #000;
 }
 
-#main h1,
-#main h2,
-#main h3,
-#main h4,
-#main h5,
-#main h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     line-height: 48px;
     color: #000;
+}
+
+h2 {
+    font-size: 20px;
 }
 
 #main table {
@@ -740,6 +744,36 @@ footer a:hover {
 
 /* ===[ photo category archives ]== */
 
+#tag-pics {
+    padding: 5px 5px 5px 8px;
+}
+
+#tag-pics-wrapper {
+    background: #333333;
+    position: relative;
+    line-height: 0;
+    height: 1%;
+    /* Ugly hack for IE */
+}
+
+#tag-pics a {
+    display: block;
+    width: 300px;
+    height: 300px;
+    float: left;
+}
+
+#tagProgress {
+    display: block;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -33px;
+    margin-top: -33px;
+    z-index: 2;
+    visibility: hidden;
+}
+
 .mosaic {
     margin: 15px;
     /* NOTE: adjust depending on thumbnail sizes */
@@ -750,7 +784,6 @@ footer a:hover {
     opacity: 1;
     /* temp */
     display: block;
-    float: left;
     width: 280px;
 /*    height: 280px;*/
     overflow: hidden;
@@ -803,29 +836,6 @@ h2.mosaicheader {
     border-bottom: 2px solid #E7E7E7;
 }
 
-#tag-pics {
-    padding: 5px 5px 5px 8px;
-}
-
-#tag-pics-wrapper {
-    background: #333333;
-    position: relative;
-    line-height: 0;
-    height: 1%;
-    /* Ugly hack for IE */
-}
-
-#tagProgress {
-    display: block;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    margin-left: -33px;
-    margin-top: -33px;
-    z-index: 2;
-    visibility: hidden;
-}
-
 /* ===[ Tooltips ]=== */
 
 #tooltip {
@@ -869,7 +879,7 @@ h2.mosaicheader {
 #slider {
 	position:relative;
     width:618px;
-    height:246px;
+    height:480px;
     margin-left:190px;
 	background:url(3rdparty/nivo-slider/demo/images/loading.gif) no-repeat 50% 50%;
 }
