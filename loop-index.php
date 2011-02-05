@@ -2,7 +2,6 @@
 
 TODO
 
-- slideshow on homepage with first featured image from each post in photos
 - slideshow on photo single page, use slideshow if multiple images in post (is this actually possible?)
 - show posts not in photos under homepage photo
 - make all image sizes configurable
@@ -53,11 +52,15 @@ if (have_posts()) : while (have_posts()) : the_post();
 
      <?php if(has_post_thumbnail()) : ?>
 
-       <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"> 
-           <?php the_post_thumbnail('single'); ?>
-       </a>
+       <div class="featuredImage">
+         <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"> 
+             <?php the_post_thumbnail('featuredImage'); ?>
+         </a>
+       </div>
 
     <?php endif ?>
+
+    <h2><?php the_title(); ?></h2>
 
       <?php the_content(); ?>
       <?php if ('open' == $post->comment_status) : ?>
