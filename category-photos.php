@@ -70,7 +70,7 @@ if ($allid) {
     
     <div>
       <div id="tag-pics-wrapper">
-        <div id="tag-pics" class="clearf">
+        <div id="tag-pics">
 
            <?php 
              $category = 'photos'; // get_option('wpns_category');
