@@ -539,91 +539,25 @@ footer a:hover {
     font-size: 0.7em;
 }
 
-/* ===[ Slideshow ]=== */
-
-#titlebits ul {
-    padding: 20px 0 0 0;
-    margin: 0;
-}
-
-#titlebits li {
-    display: inline;
-    list-style-type: none;
-    margin: 0;
-    padding: 0 0 0 20px;
-}
-
-#titlebits a {
-    color: #666;
-}
-
-#slideshow {
-    margin: 0 auto
-}
-
 /* ===[ Image display ]=== */
-
-#title {
-    margin: 0 auto;
-    position: relative;
-}
-
-#textTitle {
-    letter-spacing: -1px;
-    font: bold 24px Arial;
-    line-height: 48px;
-    margin: 0;
-    padding: 0;
-}
-
-#inlinedate {
-    padding-left: 8px;
-    font-weight: normal;
-    color: #333333;
-}
-
-#textTitle a {
-    color: #666;
-    text-decoration: none;
-}
-
-#textTitle a:hover {
-    color: #ddd
-}
-
-#titlebits {
-    position: absolute;
-    right: 0;
-    font: 0.7em Verdana;
-}
-
-#titlebits a {
-    text-decoration: none
-}
-
-#titlebits a:hover {
-    color: #ccc
-}
-
-#titlebits li {
-    line-height: 24px;
-    padding-left: 10px
-}
 
 .featuredImage {
     margin: 0 auto 14px auto;
     text-align: center;
 }
 
+.panel a {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.panel a img,
 .featuredImage img {
     margin: 0;
     padding: 1px;
-    position: relative;
     overflow: hidden;
-    top: 0;
-    left: 0;
     border: 1px solid #000;
-/*    background: white url(images/loading.gif) no-repeat center center;*/
     -webkit-box-shadow: rgba(0, 0, 0, 0.5) 0 1px 6px;
 }
 
