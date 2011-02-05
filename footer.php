@@ -26,6 +26,8 @@
   <script>
   jQuery().ready(function() {
      $('#slider').anythingSlider({
+       // theme               : 'cs-portfolio',
+       // themeDirectory      : "<?php bloginfo('template_directory');?>/3rdparty/ProLoser-AnythingSlider-6958793/css/theme-cs-portfolio.css",
        pauseOnHover: true
      });
   });
