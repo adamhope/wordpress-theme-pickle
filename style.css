@@ -227,6 +227,14 @@ h2 {
     margin: 0 0 36px 0
 }
 
+article header {
+    padding: 0;
+}
+
+article footer {
+    padding: 0;
+}
+
 .page-title {
     color: #333333;
     font-size: 18px;
@@ -788,4 +796,10 @@ h2.mosaicheader {
 .clearf {
     overflow: auto;
     clear: both;
+}
+
+div.anythingSlider {
+	width: 700px;
+	height: 504px;
+	margin: 0 auto;
 }
