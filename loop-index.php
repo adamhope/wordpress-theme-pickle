@@ -21,7 +21,7 @@ TODO
        <?php if(has_post_thumbnail()) : ?>
          <li>
            <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"> 
-             <?php the_post_thumbnail('slideshow'); ?>
+             <?php the_post_thumbnail('slider'); ?>
            </a>
          </li>
       <?php endif ?>
@@ -46,48 +46,28 @@ TODO
 if (have_posts()) : while (have_posts()) : the_post();
 ?>
 
-<?php if ( in_category( _x('photos', 'photo category slug', 'pickle') ) ) : ?>
+  <article>
 
-  <?php if (is_single() && !is_home()): ?>
+    <header>
+      <h2><?php the_title();?></h2>
+    </header>
 
-     <?php if(has_post_thumbnail()) : ?>
+    <?php the_content(); ?>
 
-       <div class="featuredImage">
-         <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"> 
-             <?php the_post_thumbnail('featuredImage'); ?>
-         </a>
-       </div>
-
-    <?php endif ?>
-
-    <h2><?php the_title(); ?></h2>
-
-      <?php the_content(); ?>
-      <?php if ('open' == $post->comment_status) : ?>
+    <?php if ('open' == $post->comment_status) : ?>
+      <footer>
         <div id="comments">
           <?php comments_template(); ?>
         </div>
-      <?php endif; ?>
-  <?php endif;?>
-
-<?php else: ?>
-  <!-- Single post for other categories -->
-
-  <article>
-    <h2><?php the_title();?></h2>
-    <?php the_content(); ?>
-    <?php if ('open' == $post->comment_status) : ?>
-      <div id="comments">
-        <?php comments_template(); ?>
-      </div>
+      </footer>
     <?php endif; ?>
+
     <div id="nav-below" class="navigation">
     	<div class="nav-previous"><?php next_post_link('%link', '&larr; %title', TRUE); ?></div>
     	<div class="nav-next"><?php previous_post_link('%link', '%title &rarr;', TRUE); ?></div>
     </div><!-- #nav-below -->
-  </article>
 
-<?php endif; // This was the if statement that broke the loop into three parts based on categories. ?>
+  </article>
 
 <?php break; endwhile; endif;?>
 
