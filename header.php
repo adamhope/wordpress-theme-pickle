@@ -32,8 +32,8 @@
 
   <link rel="profile" href="http://gmpg.org/xfn/11" />
   <link rel="stylesheet" href="<?php bloginfo('template_directory');?>/reset.css" />
+  <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/3rdparty/ProLoser-AnythingSlider-6958793/css/anythingslider.css">
   <link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>" />
-  <link rel="stylesheet" href="<?php bloginfo('template_directory');?>/3rdparty/ProLoser-AnythingSlider-6958793/css/anythingslider.css">
   
   <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
 
