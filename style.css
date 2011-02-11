@@ -798,8 +798,14 @@ h2.mosaicheader {
     clear: both;
 }
 
-div.anythingSlider {
-	width: 700px;
-	height: 504px;
-	margin: 0 auto;
+/* Slideshow */
+
+.orbit-wrapper {
+    margin: 0 auto;
+}
+
+.slideshow a {
+    background-color: #FFF;
+    display: block;
+    text-align: center;
 }

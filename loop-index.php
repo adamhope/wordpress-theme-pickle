@@ -16,18 +16,16 @@ TODO
     $category = 'photos'; // get_option('wpns_category');
     $n_slices = 5; //get_option('wpns_slices');
   ?>
-     <ul id="slider">
+     <div class="slideshow">
      <?php query_posts( 'cat='.$category.'&posts_per_page=$n_slices' ); if( have_posts() ) : while( have_posts() ) : the_post(); ?>
        <?php if(has_post_thumbnail()) : ?>
-         <li>
            <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"> 
              <?php the_post_thumbnail('slider'); ?>
            </a>
-         </li>
       <?php endif ?>
     <?php endwhile; endif;?>
     <?php wp_reset_query();?>
-    </ul>
+    </div>
   <?php endif; ?>
 
   <?php /* If there are no posts to display, such as an empty archive page */ ?>

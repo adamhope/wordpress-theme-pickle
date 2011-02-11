@@ -21,18 +21,13 @@
   <!-- Grab Google CDN's jQuery. fall back to local if necessary -->
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
   <script>!window.jQuery && document.write('<script src="<?php bloginfo('template_directory');?>/js/jquery-1.4.2.min.js"></sc'+'ript>')</script>
-  <script src="<?php bloginfo('template_directory');?>/3rdparty/ProLoser-AnythingSlider-6958793/js/jquery.anythingslider.min.js"></script>
-
-  <!-- TODO: find out why anythingSlider theme loading doesn't work -->
-  <link rel="stylesheet" href="<?php bloginfo('template_directory');?>/theme-reflection.css">
-  <script>
-  jQuery().ready(function() {
-    $('#slider').anythingSlider({
-      theme               : "reflection",
-      // themeDirectory      : "<?php bloginfo('template_directory');?>/theme-reflection.css",
-      pauseOnHover: true
+  <script src="<?php bloginfo('template_directory');?>/3rdparty/orbit/jquery.orbit.min.js"></script>
+  <script type="text/javascript">
+    $(window).load(function() {
+      $('.slideshow').orbit({
+        bullets: true
+      });
     });
-  });
   </script>
 
 </body>
