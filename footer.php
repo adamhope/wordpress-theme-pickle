@@ -21,7 +21,7 @@
   <!-- Grab Google CDN's jQuery. fall back to local if necessary -->
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
   <script>!window.jQuery && document.write('<script src="<?php bloginfo('template_directory');?>/js/jquery-1.4.2.min.js"></sc'+'ript>')</script>
-  <script src="<?php bloginfo('template_directory');?>/3rdparty/orbit/jquery.orbit.min.js"></script>
+  <script src="<?php bloginfo('template_directory');?>/3rdparty/orbit/jquery.orbit.js"></script>
   <script type="text/javascript">
     $(window).load(function() {
       $('.slideshow').orbit({
