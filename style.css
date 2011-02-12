@@ -801,11 +801,21 @@ h2.mosaicheader {
 /* Slideshow */
 
 .orbit-wrapper {
-    margin: 0 auto;
+    margin: 0 auto 48px;
 }
 
-.slideshow a {
+.slideshow .slide {
+    height: 480px;
+    width: 900px;
     background-color: #FFF;
+}
+
+
+/* Orbit customisations */
+
+div.orbit img {
+    position: relative;
+    margin: 0 auto;
     display: block;
-    text-align: center;
+    vertical-align: middle;
 }
