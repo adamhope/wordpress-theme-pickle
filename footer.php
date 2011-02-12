@@ -25,7 +25,8 @@
   <script type="text/javascript">
     $(window).load(function() {
       $('.slideshow').orbit({
-        bullets: true
+        bullets: true,
+        directionalNav: false
       });
     });
   </script>
