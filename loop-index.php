@@ -19,9 +19,11 @@ TODO
      <div class="slideshow">
      <?php query_posts( 'cat='.$category.'&posts_per_page=$n_slices' ); if( have_posts() ) : while( have_posts() ) : the_post(); ?>
        <?php if(has_post_thumbnail()) : ?>
+         <div class="slide">
            <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"> 
-             <?php the_post_thumbnail('slider'); ?>
+             <?php the_post_thumbnail('slideshow-slide'); ?>
            </a>
+          </div>
       <?php endif ?>
     <?php endwhile; endif;?>
     <?php wp_reset_query();?>
