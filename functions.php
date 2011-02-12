@@ -503,8 +503,7 @@ if ( function_exists( 'add_theme_support' ) ) {
   // NOTE: last param is crop
   add_image_size( 'mosaic-thumb', 280, 280, true );
   add_image_size( 'single', 480, 999 );
-  // add_image_size( 'slideshow', 480, 480 );
-  add_image_size( 'slider', 480, 480 );
+  add_image_size( 'slideshow-slide', 999, 480 );
   add_image_size( 'featuredImage', 999, 480 );
   
 }
