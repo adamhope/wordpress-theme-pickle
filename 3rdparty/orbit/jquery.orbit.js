@@ -12,11 +12,11 @@
     $.fn.orbit = function(options) {
 
         //Defaults to extend options
-        var defaults = {  
+        var defaults = {
             animation: 'fade', 					// fade, horizontal-slide, vertical-slide, horizontal-push
             animationSpeed: 800, 				// how fast animtions are
             timer: true, 						// true or false to have the timer
-            advanceSpeed: 4000, 				// if timer is enabled, time between transitions 
+            advanceSpeed: 4000, 				// if timer is enabled, time between transitions
             pauseOnHover: false, 				// if you hover pauses the slider
             startClockOnMouseOut: false, 		// if clock should start on MouseOut
             startClockOnMouseOutAfter: 1000, 	// how long after MouseOut should the timer start again
@@ -27,39 +27,39 @@
             bullets: false,						// true or false to activate the bullet navigation
             bulletThumbs: false,				// thumbnails for the bullets
             bulletThumbLocation: '',			// location from this file where thumbs will be
-            afterSlideChange: function(){} 		// empty function 
-     	};  
-        
+            afterSlideChange: function(){} 		// empty function
+     	};
+
         //Extend those options
-        var options = $.extend(defaults, options); 
-	
+        var options = $.extend(defaults, options);
+
         return this.each(function() {
-        
+
 // ==============
-// ! SETUP   
+// ! SETUP
 // ==============
-        
+
             //Global Variables
             var activeSlide = 0,
             	numberSlides = 0,
             	orbitWidth,
             	orbitHeight,
             	locked;
-            
+
             //Initialize
-            var orbit = $(this).addClass('orbit'),         
+            var orbit = $(this).addClass('orbit'),
             	orbitWrapper = orbit.wrap('<div class="orbit-wrapper" />').parent();
             orbit.add(orbitWidth).width('1px').height('1px');
-	    	            
+
             //Collect all slides and set slider size of largest image
-            var slides = orbit.find('img, a img, div');
+            var slides = orbit.children();
             slides.each(function() {
                 var _slide = $(this),
                 	_slideWidth = _slide.width(),
                 	_slideHeight = _slide.height();
                 if(_slideWidth > orbit.width()) {
 	                orbit.add(orbitWrapper).width(_slideWidth);
-	                orbitWidth = orbit.width();	       			
+	                orbitWidth = orbit.width();
 	            }
 	            if(_slideHeight > orbit.height()) {
 	                orbit.add(orbitWrapper).height(_slideHeight);
@@ -67,15 +67,15 @@
 				}
                 numberSlides++;
             });
-            
+
             //Animation locking functions
             function unlock() {
                 locked = false;
             }
-            function lock() { 
+            function lock() {
                 locked = true;
             }
-            
+
             //Set initial front photo z-index and fades it in
             slides.eq(activeSlide)
             	.css({"z-index" : 3})
@@ -83,20 +83,20 @@
             		//brings in all other slides IF css declares a display: none
             		slides.css({"display":"block"})
             	});
-            
+
 // ==============
-// ! TIMER   
+// ! TIMER
 // ==============
 
             //Timer Execution
             function startClock() {
-            	if(!options.timer) { 
+            	if(!options.timer) {
             		return false;
             	//if timer is hidden, don't need to do crazy calculations
             	} else if(timer.is(':hidden')) {
 		            clock = setInterval(function(e){
-						shift("next");  
-		            }, options.advanceSpeed);            		
+						shift("next");
+		            }, options.advanceSpeed);
 		        //if timer is visible and working, let's do some math
             	} else {
 		            timerRunning = true;
@@ -104,7 +104,7 @@
 		            clock = setInterval(function(e){
 		                var degreeCSS = "rotate("+degrees+"deg)"
 		                degrees += 2
-		                rotator.css({ 
+		                rotator.css({
 		                    "-webkit-transform": degreeCSS,
 		                    "-moz-transform": degreeCSS,
 		                    "-o-transform": degreeCSS
@@ -128,10 +128,10 @@
 		            clearInterval(clock);
 		            pause.addClass('active');
 				}
-	        }  
-            
+	        }
+
             //Timer Setup
-            if(options.timer) {         	
+            if(options.timer) {
                 var timerHTML = '<div class="timer"><span class="mask"><span class="rotator"></span></span><span class="pause"></span></div>'
                 orbitWrapper.append(timerHTML);
                 var timer = $('div.timer'),
@@ -141,12 +141,12 @@
                     	mask = $('div.timer span.mask'),
                     	pause = $('div.timer span.pause'),
                     	degrees = 0,
-                    	clock; 
+                    	clock;
                     startClock();
                     timer.click(function() {
                         if(!timerRunning) {
                             startClock();
-                        } else { 
+                        } else {
                             stopClock();
                         }
                     });
@@ -164,19 +164,19 @@
                         })
                     }
                 }
-            }  
-	        
+            }
+
 	        //Pause Timer on hover
 	        if(options.pauseOnHover) {
 		        orbitWrapper.mouseenter(function() {
-		        	stopClock(); 
+		        	stopClock();
 		        });
 		   	}
-            
+
 // ==============
-// ! CAPTIONS   
+// ! CAPTIONS
 // ==============
-                     
+
             //Caption Setup
             if(options.captions) {
                 var captionHTML = '<div class="orbit-caption"></div>';
@@ -184,19 +184,19 @@
                 var caption = orbitWrapper.children('.orbit-caption');
             	setCaption();
             }
-			
+
 			//Caption Execution
             function setCaption() {
             	if(!options.captions) {
-            		return false; 
+            		return false;
             	} else {
 	            	var _captionLocation = slides.eq(activeSlide).data('caption'); //get ID from rel tag on image
-	            		_captionHTML = $(_captionLocation).html(); //get HTML from the matching HTML entity            		
+	            		_captionHTML = $(_captionLocation).html(); //get HTML from the matching HTML entity
 	            	//Set HTML for the caption if it exists
 	            	if(_captionHTML) {
 	            		caption
 		            		.attr('id',_captionLocation) // Add ID caption
-		                	.html(_captionHTML); // Change HTML in Caption 
+		                	.html(_captionHTML); // Change HTML in Caption
 		                //Animations for Caption entrances
 		             	if(options.captionAnimation == 'none') {
 		             		caption.show();
@@ -221,9 +221,9 @@
 	            	}
 				}
             }
-            
+
 // ==================
-// ! DIRECTIONAL NAV   
+// ! DIRECTIONAL NAV
 // ==================
 
             //DirectionalNav { rightButton --> shift("next"), leftButton --> shift("prev");
@@ -232,7 +232,7 @@
                 orbitWrapper.append(directionalNavHTML);
                 var leftBtn = orbitWrapper.children('div.slider-nav').children('span.left'),
                 	rightBtn = orbitWrapper.children('div.slider-nav').children('span.right');
-                leftBtn.click(function() { 
+                leftBtn.click(function() {
                     stopClock();
                     shift("prev");
                 });
@@ -241,14 +241,14 @@
                     shift("next")
                 });
             }
-            
+
 // ==================
-// ! BULLET NAV   
+// ! BULLET NAV
 // ==================
-            
+
             //Bullet Nav Setup
-            if(options.bullets) { 
-            	var bulletHTML = '<ul class="orbit-bullets"></ul>';            	
+            if(options.bullets) {
+            	var bulletHTML = '<ul class="orbit-bullets"></ul>';
             	orbitWrapper.append(bulletHTML);
             	var bullets = $('ul.orbit-bullets');
             	for(i=0; i<numberSlides; i++) {
@@ -259,7 +259,7 @@
             				var liMarkup = $('<li class="has-thumb">'+i+'</li>')
             				liMarkup.css({"background" : "url("+options.bulletThumbLocation+thumbName+") no-repeat"});
             			}
-            		} 
+            		}
             		$('ul.orbit-bullets').append(liMarkup);
             		liMarkup.data('index',i);
             		liMarkup.click(function() {
@@ -269,18 +269,18 @@
             	}
             	setActiveBullet();
             }
-            
+
             //Bullet Nav Execution
-        	function setActiveBullet() { 
+        	function setActiveBullet() {
         		if(!options.bullets) { return false; } else {
 	        		bullets.children('li').removeClass('active').eq(activeSlide).addClass('active');
 	        	}
         	}
-        	
+
 // ====================
-// ! SHIFT ANIMATIONS   
+// ! SHIFT ANIMATIONS
 // ====================
-            
+
             //Animating the shift!
             function shift(direction) {
         	    //remember previous activeSlide
@@ -311,20 +311,20 @@
                         }
                     } else {
                         activeSlide = direction;
-                        if (prevActiveSlide < activeSlide) { 
+                        if (prevActiveSlide < activeSlide) {
                             slideDirection = "next";
-                        } else if (prevActiveSlide > activeSlide) { 
+                        } else if (prevActiveSlide > activeSlide) {
                             slideDirection = "prev"
                         }
                     }
                     //set to correct bullet
-                     setActiveBullet();  
-                     
+                     setActiveBullet();
+
                     //set previous slide z-index to one below what new activeSlide will be
                     slides
                     	.eq(prevActiveSlide)
-                    	.css({"z-index" : 2});    
-                    
+                    	.css({"z-index" : 2});
+
                     //fade
                     if(options.animation == "fade") {
                         slides
@@ -348,7 +348,7 @@
                         }
                     }
                     //vertical-slide
-                    if(options.animation == "vertical-slide") { 
+                    if(options.animation == "vertical-slide") {
                         if(slideDirection == "prev") {
                             slides
                             	.eq(activeSlide)
@@ -389,4 +389,3 @@
         });//each call
     }//orbit plugin call
 })(jQuery);
-        
