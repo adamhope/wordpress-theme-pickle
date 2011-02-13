@@ -47,7 +47,6 @@
 }
 
 .widget-title {
-    color: #333333;
     font-weight: normal;
     line-height: 24px;
 }
@@ -76,7 +75,6 @@
 }
 
 #wp-calendar caption {
-    color: #333333;
     font-size: 14px;
     font-weight: bold;
     padding-bottom: 4px;
@@ -92,7 +90,7 @@
 }
 
 #wp-calendar tbody {
-    color: #aaa
+    color: #aaa;
 }
 
 #wp-calendar tbody td {
@@ -136,7 +134,6 @@
 #main,
 #main input,
 #main textarea {
-    color: #999;
     font-size: 16px;
     line-height: 24px;
 }
@@ -197,7 +194,6 @@ h2 {
 
 #main tr th,
 #main thead th {
-    color: #666;
     font-size: 12px;
     font-weight: bold;
     line-height: 24px;
@@ -238,7 +234,6 @@ article footer {
 }
 
 .page-title {
-    color: #333333;
     font-size: 18px;
     line-height: 24px;
     font-weight: bold;
@@ -255,22 +250,10 @@ article footer {
 /* Blog entry */
 
 #main .entry-title {
-    color: #333333;
     font-size: 21px;
     font-weight: bold;
     line-height: 24px;
     margin-bottom: 0;
-}
-
-.entry-title a:link,
-.entry-title a:visited {
-    color: #333333;
-    text-decoration: none;
-}
-
-.entry-title a:active,
-.entry-title a:hover {
-    color: #ff4b33
 }
 
 .entry-meta {
@@ -665,10 +648,18 @@ h2.mosaicheader {
     margin: 0
 }
 
-/* Typeography */
+/* Typography */
+
+body {
+    color: #666;
+}
 
 a {
     color: #ff4b33;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #333333;
 }
 
 .post blockquote {
@@ -677,6 +668,9 @@ a {
     font-family: Verdana, Geneva, sans-serif;
 }
 
+.entry-title a {
+    text-decoration: none;
+}
 
 /* ===[ Utilities ]=== */
 
