@@ -560,6 +560,7 @@ footer {
     margin-top: 36px
 }
 */
+
 .comment-metadata {
 
 }
@@ -674,6 +675,15 @@ h2.mosaicheader {
 #tooltip div {
     margin: 0
 }
+
+/* Typeography */
+
+.post blockquote {
+    font-style: italic;
+    padding: 0 90px;
+    font-family: Verdana, Geneva, sans-serif;
+}
+
 
 /* ===[ Utilities ]=== */
 
