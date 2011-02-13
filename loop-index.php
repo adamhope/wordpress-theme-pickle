@@ -1,37 +1,36 @@
 <!--
-
 TODO
-
 - slideshow on photo single page, use slideshow if multiple images in post (is this actually possible?)
 - show posts not in photos under homepage photo
 - make all image sizes configurable
 - make cropping configurable
-
- -->
+-->
 
 <div id="main">
 
   <?php
     if (is_home()) :
-    $category = get_opt_or_default('photo_category'); // not working
-    $n_slices = get_opt_or_default('slideshow_length');
+    $photo_category_id = get_opt_or_default('photo_category_id');
+    $n_slices          = get_opt_or_default('slideshow_length');
   ?>
 
-<section id="featured-content">
-  <div class="slideshow">
-    <?php query_posts('cat=' . $category . '&posts_per_page=' . $n_slices); if( have_posts() ) : while( have_posts() ) : the_post(); ?>
-    <?php if(has_post_thumbnail()) : ?>
-      <div class="slide">
-        <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
-          <?php the_post_thumbnail('slideshow-slide'); ?>
-        </a>
+  <p><?php get_opt_or_default('photo_category_id') ?>, <?php $photo_category_id ?></p>
+
+  <section id="featured-content">
+    <div class="slideshow">
+      <?php query_posts('cat=' . $photo_category_id . '&posts_per_page=' . $n_slices); if( have_posts() ) : while( have_posts() ) : the_post(); ?>
+      <?php if(has_post_thumbnail()) : ?>
+        <div class="slide">
+          <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
+            <?php the_post_thumbnail('slideshow-slide'); ?>
+          </a>
+        </div>
+      <?php endif ?>
+      <?php endwhile; endif;?>
+      <?php wp_reset_query();?>
       </div>
-    <?php endif ?>
-    <?php endwhile; endif;?>
-    <?php wp_reset_query();?>
-    </div>
-  <?php endif; ?>
-</section>
+    <?php endif; ?>
+  </section>
 
 <section id="content">
 
@@ -46,12 +45,10 @@ TODO
   	</div>
   <?php endif; ?>
 
-<?
-// Begin post loop.
-if (have_posts()) : while (have_posts()) : the_post();
-?>
 
-  <!-- Don't show posts in slideshow category -->
+<!-- TODO match category ID with category used in slideshow from options -->
+<?php query_posts($query_string . '&cat=-' . photo_category_id); ?>
+<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
   <article class="post">
 

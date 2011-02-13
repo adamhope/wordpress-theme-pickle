@@ -9,7 +9,7 @@
 
 /**
  * Prefix to use in option names. Should _not_ be changed.
- * 
+ *
  * @global string $pfix
  */
 $pfix = "pickle_";
@@ -23,52 +23,28 @@ $vnum = "1.1";
 
 /**
  * Array of options we use in pickle.
- * 
+ *
  * This is an array containing all the names and default values that we use for
  * pickle. Each element is also an array with three possible keys
- * 
+ *
  * - type: Can be text, hidden, int or check
  * - size: For int/text types, size of textfield.
  * - value: For check types, either yes or no.
  * - default: default value.
- * 
+ *
  * @global array $options
  */
 $options = array(
-  'photo_category'  => array(
+  'photo_category_id'  => array(
   	'type'    => 'text',
   	'size'    => '30',
-  	'default' => 'photos'
+  	'default' =>  1
   ),
   'slideshow_length' => array(
   	'type'    => 'text',
   	'size'    => '30',
   	'default' => '5'
   ),
-	'copyright'  => array(
-		'type'    => 'text',
-		'size'    => '35',
-		'default' => ''
-	),
-	'copyright_year' => array(
-		'type'    => 'text',
-		'size'    => '30',
-		'default' => ''
-	),
-	'widthport'  => array(
-		'type'    => 'text',
-		'size'    => '10',
-		'default' => 450
-	),
-	'widthland'  => array(
-		'type'    => 'text',
-		'size'    => '10',
-		'default' => 800
-	),
-	'showrand'   => array(
-		'type'    => 'check',
-		'default' => 1
-	),
 	'mosaicsize' => array(
 		'type'    => 'text',
 		'size'    => '10',
@@ -111,7 +87,7 @@ $values = array();
 /**
  * On administration pages, this is set to true after we have updated
  * the options.
- * 
+ *
  * @global bool $updateflag
  */
 $updateflag = false;
@@ -157,11 +133,11 @@ if (!function_exists('json_encode')) {
 
 /**
  * Get an option or fall-back on default value.
- * 
- * Since WordPress doesn't seem to have a registration hook for 
+ *
+ * Since WordPress doesn't seem to have a registration hook for
  * themes (akin to plugins), we use this function to avoid epic
  * failure when looking up options.
- * 
+ *
  * @param string $optname Option name
  * @return mixed Option value from database or default
  */
@@ -180,7 +156,7 @@ function pickle_add_pages() {
 
 /**
  * Prints a data field defined in $options.
- * 
+ *
  * @param string $name Field name
  */
 function field_print($name) {
@@ -188,10 +164,10 @@ function field_print($name) {
 
 	if (!is_array($options[$name]))
 		return;
-	
+
 	$value = $values[$name];
 	$fname = $pfix.$name;
-	
+
 	switch ($options[$name]['type']) {
 		case 'text':
 			echo '<input type="text" name="'.$fname.'" value="'.$value.'" size="'.$options[$name]['size'].'">';
@@ -224,12 +200,13 @@ function pickle_admin() {
 	?>
 <form name="form1" method="post" action="<?php echo str_replace( '%7E', '~', $_SERVER['REQUEST_URI']); ?>">
 	<?php field_print('submitted');?>
-	<h3>General settings</h3>
+
+	<h3>Slideshow options</h3>
 	<table class="form-table">
 		<tr>
 			<th scope="row" valign="top">Photo Category</th>
 			<td>
-				<?php field_print('photo_category');?><br />
+				<?php field_print('photo_category_id');?><br />
 				<span class="setting-description">Name of category containing photos.</span>
 			</td>
 		</tr>
@@ -240,34 +217,10 @@ function pickle_admin() {
 				<span class="setting-description">Maximum number of photos to display in slideshow.</span>
 			</td>
 		</tr>
-		<tr>
-			<th scope="row" valign="top">Copyright holder</th>
-			<td>
-				<?php field_print('copyright');?><br />
-				<span class="setting-description">Copyright holder of the images - i.e. your name. Leave blank if you don't want the copyright notice.</span>
-			</td>
-		</tr>
-		<tr>
-			<th scope="row" valign="top">Copyright year range</th>
-			<td>
-				<?php field_print('copyright_year');?></br />
-				<span class="setting-description">The year(s) over which you claim copyright: for example "2000", "2000-2009", "2000, 2001-2009" etc. If blank, current year will be used.</span>
-			</td>
-		</tr>
-		<tr>
-			<th scope="row" valign="top">Portrait image width</th>
-			<td>
-				<?php field_print('widthport');?> px<br />
-				<span class="setting-description">Desired width in pixels of portrait images. Cannot be larger than 800px.</span>
-			</td>
-		</tr>
-		<tr>
-			<th scope="row" valign="top">Landscape image width</th>
-			<td>
-				<?php field_print('widthland');?> px<br />
-				<span class="setting-description">Desired width in pixels of landscape images. Cannot be larger than 800px.</span>
-			</td>
-		</tr>
+	</table>
+
+	<h3>General settings</h3>
+	<table class="form-table">
 		<tr>
 			<th scope="row" valign="top">Show <em>Random</em> page</th>
 			<td>
@@ -276,7 +229,7 @@ function pickle_admin() {
 			</td>
 		</tr>
 	</table>
-	
+
 	<h3>Mosaic configuration</h3>
 	<table class="form-table">
 		<tr>
@@ -314,52 +267,6 @@ function pickle_admin() {
 	<?
 }
 
-/**
- * Grabs a thumbnail from the database.
- * 
- * @param bool $removeamps If true, replace XHTML ampersand with standard ampersand.
- */
-function get_thumbnail($removeamps=false) {
-	global $post;
-	
-	$uri = $post->image->getThumbnailHref(array('w='.im_dim(), 'q=70'));
-	
-	return $removeamps ? str_replace("&amp;", "&", $uri) : $uri;
-}
-
-/**
- * Determines the image width.
- */
-function im_dim() {
-	global $post;
-	if ($post->image->width > $post->image->height) {
-		$wl = get_opt_or_default('widthland');
-		return $post->image->width > $wl ? $wl : $post->image->width;
-	} else {
-		$wp = get_opt_or_default('widthport');
-		return $post->image->height > $wp ? $wp : $post->image->width;
-	}
-}
-
-/**
- * Grabs EXIF information from the database.
- */
-function get_exif() {
-	global $post;
-	
-	$exif_info = yapb_get_exif();
-	
-	if (empty($exif_info))
-		return "No EXIF information available.";
-	
-	$output = '<ul>';
-	
-	foreach ($exif_info as $k => $v)
-		$output .= '<li><label>'.$k.'</label>'.$v.'</li>';
-	
-	return $output.'</ul>';
-}
-
 // --------------------------------------------------------------------
 // End of functions
 // --------------------------------------------------------------------
@@ -378,14 +285,14 @@ if (is_admin()) {
 			update_option($pfix.$opt, $val);
 			$values[$opt] = $val;
 		}
-		
+
 		$updateflag = true;
 	} else {
 		foreach (array_keys($options) as $opt) {
 			if ($options[$opt]['type'] == 'hidden')
 				continue;
 			$values[$opt] = get_option($pfix.$opt);
-			
+
 			// Set up default options
 			if ($values[$opt] === false) {
 				$values[$opt] = $options[$opt]['default'];
@@ -463,8 +370,8 @@ function pickle_posted_on() {
 
 if ( function_exists( 'add_theme_support' ) ) {
 
-  add_theme_support( 'post-thumbnails' ); 
-  
+  add_theme_support( 'post-thumbnails' );
+
   set_post_thumbnail_size( 150, 150, true ); // default Post Thumbnail dimensions (cropped)
 
   // Custom image sizes
@@ -474,7 +381,7 @@ if ( function_exists( 'add_theme_support' ) ) {
   add_image_size( 'single', 480, 999 );
   add_image_size( 'slideshow-slide', 999, 480 );
   add_image_size( 'featuredImage', 999, 480 );
-  
+
 }
 
 ?>
