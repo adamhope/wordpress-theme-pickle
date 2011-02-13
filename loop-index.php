@@ -14,8 +14,6 @@ TODO
     $n_slices          = get_opt_or_default('slideshow_length');
   ?>
 
-  <p><?php get_opt_or_default('photo_category_id') ?>, <?php $photo_category_id ?></p>
-
   <section id="featured-content">
     <div class="slideshow">
       <?php query_posts('cat=' . $photo_category_id . '&posts_per_page=' . $n_slices); if( have_posts() ) : while( have_posts() ) : the_post(); ?>
