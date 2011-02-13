@@ -252,17 +252,6 @@ article footer {
     font-weight: normal;
 }
 
-.page-title a:link,
-.page-title a:visited {
-    color: #666;
-    text-decoration: none;
-}
-
-.page-title a:active,
-.page-title a:hover {
-    color: #ff4b33
-}
-
 /* Blog entry */
 
 #main .entry-title {
@@ -677,6 +666,10 @@ h2.mosaicheader {
 }
 
 /* Typeography */
+
+a {
+    color: #ff4b33;
+}
 
 .post blockquote {
     font-style: italic;
