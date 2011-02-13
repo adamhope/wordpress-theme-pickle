@@ -35,6 +35,16 @@ $vnum = "1.1";
  * @global array $options
  */
 $options = array(
+  'photo_category'  => array(
+  	'type'    => 'text',
+  	'size'    => '30',
+  	'default' => 'photos'
+  ),
+  'slideshow_length' => array(
+  	'type'    => 'text',
+  	'size'    => '30',
+  	'default' => '5'
+  ),
 	'copyright'  => array(
 		'type'    => 'text',
 		'size'    => '35',
@@ -146,45 +156,6 @@ if (!function_exists('json_encode')) {
 }
 
 /**
- * Generates a square thumbnail of an image.
- * 
- * @param int $postID Post ID
- * @return string Absolute URL pointing to generated thumbnail.
- */
-function square_thumb($postID) {
-	global $pfix, $options;
-	
-	// Grab YapbImage from the database depending upon the post ID.
-	$image = YapbImage::getInstanceFromDb($postID);
-
-	if (!$image)
-		return false;
-
-	if ($image->width > $image->height) {
-		$thumb_param = array(
-			'sx='.intval(($image->width - $image->height)/2),
-			'sy=0',
-			'sw='.$image->height,
-			'sh='.$image->height
-		);
-	} elseif ($image->width < $image->height) {
-		$thumb_param = array(
-			'sx=0',
-			'sy='.intval(($image->height - $image->width)/2),
-			'sw='.$image->width,
-			'sh='.$image->width
-		);
-	} else {
-		$thumb_param = array();
-	}
-	
-	$height = get_opt_or_default('mosaicsize');
-	array_push($thumb_param, 'h='.$height, 'q=70');
-	
-	return $image->getThumbnailHref($thumb_param);
-}
-
-/**
  * Get an option or fall-back on default value.
  * 
  * Since WordPress doesn't seem to have a registration hook for 
@@ -255,6 +226,20 @@ function pickle_admin() {
 	<?php field_print('submitted');?>
 	<h3>General settings</h3>
 	<table class="form-table">
+		<tr>
+			<th scope="row" valign="top">Photo Category</th>
+			<td>
+				<?php field_print('photo_category');?><br />
+				<span class="setting-description">Name of category containing photos.</span>
+			</td>
+		</tr>
+		<tr>
+			<th scope="row" valign="top">Slideshow length</th>
+			<td>
+				<?php field_print('slideshow_length');?><br />
+				<span class="setting-description">Maximum number of photos to display in slideshow.</span>
+			</td>
+		</tr>
 		<tr>
 			<th scope="row" valign="top">Copyright holder</th>
 			<td>

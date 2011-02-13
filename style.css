@@ -556,10 +556,10 @@ footer {
 
 /* ===[ Comments ]=== */
 
-#comments {
+/*#comments {
     margin-top: 36px
 }
-
+*/
 .comment-metadata {
 
 }
@@ -709,3 +709,4 @@ div.orbit img {
     display: block;
     vertical-align: middle;
 }
+
