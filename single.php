@@ -25,11 +25,15 @@ TODO
 <?php query_posts($query_string); ?>
 <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
-  <article class="post">
+  <article class="post single">
 
     <header class="post-header">
       <h2><?php the_title();?></h2>
     </header>
+
+    <div class="featuredImage">
+      <?php the_post_thumbnail('slideshow-slide'); ?>
+    </div>
 
     <?php the_content(); ?>
 
