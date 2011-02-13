@@ -12,6 +12,7 @@ TODO
     if (is_home()) :
     $photo_category_id = get_opt_or_default('photo_category_id');
     $n_slices          = get_opt_or_default('slideshow_length');
+    $posts_on_homepage  =get_opt_or_default('posts_on_homepage');
   ?>
 
   <section id="featured-content">
@@ -46,7 +47,7 @@ TODO
 
 <!-- TODO match category ID with category used in slideshow from options -->
 <?php query_posts($query_string . '&cat=-' . photo_category_id); ?>
-<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+<?php if ( have_posts() && $posts_on_homepage == 1) : while ( have_posts() ) : the_post(); ?>
 
   <article class="post">
 

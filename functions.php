@@ -45,6 +45,10 @@ $options = array(
   	'size'    => '30',
   	'default' => '5'
   ),
+  'posts_on_homepage' => array(
+  	'type'    => 'check',
+    'default' => 1
+  ),
 	'mosaicsize' => array(
 		'type'    => 'text',
 		'size'    => '10',
@@ -201,7 +205,7 @@ function pickle_admin() {
 <form name="form1" method="post" action="<?php echo str_replace( '%7E', '~', $_SERVER['REQUEST_URI']); ?>">
 	<?php field_print('submitted');?>
 
-	<h3>Slideshow options</h3>
+	<h3>Homepage options</h3>
 	<table class="form-table">
 		<tr>
 			<th scope="row" valign="top">Photo Category</th>
@@ -215,6 +219,13 @@ function pickle_admin() {
 			<td>
 				<?php field_print('slideshow_length');?><br />
 				<span class="setting-description">Maximum number of photos to display in slideshow.</span>
+			</td>
+		</tr>
+		<tr>
+			<th scope="row" valign="top">Show posts on homepage</th>
+			<td>
+				<?php field_print('posts_on_homepage');?>
+				<span class="setting-description">Enable or disable posts under slideshow on the homepage.</span>
 			</td>
 		</tr>
 	</table>
