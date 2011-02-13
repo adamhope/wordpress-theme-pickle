@@ -411,22 +411,6 @@ if (is_admin()) {
 	add_action('admin_menu', 'pickle_add_pages');
 }
 
-/*
- * If you want to filter your exif data by hand, then uncomment this
- * and put the code in here.
- */
-
-/*
-function yapb_get_exif_filter($exif) 
-{
-
-}
-
-add_filter('yapb_get_exif', 'yapb_get_exif_filter');
-*/
-
-// register_sidebar();
-
 register_nav_menus( array(
 	'primary' => __( 'Primary Navigation', 'pickle' ),
 ) );

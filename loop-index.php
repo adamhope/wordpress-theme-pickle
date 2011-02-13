@@ -16,6 +16,8 @@ TODO
     $category = 'photos'; // get_option('wpns_category');
     $n_slices = 5; //get_option('wpns_slices');
   ?>
+
+<section id="featured-content">
      <div class="slideshow">
      <?php query_posts( 'cat='.$category.'&posts_per_page=$n_slices' ); if( have_posts() ) : while( have_posts() ) : the_post(); ?>
        <?php if(has_post_thumbnail()) : ?>
@@ -29,6 +31,9 @@ TODO
     <?php wp_reset_query();?>
     </div>
   <?php endif; ?>
+</section>
+
+<section id="content">
 
   <?php /* If there are no posts to display, such as an empty archive page */ ?>
   <?php if ( ! have_posts() ) : ?>
@@ -37,8 +42,8 @@ TODO
   		<div class="entry-content">
   			<p><?php _e( 'Apologies, but no results were found for the requested archive. Perhaps searching will help find a related post.', 'pickle' ); ?></p>
   			<?php get_search_form(); ?>
-  		</div><!-- .entry-content -->
-  	</div><!-- #post-0 -->
+  		</div>
+  	</div>
   <?php endif; ?>
 
 <?
@@ -46,29 +51,34 @@ TODO
 if (have_posts()) : while (have_posts()) : the_post();
 ?>
 
-  <article>
+  <!-- Don't show posts in slideshow category -->
 
-    <header>
+  <article class="post">
+
+    <header class="post-header">
       <h2><?php the_title();?></h2>
     </header>
 
     <?php the_content(); ?>
 
-    <?php if ('open' == $post->comment_status) : ?>
-      <footer>
+    <footer class="post-footer">
+      <?php if ('open' == $post->comment_status) : ?>
         <div id="comments">
-          <?php comments_template(); ?>
-        </div>
-      </footer>
-    <?php endif; ?>
-
-    <div id="nav-below" class="navigation">
-    	<div class="nav-previous"><?php next_post_link('%link', '&larr; %title', TRUE); ?></div>
-    	<div class="nav-next"><?php previous_post_link('%link', '%title &rarr;', TRUE); ?></div>
-    </div><!-- #nav-below -->
+        <?php comments_template(); ?>
+      </div>
+      <?php endif; ?>
+      
+      <div id="nav-below" class="navigation">
+      	<div class="nav-previous"><?php next_post_link('%link', '&larr; %title', TRUE); ?></div>
+      	<div class="nav-next"><?php previous_post_link('%link', '%title &rarr;', TRUE); ?></div>
+      </div>
+      
+    </footer>
 
   </article>
 
 <?php break; endwhile; endif;?>
+
+</section>
 
 </div>

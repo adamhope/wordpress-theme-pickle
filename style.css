@@ -9,6 +9,11 @@
 
 /* ===[ Structure the footer area ]=== */
 
+#frame {
+    width: 960px;
+    margin: 0 auto;
+}
+
 #footer-widget-area {
     overflow: hidden;
 }
@@ -20,12 +25,8 @@
 
 /* ===[ Widget Areas ]=== */
 
+/* TODO will become link list style*/
 .widget-area ul {
-    list-style: none;
-    margin-left: 0;
-}
-
-.widget-area ul ul {
     list-style: square;
     margin-left: 1.3em;
     padding: 0;
@@ -126,7 +127,8 @@
 
 #main {
     width: 960px;
-    margin: 0 auto 24px auto;
+    margin: 0 auto;
+    padding-bottom: 24px;
     clear: both;
     overflow: hidden;
 }
@@ -452,20 +454,14 @@ body {
 
 header {
     padding: 24px 0;
-}
-
-header #header-wrapper {
     width: 960px;
     margin: 0 auto;
-}
-
-header hgroup {
-    float: left;
 }
 
 /* ===[ Header - Site title ]=== */
 
 #site-title {
+    float: left;
     font-size: 30px;
     line-height: 48px;
     margin: 0 0 24px;
@@ -521,24 +517,19 @@ header nav a:hover {
 
 footer {
     color: #555;
-    padding: 24px 0 0 0;
 }
 
-footer #footer-wrapper {
+.secondary-content {
     border-top: 4px solid #000;
-    padding: 20px 0 24px 0;
-    margin: 0 auto;
+    padding: 20px 0 0 0;
+    margin: 0 auto 24px;
     text-align: left;
     width: 960px;
 }
 
-footer a {
+.secondary-content a {
     color: #797A67;
     text-decoration: none;
-}
-
-footer a:hover {
-
 }
 
 #copyright {
@@ -693,6 +684,12 @@ h2.mosaicheader {
 
 /* Slideshow */
 
+.slideshow .slide,
+.featured-content {
+    background-color: #FFF;
+    padding: 12px 0;
+}
+
 .orbit-wrapper {
     margin: 0 auto 24px;
 }
@@ -701,7 +698,6 @@ h2.mosaicheader {
     padding: 12px 0;
     height: 504px;
     width: 900px;
-    background-color: #FFF;
 }
 
 

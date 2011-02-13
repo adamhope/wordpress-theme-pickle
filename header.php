@@ -49,18 +49,14 @@
 <!--[if (gt IE 9)|!(IE)]><!--> <body> <!--<![endif]-->
 
 <div id="frame">
-  <header>
-    <div id="header-wrapper" class="clearf">
-      <hgroup>
-        <h1 id="site-title">
-      		<a href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
-      		  <?php bloginfo('name'); ?>
-      		</a>
-    		</h1>
-        <!-- <h2 id="site-description"><?php bloginfo('description'); ?></h2> -->
-    	</hgroup>
-      <nav role="navigation">
-        <?php wp_nav_menu(array('theme_location' => 'primary')); ?>
-      </nav>
-    </div>
+  <header class="banner clearf">
+    <h1 id="site-title">
+      <a href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
+        <?php bloginfo('name'); ?>
+      </a>
+    </h1>
+    <!-- <h2 id="site-description"><?php bloginfo('description'); ?></h2> -->
+    <nav role="navigation">
+      <?php wp_nav_menu(array('theme_location' => 'primary')); ?>
+    </nav>
   </header>

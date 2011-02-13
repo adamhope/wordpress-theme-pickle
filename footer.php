@@ -1,6 +1,5 @@
 
-  <footer>
-    <div id="footer-wrapper" class="clearf">
+  <footer class="secondary-content clearf">
       <?php get_sidebar('footer'); ?>
       <div id="copyright" class="clearf">
         <small id="site-info">
@@ -13,7 +12,6 @@
           </a>
         </small>
       </div>
-    </div>
   </footer>
 
 </div>
