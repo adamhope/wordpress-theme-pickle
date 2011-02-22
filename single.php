@@ -27,28 +27,28 @@ TODO
 
   <article class="post single">
 
-    <header class="post-header">
-      <h2><?php the_title();?></h2>
-    </header>
-
     <div class="featuredImage">
       <?php the_post_thumbnail('slideshow-slide'); ?>
     </div>
 
+    <header class="post-header">
+      <h2><?php the_title();?></h2>
+    </header>
+
     <?php the_content(); ?>
 
     <footer class="post-footer">
+
+      <div id="nav-below" class="navigation">
+      	<div class="nav-previous"><?php next_post_link('%link', '&larr; %title', TRUE); ?></div>
+      	<div class="nav-next"><?php previous_post_link('%link', '%title &rarr;', TRUE); ?></div>
+      </div>
 
       <?php if ('open' == $post->comment_status) : ?>
         <div id="comments">
           <?php comments_template(); ?>
         </div>
       <?php endif; ?>
-
-      <div id="nav-below" class="navigation">
-      	<div class="nav-previous"><?php next_post_link('%link', '&larr; %title', TRUE); ?></div>
-      	<div class="nav-next"><?php previous_post_link('%link', '%title &rarr;', TRUE); ?></div>
-      </div>
 
     </footer>
 

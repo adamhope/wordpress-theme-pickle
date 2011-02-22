@@ -233,6 +233,20 @@ article footer {
     padding: 0;
 }
 
+article footer .navigation {
+    overflow: auto;
+    width: 100%;
+}
+
+article footer .nav-previous {
+    float: left;
+}
+
+article footer .nav-next {
+    float: right;
+}
+
+
 .page-title {
     font-size: 18px;
     line-height: 24px;
