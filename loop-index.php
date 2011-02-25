@@ -58,16 +58,18 @@ TODO
 
     <footer class="post-footer">
 
+      <?php if (  $wp_query->max_num_pages > 1 ) : ?>
+        <div id="nav-below" class="navigation">
+        	<div class="nav-previous"><?php next_post_link('%link', '&larr; %title', TRUE); ?></div>
+        	<div class="nav-next"><?php previous_post_link('%link', '%title &rarr;', TRUE); ?></div>
+        </div>
+      <?php endif; ?>
+
       <?php if ('open' == $post->comment_status) : ?>
         <div id="comments">
           <?php comments_template(); ?>
         </div>
       <?php endif; ?>
-
-      <div id="nav-below" class="navigation">
-      	<div class="nav-previous"><?php next_post_link('%link', '&larr; %title', TRUE); ?></div>
-      	<div class="nav-next"><?php previous_post_link('%link', '%title &rarr;', TRUE); ?></div>
-      </div>
 
     </footer>
 
