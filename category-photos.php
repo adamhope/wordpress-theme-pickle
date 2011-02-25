@@ -30,44 +30,11 @@ if ($allid) {
 ?>
 
 <div id="main">
-  <table cellpadding="5" cellspacing="0" id="taxonomyTable">
-    <?php if ($disptype): ?>
-    <tr>
-      <th>Browse by year</th><th style="text-align:right">Browse <?=$disptype == 1 ? 'by tag' : 'by category'?></th>
-    </tr>
-    <?php else: ?>
-    <tr>
-      <th>By year</th>
-    </tr>
-    <?php endif; ?>
-    <tr>
-      <td id="yearCloud">
-          <?php
-              $post_years = $wpdb->get_results("SELECT YEAR(post_date) AS posty FROM " . $wpdb->prefix . "posts 
-                                          WHERE post_status='publish' AND post_type='post' GROUP BY posty ORDER BY posty DESC;");
-              echo '<a href="'.$alluri.'"'.($all ? $curstr : '').'>All</a> ';
-        foreach ($post_years as $y)
-          echo '<a href="' . get_year_link($y->posty) . '"' . ($thisyear && $thisyear == $y->posty ? $curstr : '') . '>' . $y->posty . '</a> ';
-      ?>
-        </td>
-      <?php if ($disptype == 1): ?>
-        <td id="tagCloud">
-          <?php 
-            if ($thistag !== false) {
-              echo implode(' ', str_replace('tag-link-' . $curtag, 'tag-link-' . $curtag .' current', wp_tag_cloud('format=array')));
-            } else {
-              wp_tag_cloud('');
-            }
-          ?>
-        </td>
-      <?php elseif ($disptype == 2): ?>
-        <td id="catCloud">
-          <?php wp_list_categories(); ?>
-        </td>
-      <?php endif;?>
-      </tr>
-    </table>
-    
+
+    <h1 class="page-title">
+        <?php single_cat_title(); ?>
+    </h1>
+
     <div>
       <div id="tag-pics-wrapper">
         <div id="tag-pics">
