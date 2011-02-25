@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Functions which are common to all (or most) files in the theme. We
  * also define things which make it much easier to create administration
@@ -226,17 +227,6 @@ function pickle_admin() {
 			<td>
 				<?php field_print('posts_on_homepage');?>
 				<span class="setting-description">Enable or disable posts under slideshow on the homepage.</span>
-			</td>
-		</tr>
-	</table>
-
-	<h3>General settings</h3>
-	<table class="form-table">
-		<tr>
-			<th scope="row" valign="top">Show <em>Random</em> page</th>
-			<td>
-				<?php field_print('showrand');?>
-				<span class="setting-description">If true, then add a page called <em>Random</em> to the list which takes users to random images..</span>
 			</td>
 		</tr>
 	</table>
